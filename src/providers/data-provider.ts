@@ -1,8 +1,9 @@
 import { createRaProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { dummyProvider } from "./dummy-provider";
+import { userProvider } from "./user-provider";
 
 export const dataProvider = createRaProvider(
-  [dummyProvider],
+  [dummyProvider, userProvider],
   {
     getListOptions: {
       defaultPagination: {

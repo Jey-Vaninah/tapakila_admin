@@ -1,6 +1,6 @@
 import { Admin, Resource } from "react-admin"
 
-import { DummyList } from "./operations/dummy"
+import { DummyList, UserList } from "./operations/dummy"
 import { dataProvider } from "./providers"
 
 export const App = () => {
@@ -10,6 +10,7 @@ export const App = () => {
       dataProvider={dataProvider}
     >
       <Resource name="dummy" list={<DummyList />} />
+      <Resource name="user" list={<UserList />} />
     </Admin>
   )
 }

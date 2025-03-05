@@ -8,10 +8,10 @@ export const UserList = () => {
         <TextField source="id" label="Id" />
         <TextField source="name" label="Name" />
         <TextField source="username" label="Username" />
-        <DateField source="email_verified_at" label="Email Verification"showTime />
+        <DateField source="email_verified_at" label="Verification"showTime />
         <EmailField source="email" label="Email"/>
-        <ImageField source="image_url" label="Profil" />
-        <TextField source="country-id" label="Country" />
+        <TextField source="image_url" label="Profil" />
+        <TextField source="country_id" label="Country" />
         <DateField source="create_at" label="Create" showTime/>
         <DateField source="updated_at" label="Update" showTime />
         <DateField source="deleted_at" label="delete" showTime />

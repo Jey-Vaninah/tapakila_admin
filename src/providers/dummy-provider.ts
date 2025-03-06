@@ -4,6 +4,6 @@ import { Dummy } from "./types";
 export const dummyProvider: ResourceProvider<Dummy> = {
   resource: "dummy",
   getList: async () => {
-    return Promise.resolve([{ id: "id", name: "Value" }])
-  }
-}
+    return Promise.resolve([{ id: "id", name: "Value" }]);
+  },
+};

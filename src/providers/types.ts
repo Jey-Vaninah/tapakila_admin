@@ -1,15 +1,13 @@
-import { DateTimeInputProps } from "react-admin";
-
 export type Dummy = {
   id: string;
   name: string;
-}
+};
 
-export type User= {
+export type User = {
   id: string;
   username: string;
   name: string;
-  email:string;
+  email: string;
   email_verified_at: Date | null;
   password: string;
   image_url: string;
@@ -17,4 +15,22 @@ export type User= {
   create_at: Date;
   updated_at: Date;
   deleted_at: Date | null;
-}
+};
+
+export type Event = {
+  id: string;
+  event_hall_id: string;
+  host_id: string;
+  user_id: string;
+  title: string;
+  slug: string;
+  description: string;
+  start_date: Date;
+  start_time: string;
+  end_date: Date;
+  end_time: string;
+  age_limit: string;
+  create_at: Date;
+  updated_at: Date;
+  deleted_at: Date | null;
+};

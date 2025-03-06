@@ -1,2 +1,2 @@
-export * from "./dummy-list"
-export * from "../user/user-list"
+export * from "./dummy-list";
+export * from "../user/user-list";

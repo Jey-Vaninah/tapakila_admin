@@ -1,4 +1,4 @@
-import { Admin, Resource } from "react-admin";
+import { Admin, Layout, Login, Resource } from "react-admin";
 
 import { dataProvider } from "./providers";
 import { UserList } from "./operations/user/user-list";
@@ -9,10 +9,23 @@ import { EventList } from "./operations/event/event-list";
 import { EventShow } from "./operations/event/event-show";
 import { EventCreate } from "./operations/event/event-create";
 import { EventEdit } from "./operations/event/event-edit";
+import { authProvider } from "./providers/auth-provider";
+import { TicketCreate } from "./operations/ticket/ticket-create";
+import { TicketEdit } from "./operations/ticket/ticket-edit";
+import { TicketList } from "./operations/ticket/ticket-list";
+import { TicketShow } from "./operations/ticket/ticket-show";
 
 export const App = () => {
   return (
-    <Admin title="Tapakila Admin" dataProvider={dataProvider}>
+    <Admin
+      title="Tapakila Admin"
+      dataProvider={dataProvider}
+      requireAuth
+      layout={Layout}
+      //   dashboard={HomePage}
+      loginPage={<Login />}
+      authProvider={authProvider}
+    >
       <Resource
         name="user"
         list={UserList}
@@ -26,6 +39,13 @@ export const App = () => {
         show={EventShow}
         edit={EventEdit}
         create={EventCreate}
+      />
+      <Resource
+        name="ticket"
+        list={TicketList}
+        show={TicketShow}
+        edit={TicketEdit}
+        create={TicketCreate}
       />
     </Admin>
   );

@@ -34,3 +34,17 @@ export type Event = {
   updated_at: Date;
   deleted_at: Date | null;
 };
+
+export type Ticket = {
+  id: string;
+  event_id: string;
+  ticket_type_id: string;
+  user_id: string;
+  ticket_number: string;
+  amount_paid: number;
+  currency_id: string;
+  payment_confirmed: boolean;
+  create_at: Date;
+  updated_at: Date;
+  deleted_at: Date;
+};

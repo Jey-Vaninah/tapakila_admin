@@ -1,8 +1,9 @@
 import { createRaProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { userProvider } from "./user-provider";
 import { eventProvider } from "./event-provider";
+import { ticketProvider } from "./ticket-provider";
 
-export const dataProvider = createRaProvider([userProvider, eventProvider], {
+export const dataProvider = createRaProvider([userProvider, eventProvider, ticketProvider], {
   getListOptions: {
     defaultPagination: {
       page: 1,

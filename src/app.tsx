@@ -1,4 +1,9 @@
 import { Admin, Login, Resource } from "react-admin";
+import {
+  Person as PersonIcon,
+  Celebration as CelebrationIcon,
+  LocalActivity as LocalActivityIcon
+} from "@mui/icons-material"
 
 import { dataProvider } from "./providers";
 import { UserList } from "./operations/user/user-list";
@@ -23,12 +28,12 @@ export const App = () => {
       dataProvider={dataProvider}
       requireAuth
       layout={Layout}
-      //   dashboard={HomePage}
       loginPage={<Login />}
       authProvider={authProvider}
     >
       <Resource
         name="user"
+        icon={PersonIcon}
         list={UserList}
         show={UserShow}
         edit={UserEdit}
@@ -36,6 +41,7 @@ export const App = () => {
       />
       <Resource
         name="event"
+        icon={CelebrationIcon}
         list={EventList}
         show={EventShow}
         edit={EventEdit}
@@ -43,6 +49,7 @@ export const App = () => {
       />
       <Resource
         name="ticket"
+        icon={LocalActivityIcon}
         list={TicketList}
         show={TicketShow}
         edit={TicketEdit}

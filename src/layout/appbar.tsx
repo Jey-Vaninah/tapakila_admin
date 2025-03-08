@@ -4,15 +4,19 @@ import {
 } from "@mui/icons-material";
 import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import { FC } from "react";
-import { IconButtonWithTooltip, ToggleThemeButton } from "react-admin";
+import { IconButtonWithTooltip, ToggleThemeButton, useTheme } from "react-admin";
 
 export const AppBar: FC = () => {
+  const [theme] = useTheme()
   return (
     <Box
       sx={{
-        width: "calc(100%-300px)",
-        bgcolor: "black",
         ml: "300px",
+        width: "calc(100%-300px)",
+        bgcolor: theme === "dark" ? "black" : "rgb(20, 61, 24)",
+        color:"white",
+        "& *:not(.RaMenuItemLink-active)": {color: "white !important"},
+        "& .RaMenuItemLink-active": {color: "rgb(20, 229, 41) !important"},
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -22,8 +26,8 @@ export const AppBar: FC = () => {
       <Typography
         variant="h1"
         sx={{
-          bgcolor: "black",
           fontSize: "1.3rem",
+          fontWeight: "bold"
         }}
       >
         Tapakila

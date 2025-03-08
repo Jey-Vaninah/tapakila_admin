@@ -1,10 +1,12 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { FC } from "react";
-import { Logout, Menu as RaMenu } from "react-admin";
+import { Logout, Menu as RaMenu, useTheme } from "react-admin";
 
 import profileImage from "../assets/images/profile.png";
 
 export const Menu: FC = () => {
+  const [theme] = useTheme();
+
   return (
     <Box
       sx={{
@@ -12,9 +14,11 @@ export const Menu: FC = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         p: 3,
-        bgcolor: "black",
+        bgcolor: theme === "dark" ? "black" : "rgb(20, 61, 24)",
         width: "300px",
         height: "100%",
+        "& *:not(.RaMenuItemLink-active)": {color: "white !important"},
+        "& .RaMenuItemLink-active, & .RaMenuItemLink-active .MuiListItemIcon-root *": {color: "rgb(214, 124, 14) !important"},        
         position: "fixed",
         top: 0,
         left: 0,

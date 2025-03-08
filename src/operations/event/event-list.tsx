@@ -1,15 +1,24 @@
-import { List, Datagrid, TextField, DateField } from "react-admin";
+import { List, Datagrid, TextField, DateField, FunctionField, DeleteButton, EditButton } from "react-admin";
+import { FlexBox } from "../../common/components/flex-box";
 
 export const EventList = () => {
   return (
     <List>
-      <Datagrid>
-        <TextField source="id" label="Id" />
+      <Datagrid bulkActionButtons={false}>
         <TextField source="title" label="Title" />
         <TextField source="slug" label="Slug" />
-        <TextField source="description" label="Description" />
         <DateField source="start_date" label="Start Date" showTime />
         <TextField source="start_time" label="Start Time" />
+        <FunctionField
+                  label="Actions"
+                  render={() => {
+                    return (<FlexBox sx={{justifyContent:"start", gap:2}}>
+                      <DeleteButton />
+                      <EditButton />
+                    </FlexBox>
+                    )
+                  }}
+                />
       </Datagrid>
     </List>
   );

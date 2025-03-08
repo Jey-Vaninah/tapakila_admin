@@ -1,22 +1,26 @@
+import { Avatar } from "@mui/material";
 import {
   DateField,
   EmailField,
+  FunctionField,
   Show,
   SimpleShowLayout,
   TextField,
-  UrlField,
 } from "react-admin";
 
 export const UserShow = () => (
   <Show>
     <SimpleShowLayout>
-      <TextField source="id" />
+      <FunctionField
+        render={(user) => {
+          return <Avatar src={user.image_url} />;
+        }}
+      />
       <TextField source="name" />
       <TextField source="username" />
       <EmailField source="email" />
       <DateField source="email_verified_at" showTime />
       <EmailField source="email" />
-      <UrlField source="image_url" />
       <DateField source="create_at" showTime />
       <DateField source="updated_at" showTime />
       <DateField source="deleted_at" showTime />

@@ -2,8 +2,8 @@ import { Admin, Login, Resource } from "react-admin";
 import {
   Person as PersonIcon,
   Celebration as CelebrationIcon,
-  LocalActivity as LocalActivityIcon
-} from "@mui/icons-material"
+  LocalActivity as LocalActivityIcon,
+} from "@mui/icons-material";
 
 import { dataProvider } from "./providers";
 import { UserList } from "./operations/user/user-list";

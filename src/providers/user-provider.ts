@@ -1,5 +1,6 @@
 import { ResourceProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { User } from "./types";
+import profilImage from "../assets/images/profile.png";
 
 const USERS: User[] = [
   {
@@ -9,10 +10,36 @@ const USERS: User[] = [
     email: "hei.vaninah@mail.com",
     email_verified_at: new Date("2024-03-05T12:00:00Z"),
     password: "Vaninah",
-    image_url: "https://example.com/image.jpg",
+    image_url: profilImage,
     country_id: "MG",
     create_at: new Date("2024-03-05T12:00:00Z"),
     updated_at: new Date("2024-03-05T12:00:00Z"),
+    deleted_at: null,
+  },
+  {
+    id: "2",
+    username: "Tsilavina",
+    name: "Gaëtan",
+    email: "Tsilavina.Gaëtan@mail.com",
+    email_verified_at: new Date("2024-03-10T08:30:00Z"),
+    password: "Tsilavina123",
+    image_url: profilImage,
+    country_id: "FR",
+    create_at: new Date("2024-03-10T08:30:00Z"),
+    updated_at: new Date("2024-03-10T08:30:00Z"),
+    deleted_at: null,
+  },
+  {
+    id: "3",
+    username: "Nomena",
+    name: "Fitahiana",
+    email: "Nomena.Fitahiana@mail.com",
+    email_verified_at: new Date("2024-04-01T15:45:00Z"),
+    password: "NomenaFitahiana",
+    image_url: profilImage,
+    country_id: "CA",
+    create_at: new Date("2024-04-01T15:45:00Z"),
+    updated_at: new Date("2024-04-01T15:45:00Z"),
     deleted_at: null,
   },
 ];
@@ -22,7 +49,3 @@ export const userProvider: ResourceProvider<User> = {
   getOne: async ({ id }) => USERS.find((user) => user.id === id)!,
   getList: async () => Promise.resolve(USERS),
 };
-
-// return axios
-// .get<Post[]>("https://jsonplaceholder.typicode.com/posts")
-// .then(response => response.data);

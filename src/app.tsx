@@ -1,4 +1,4 @@
-import { Admin, Login, Resource } from "react-admin";
+import { Admin, Resource } from "react-admin";
 import {
   Person as PersonIcon,
   Celebration as CelebrationIcon,
@@ -20,15 +20,16 @@ import { TicketEdit } from "./operations/ticket/ticket-edit";
 import { TicketList } from "./operations/ticket/ticket-list";
 import { TicketShow } from "./operations/ticket/ticket-show";
 import { Layout } from "./layout/layout";
+import { LoginPage } from "./security/components/login-page";
 
 export const App = () => {
   return (
     <Admin
-      title="Tapakila Admin"
-      dataProvider={dataProvider}
       requireAuth
       layout={Layout}
-      loginPage={<Login />}
+      loginPage={<LoginPage />}
+      title="Tapakila Admin"
+      dataProvider={dataProvider}
       authProvider={authProvider}
     >
       <Resource

@@ -16,7 +16,7 @@ export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       <Menu />
       <AppBar />
       <Box sx={{ width: "calc(100% - 300px)", ml: "300px", p: 2 }}>
-        {children}{" "}
+        {children}
       </Box>
     </Box>
   );

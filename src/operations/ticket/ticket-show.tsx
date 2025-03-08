@@ -1,4 +1,10 @@
-import { Show, SimpleShowLayout, TextField, DateField, NumberField } from "react-admin";
+import {
+  Show,
+  SimpleShowLayout,
+  TextField,
+  DateField,
+  NumberField,
+} from "react-admin";
 
 export const TicketShow = () => {
   return (
@@ -17,4 +23,3 @@ export const TicketShow = () => {
     </Show>
   );
 };
-

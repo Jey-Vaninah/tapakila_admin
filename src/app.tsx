@@ -1,4 +1,4 @@
-import { Admin, Layout, Login, Resource } from "react-admin";
+import { Admin, Login, Resource } from "react-admin";
 
 import { dataProvider } from "./providers";
 import { UserList } from "./operations/user/user-list";
@@ -14,6 +14,7 @@ import { TicketCreate } from "./operations/ticket/ticket-create";
 import { TicketEdit } from "./operations/ticket/ticket-edit";
 import { TicketList } from "./operations/ticket/ticket-list";
 import { TicketShow } from "./operations/ticket/ticket-show";
+import { Layout } from "./layout/layout";
 
 export const App = () => {
   return (

@@ -15,7 +15,6 @@ const TICKETS: Ticket[] = [
     updated_at: new Date(),
     deleted_at: new Date(),
   },
-  
 ];
 export const ticketProvider: ResourceProvider<Ticket> = {
   resource: "ticket",

@@ -18,7 +18,7 @@ export const UserList = () => {
         <FunctionField
           label="Profile"
           render={(user) => {
-            return <Avatar src={user.image_url} />
+            return <Avatar src={user.image_url} />;
           }}
         />
         <TextField source="name" label="Name" />
@@ -27,17 +27,21 @@ export const UserList = () => {
         <FunctionField
           label="Role"
           render={(user: User) => {
-            return user.role[0].toUpperCase() + user.role.slice(1).toLocaleLowerCase()
+            return (
+              user.role[0].toUpperCase() +
+              user.role.slice(1).toLocaleLowerCase()
+            );
           }}
         />
         <FunctionField
           label="Actions"
           render={() => {
-            return (<FlexBox sx={{ justifyContent: "start", gap: 2 }}>
-              <DeleteButton />
-              <EditButton />
-            </FlexBox>
-            )
+            return (
+              <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
+                <DeleteButton />
+                <EditButton />
+              </FlexBox>
+            );
           }}
         />
       </Datagrid>

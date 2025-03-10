@@ -1,6 +1,6 @@
 export enum Role {
   USER = "USER",
-  ADMIN_EVENTS = "ADMIN_EVENTS"
+  ADMIN_EVENTS = "ADMIN_EVENTS",
 }
 
 export type User = {
@@ -15,7 +15,7 @@ export type User = {
   create_at: Date;
   updated_at: Date;
   deleted_at: Date | null;
-  role: Role
+  role: Role;
 };
 
 export enum Status {
@@ -40,7 +40,7 @@ export type Event = {
   create_at: Date;
   updated_at: Date;
   deleted_at: Date | null;
-  status: Status
+  status: Status;
 };
 
 export type Ticket = {

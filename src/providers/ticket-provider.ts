@@ -23,22 +23,21 @@ export const ticketProvider: ResourceProvider<Ticket> = {
   saveOrUpdate: async ({ data, meta }) => {
     if (meta?.mutationType === "CREATE") {
       TICKETS.push(data as Ticket);
-      return TICKETS.find(ticket => ticket.id === data.id)!
-    }
-    else {
+      return TICKETS.find((ticket) => ticket.id === data.id)!;
+    } else {
       TICKETS = TICKETS.map((ticket) => {
-        return ticket.id === data.id ? data as Ticket : ticket
+        return ticket.id === data.id ? (data as Ticket) : ticket;
       });
-      return TICKETS.find(ticket => ticket.id == data.id)!
+      return TICKETS.find((ticket) => ticket.id == data.id)!;
     }
   },
   delete: async ({ id }) => {
-    const toDeleted = TICKETS.find((ticket)=> {
+    const toDeleted = TICKETS.find((ticket) => {
       return ticket.id === id;
-    })
+    });
     TICKETS = TICKETS.filter((ticket) => {
       return ticket.id !== id;
     });
-    return toDeleted!
+    return toDeleted!;
   },
 };

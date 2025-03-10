@@ -15,7 +15,7 @@ let USERS: User[] = [
     create_at: new Date("2024-03-05T12:00:00Z"),
     updated_at: new Date("2024-03-05T12:00:00Z"),
     deleted_at: null,
-    role: Role.ADMIN_EVENTS
+    role: Role.ADMIN_EVENTS,
   },
   {
     id: "2",
@@ -29,7 +29,7 @@ let USERS: User[] = [
     create_at: new Date("2024-03-10T08:30:00Z"),
     updated_at: new Date("2024-03-10T08:30:00Z"),
     deleted_at: null,
-    role: Role.USER
+    role: Role.USER,
   },
   {
     id: "3",
@@ -43,7 +43,7 @@ let USERS: User[] = [
     create_at: new Date("2024-04-01T15:45:00Z"),
     updated_at: new Date("2024-04-01T15:45:00Z"),
     deleted_at: null,
-    role: Role.USER
+    role: Role.USER,
   },
   {
     id: "4",
@@ -57,7 +57,7 @@ let USERS: User[] = [
     create_at: new Date("2024-04-01T15:45:00Z"),
     updated_at: new Date("2024-04-01T15:45:00Z"),
     deleted_at: null,
-    role: Role.USER
+    role: Role.USER,
   },
 ];
 
@@ -65,25 +65,24 @@ export const userProvider: ResourceProvider<User> = {
   resource: "user",
   getOne: async ({ id }) => USERS.find((user) => user.id === id)!,
   getList: async () => Promise.resolve(USERS),
-  saveOrUpdate: async ({data , meta }) =>{
-    if(meta?.mutationType === "CREATE"){
+  saveOrUpdate: async ({ data, meta }) => {
+    if (meta?.mutationType === "CREATE") {
       USERS.push(data as User);
-      return USERS.find(user => user.id === data.id)!
-    }else{
+      return USERS.find((user) => user.id === data.id)!;
+    } else {
       USERS = USERS.map((user) => {
-        return user.id === data.id ? data as User : user
+        return user.id === data.id ? (data as User) : user;
       });
-      return USERS.find(user => user.id === data.id)!
+      return USERS.find((user) => user.id === data.id)!;
     }
   },
   delete: async ({ id }) => {
-    const toDeleted = USERS.find((user)=> {
+    const toDeleted = USERS.find((user) => {
       return user.id === id;
-    })
+    });
     USERS = USERS.filter((user) => {
       return user.id !== id;
     });
-    return toDeleted!
+    return toDeleted!;
   },
-
 };

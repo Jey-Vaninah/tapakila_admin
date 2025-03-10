@@ -11,7 +11,7 @@ import { FlexBox } from "../../common/components/flex-box";
 import { User } from "../../providers";
 
 export const UserShow = () => (
-  <Show >
+  <Show>
     <FlexBox sx={{ gap: 2, justifyContent: "start" }}>
       <Box sx={{ width: "20%", bgcolor: "green" }}>
         <SimpleShowLayout>
@@ -23,7 +23,10 @@ export const UserShow = () => (
           <FunctionField
             label="Role"
             render={(user: User) => {
-              return user.role[0].toUpperCase() + user.role.slice(1).toLocaleLowerCase()
+              return (
+                user.role[0].toUpperCase() +
+                user.role.slice(1).toLocaleLowerCase()
+              );
             }}
           />
           <TextField source="name" />

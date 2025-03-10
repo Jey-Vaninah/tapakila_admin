@@ -34,11 +34,15 @@ export const UserEdit = () => (
   <Edit actions={<UserEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput readOnly label="Id" source="id" />
-      <SelectInput validate={[required()]} source="role" choices={[Role.ADMIN_EVENTS, Role.USER]} />
-      <TextInput source="name" validate={[required()]}/>
-      <TextInput source="username"validate={[required()]} />
+      <SelectInput
+        validate={[required()]}
+        source="role"
+        choices={[Role.ADMIN_EVENTS, Role.USER]}
+      />
+      <TextInput source="name" validate={[required()]} />
+      <TextInput source="username" validate={[required()]} />
       <TextInput source="email" validate={[required(), email()]} />
-       <ImageInput source="image_url" />
+      <ImageInput source="image_url" />
     </SimpleForm>
   </Edit>
 );

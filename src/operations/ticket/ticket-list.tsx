@@ -1,4 +1,13 @@
-import { List, Datagrid, TextField, DateField, NumberField, DeleteButton, EditButton, FunctionField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  TextField,
+  DateField,
+  NumberField,
+  DeleteButton,
+  EditButton,
+  FunctionField,
+} from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 
 export const TicketList = () => {
@@ -11,15 +20,16 @@ export const TicketList = () => {
         <TextField source="amount_paid" label="Amount Paid" />
         <TextField source="currency_id" label="Currency" />
         <FunctionField
-                  label="Actions"
-                  render={() => {
-                    return (<FlexBox sx={{justifyContent:"start", gap:2}}>
-                      <DeleteButton />
-                      <EditButton />
-                    </FlexBox>
-                    )
-                  }}
-                />
+          label="Actions"
+          render={() => {
+            return (
+              <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
+                <DeleteButton />
+                <EditButton />
+              </FlexBox>
+            );
+          }}
+        />
       </Datagrid>
     </List>
   );

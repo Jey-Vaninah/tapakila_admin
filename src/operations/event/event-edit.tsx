@@ -31,7 +31,7 @@ const EventEditActions = () => (
 export const EventEdit = () => (
   <Edit actions={<EventEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
-    <TextInput readOnly label="Id" source="id" />
+      <TextInput readOnly label="Id" source="id" />
       <TextInput source="title" />
       <TextInput source="slug" />
       <TextInput source="name" />
@@ -41,9 +41,11 @@ export const EventEdit = () => (
       <TextInput source="end_date" />
       <TextInput source="end_time" />
       <TextInput source="age_limit" />
-      <SelectInput validate={[required()]} source="status" choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]} />
+      <SelectInput
+        validate={[required()]}
+        source="status"
+        choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]}
+      />
     </SimpleForm>
   </Edit>
 );
-
-

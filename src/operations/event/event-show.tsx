@@ -1,4 +1,10 @@
-import { Show, SimpleShowLayout, TextField, DateField, FunctionField } from "react-admin";
+import {
+  Show,
+  SimpleShowLayout,
+  TextField,
+  DateField,
+  FunctionField,
+} from "react-admin";
 import { Event } from "../../providers";
 
 export const EventShow = () => {
@@ -17,7 +23,10 @@ export const EventShow = () => {
         <FunctionField
           label="Status"
           render={(event: Event) => {
-            return event.status[0].toUpperCase() + event.status.slice(1).toLocaleLowerCase()
+            return (
+              event.status[0].toUpperCase() +
+              event.status.slice(1).toLocaleLowerCase()
+            );
           }}
         />
       </SimpleShowLayout>

@@ -10,18 +10,19 @@ export const Menu: FC = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        p: 3,
-        bgcolor: theme === "dark" ? "black" : "rgb(20, 61, 24)",
-        width: "300px",
-        height: "100%",
-        "& *:not(.RaMenuItemLink-active)": {color: "white !important"},
-        "& .RaMenuItemLink-active, & .RaMenuItemLink-active .MuiListItemIcon-root *": {color: "rgb(214, 124, 14) !important"},        
-        position: "fixed",
-        top: 0,
-        left: 0,
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "p": 3,
+        "bgcolor": theme === "dark" ? "black" : "rgb(20, 61, 24)",
+        "width": "300px",
+        "height": "100%",
+        "& *:not(.RaMenuItemLink-active)": { color: "white !important" },
+        "& .RaMenuItemLink-active, & .RaMenuItemLink-active .MuiListItemIcon-root *":
+          { color: "rgb(214, 124, 14) !important" },
+        "position": "fixed",
+        "top": 0,
+        "left": 0,
       }}
     >
       <Box sx={{ width: "100%" }}>

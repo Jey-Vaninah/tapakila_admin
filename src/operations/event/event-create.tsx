@@ -13,8 +13,9 @@ import { v4 } from "uuid";
 export const EventCreate = () => (
   <Create
     transform={(data) => {
-      return { ...data, id: v4() }
-    }}>
+      return { ...data, id: v4() };
+    }}
+  >
     <SimpleForm>
       <TextInput source="title" validate={[required()]} />
       <TextInput source="slug" validate={[required()]} />
@@ -24,7 +25,12 @@ export const EventCreate = () => (
       <DateInput source="end_date" validate={[required()]} />
       <TimeInput source="end_time" validate={[required()]} />
       <TextInput source="age_limit" validate={[required()]} />
-      <SelectInput defaultValue={Status.CANCELED} validate={[required()]} source="status" choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]} />
+      <SelectInput
+        defaultValue={Status.CANCELED}
+        validate={[required()]}
+        source="status"
+        choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]}
+      />
     </SimpleForm>
   </Create>
 );

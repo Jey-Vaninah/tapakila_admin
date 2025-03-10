@@ -1,4 +1,12 @@
-import { List, Datagrid, TextField, DateField, FunctionField, DeleteButton, EditButton } from "react-admin";
+import {
+  List,
+  Datagrid,
+  TextField,
+  DateField,
+  FunctionField,
+  DeleteButton,
+  EditButton,
+} from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import { Event } from "../../providers";
 export const EventList = () => {
@@ -12,17 +20,21 @@ export const EventList = () => {
         <FunctionField
           label="Actions"
           render={() => {
-            return (<FlexBox sx={{ justifyContent: "start", gap: 2 }}>
-              <DeleteButton />
-              <EditButton />
-            </FlexBox>
-            )
+            return (
+              <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
+                <DeleteButton />
+                <EditButton />
+              </FlexBox>
+            );
           }}
         />
         <FunctionField
           label="Status"
           render={(event: Event) => {
-            return event.status[0].toUpperCase() + event.status.slice(1).toLocaleLowerCase()
+            return (
+              event.status[0].toUpperCase() +
+              event.status.slice(1).toLocaleLowerCase()
+            );
           }}
         />
       </Datagrid>

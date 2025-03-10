@@ -1,7 +1,7 @@
-export type Dummy = {
-  id: string;
-  name: string;
-};
+export enum Role {
+  USER = "USER",
+  ADMIN = "ADMIN"
+}
 
 export type User = {
   id: string;
@@ -15,6 +15,7 @@ export type User = {
   create_at: Date;
   updated_at: Date;
   deleted_at: Date | null;
+  role: Role
 };
 
 export type Event = {

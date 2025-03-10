@@ -9,6 +9,7 @@ import {
   EditButton,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
+import { User } from "../../providers";
 
 export const UserList = () => {
   return (
@@ -23,11 +24,16 @@ export const UserList = () => {
         <TextField source="name" label="Name" />
         <TextField source="username" label="Username" />
         <EmailField source="email" label="Email" />
-        <TextField source="country_id" label="Country" />
+        <FunctionField
+          label="Role"
+          render={(user: User) => {
+            return user.role[0].toUpperCase() + user.role.slice(1).toLocaleLowerCase()
+          }}
+        />
         <FunctionField
           label="Actions"
           render={() => {
-            return (<FlexBox sx={{justifyContent:"start", gap:2}}>
+            return (<FlexBox sx={{ justifyContent: "start", gap: 2 }}>
               <DeleteButton />
               <EditButton />
             </FlexBox>

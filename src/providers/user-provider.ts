@@ -1,5 +1,5 @@
 import { ResourceProvider } from "@rck.princy/ra-data-provider-wrapper";
-import { User } from "./types";
+import { Role, User } from "./types";
 import profilImage from "../assets/images/profile.png";
 
 const USERS: User[] = [
@@ -15,6 +15,7 @@ const USERS: User[] = [
     create_at: new Date("2024-03-05T12:00:00Z"),
     updated_at: new Date("2024-03-05T12:00:00Z"),
     deleted_at: null,
+    role: Role.ADMIN
   },
   {
     id: "2",
@@ -28,6 +29,7 @@ const USERS: User[] = [
     create_at: new Date("2024-03-10T08:30:00Z"),
     updated_at: new Date("2024-03-10T08:30:00Z"),
     deleted_at: null,
+    role: Role.USER
   },
   {
     id: "3",
@@ -41,6 +43,7 @@ const USERS: User[] = [
     create_at: new Date("2024-04-01T15:45:00Z"),
     updated_at: new Date("2024-04-01T15:45:00Z"),
     deleted_at: null,
+    role: Role.USER
   },
 ];
 
@@ -48,4 +51,7 @@ export const userProvider: ResourceProvider<User> = {
   resource: "user",
   getOne: async ({ id }) => USERS.find((user) => user.id === id)!,
   getList: async () => Promise.resolve(USERS),
+  saveOrUpdate: async ({data , meta }) =>{
+    return 
+  }
 };

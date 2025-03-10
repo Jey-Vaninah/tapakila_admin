@@ -1,9 +1,10 @@
-import { Create, SimpleForm, TextInput, UrlField } from "react-admin";
+import { Create, FunctionField, SelectInput, SimpleForm, TextInput, UrlField } from "react-admin";
+import { Role, User } from "../../providers";
 
 export const UserCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput source="id" />
+      <SelectInput source="role" choices={[Role.ADMIN , Role.USER]}/>
       <TextInput source="name" />
       <TextInput source="username" />
       <TextInput source="email" />

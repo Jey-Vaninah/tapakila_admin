@@ -1,4 +1,5 @@
-import { Show, SimpleShowLayout, TextField, DateField } from "react-admin";
+import { Show, SimpleShowLayout, TextField, DateField, FunctionField } from "react-admin";
+import { Event } from "../../providers";
 
 export const EventShow = () => {
   return (
@@ -13,9 +14,12 @@ export const EventShow = () => {
         <DateField source="end_date" showTime />
         <TextField source="end_time" />
         <TextField source="age_limit" />
-        <DateField source="create_at" showTime />
-        <DateField source="updated_at" showTime />
-        <DateField source="deleted_at" showTime />
+        <FunctionField
+          label="Status"
+          render={(event: Event) => {
+            return event.status[0].toUpperCase() + event.status.slice(1).toLocaleLowerCase()
+          }}
+        />
       </SimpleShowLayout>
     </Show>
   );

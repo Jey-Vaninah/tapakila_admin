@@ -4,23 +4,27 @@ import {
   TextInput,
   DateInput,
   TimeInput,
+  required,
+  SelectInput,
 } from "react-admin";
+import { Status } from "../../providers";
+import { v4 } from "uuid";
 
 export const EventCreate = () => (
-  <Create>
+  <Create
+    transform={(data) => {
+      return { ...data, id: v4() }
+    }}>
     <SimpleForm>
-      <TextInput source="id" />
-      <TextInput source="title" />
-      <TextInput source="slug" />
-      <TextInput source="description" />
-      <DateInput source="start_date" />
-      <TimeInput source="start_time" />
-      <DateInput source="end_date" />
-      <TimeInput source="end_time" />
-      <TextInput source="age_limit" />
-      <DateInput source="create_at" />
-      <DateInput source="updated_at" />
-      <DateInput source="deleted_at" />
+      <TextInput source="title" validate={[required()]} />
+      <TextInput source="slug" validate={[required()]} />
+      <TextInput source="description" validate={[required()]} />
+      <DateInput source="start_date" validate={[required()]} />
+      <TimeInput source="start_time" validate={[required()]} />
+      <DateInput source="end_date" validate={[required()]} />
+      <TimeInput source="end_time" validate={[required()]} />
+      <TextInput source="age_limit" validate={[required()]} />
+      <SelectInput defaultValue={Status.CANCELED} validate={[required()]} source="status" choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]} />
     </SimpleForm>
   </Create>
 );

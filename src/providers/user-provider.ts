@@ -2,7 +2,7 @@ import { ResourceProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { Role, User } from "./types";
 import profilImage from "../assets/images/profile.png";
 
-const USERS: User[] = [
+let USERS: User[] = [
   {
     id: "1",
     username: "Vaninah",
@@ -15,7 +15,7 @@ const USERS: User[] = [
     create_at: new Date("2024-03-05T12:00:00Z"),
     updated_at: new Date("2024-03-05T12:00:00Z"),
     deleted_at: null,
-    role: Role.ADMIN
+    role: Role.ADMIN_EVENTS
   },
   {
     id: "2",
@@ -45,6 +45,20 @@ const USERS: User[] = [
     deleted_at: null,
     role: Role.USER
   },
+  {
+    id: "4",
+    username: "Nomena",
+    name: "Fitahiana",
+    email: "Nomena.Fitahiana@mail.com",
+    email_verified_at: new Date("2024-04-01T15:45:00Z"),
+    password: "NomenaFitahiana",
+    image_url: profilImage,
+    country_id: "CA",
+    create_at: new Date("2024-04-01T15:45:00Z"),
+    updated_at: new Date("2024-04-01T15:45:00Z"),
+    deleted_at: null,
+    role: Role.USER
+  },
 ];
 
 export const userProvider: ResourceProvider<User> = {
@@ -52,6 +66,24 @@ export const userProvider: ResourceProvider<User> = {
   getOne: async ({ id }) => USERS.find((user) => user.id === id)!,
   getList: async () => Promise.resolve(USERS),
   saveOrUpdate: async ({data , meta }) =>{
-    return 
-  }
+    if(meta?.mutationType === "CREATE"){
+      USERS.push(data as User);
+      return USERS.find(user => user.id === data.id)!
+    }else{
+      USERS = USERS.map((user) => {
+        return user.id === data.id ? data as User : user
+      });
+      return USERS.find(user => user.id === data.id)!
+    }
+  },
+  delete: async ({ id }) => {
+    const toDeleted = USERS.find((user)=> {
+      return user.id === id;
+    })
+    USERS = USERS.filter((user) => {
+      return user.id !== id;
+    });
+    return toDeleted!
+  },
+
 };

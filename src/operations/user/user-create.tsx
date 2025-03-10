@@ -1,19 +1,19 @@
-import { Create, FunctionField, SelectInput, SimpleForm, TextInput, UrlField } from "react-admin";
-import { Role, User } from "../../providers";
+import { Create, email, required, SelectInput, SimpleForm, TextInput, UrlField } from "react-admin";
+import { Role } from "../../providers";
+import { v4 } from "uuid";
 
 export const UserCreate = () => (
-  <Create>
+  <Create
+    transform={(data)=> {
+      return {...data, id: v4()}
+    }}
+  >
     <SimpleForm>
-      <SelectInput source="role" choices={[Role.ADMIN , Role.USER]}/>
-      <TextInput source="name" />
-      <TextInput source="username" />
-      <TextInput source="email" />
-      <TextInput source="email_verified_at" />
-      <TextInput source="email" />
+      <SelectInput defaultValue={Role.USER} validate={[required()]} source="role" choices={[Role.ADMIN_EVENTS , Role.USER]}/>
+      <TextInput source="name" validate={[required()]}/>
+      <TextInput source="username" validate={[required()]} />
+      <TextInput source="email" validate={[required(),email()]} />
       <UrlField source="image_url" />
-      <TextInput source="create_at" />
-      <TextInput source="updated_at" />
-      <TextInput source="deleted_at" />
     </SimpleForm>
   </Create>
 );

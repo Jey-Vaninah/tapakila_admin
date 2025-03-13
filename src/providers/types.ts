@@ -56,3 +56,18 @@ export type Ticket = {
   updated_at: Date;
   deleted_at: Date;
 };
+
+export type Edit = {
+  id: string;
+  username: string;
+  name: string;
+  email: string;
+  email_verified_at: Date | null;
+  password: string;
+  image_url: string;
+  country_id: string;
+  create_at: Date;
+  updated_at: Date;
+  deleted_at: Date | null;
+  role: Role;
+};

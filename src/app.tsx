@@ -31,6 +31,7 @@ export const App = () => {
       title="Tapakila Admin"
       dataProvider={dataProvider}
       authProvider={authProvider}
+      
     >
       <Resource
         name="user"

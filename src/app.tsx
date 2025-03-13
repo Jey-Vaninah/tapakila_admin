@@ -1,9 +1,10 @@
-import { Admin, Resource } from "react-admin";
+import { Admin, CustomRoutes, Resource } from "react-admin";
 import {
   Person as PersonIcon,
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
 } from "@mui/icons-material";
+import { Route } from "react-router-dom";
 
 import { dataProvider } from "./providers";
 import { UserList } from "./operations/user/user-list";
@@ -21,6 +22,8 @@ import { TicketList } from "./operations/ticket/ticket-list";
 import { TicketShow } from "./operations/ticket/ticket-show";
 import { Layout } from "./layout/layout";
 import { LoginPage } from "./security/components/login-page";
+import ProfilePage from "./operations/profil/profil-show";
+import ProfileEdit from "./operations/profil/profil-edit";
 
 export const App = () => {
   return (
@@ -31,7 +34,7 @@ export const App = () => {
       title="Tapakila Admin"
       dataProvider={dataProvider}
       authProvider={authProvider}
-      
+
     >
       <Resource
         name="user"
@@ -57,6 +60,10 @@ export const App = () => {
         edit={TicketEdit}
         create={TicketCreate}
       />
+	<CustomRoutes>
+      <Route path="/profile" element={<ProfilePage />} />
+	  <Route path="/profile/edit" element={<ProfileEdit />} />
+    </CustomRoutes>
     </Admin>
-  );
+  )
 };

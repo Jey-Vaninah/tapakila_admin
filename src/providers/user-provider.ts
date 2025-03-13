@@ -70,6 +70,7 @@ export const userProvider: ResourceProvider<User> = {
       USERS.push(data as User);
       return USERS.find((user) => user.id === data.id)!;
     } else {
+		console.log(data);
       USERS = USERS.map((user) => {
         return user.id === data.id ? (data as User) : user;
       });

@@ -1,11 +1,15 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { FC } from "react";
 import { Logout, Menu as RaMenu, useTheme } from "react-admin";
+import { useNavigate } from "react-router-dom";
+import { useRedirect } from 'react-admin';
 
 import profileImage from "../assets/images/profile.png";
 
 export const Menu: FC = () => {
   const [theme] = useTheme();
+  const navigate = useNavigate();
+  const redirect = useRedirect();
 
   return (
     <Box
@@ -34,11 +38,13 @@ export const Menu: FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+			cursor: "pointer",
           }}
+		  onClick={() => redirect("/profile")}
         >
           <Avatar sx={{ width: "85px", height: "85px" }} src={profileImage} />
           <Typography sx={{ fontWeight: "bold" }}>Jey Vaninah</Typography>
-          <Typography>Foundator</Typography>
+          <Typography>Admin</Typography>
         </Box>
         <RaMenu>
           <RaMenu.ResourceItem name="user" />

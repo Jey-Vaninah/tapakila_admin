@@ -18,7 +18,7 @@ export const UserList = () => {
         <FunctionField
           label="Profile"
           render={(user) => {
-            return <Avatar src={user.image_url} />;
+            return <Avatar src={user.imageUrl} />;
           }}
         />
         <TextField source="name" label="Name" />
@@ -28,8 +28,17 @@ export const UserList = () => {
           label="Role"
           render={(user: User) => {
             return (
-              user.role[0].toUpperCase() +
-              user.role.slice(1).toLocaleLowerCase()
+              user?.roleId?.title[0].toUpperCase() +
+              user?.roleId?.title.slice(1)?.toLocaleLowerCase()
+            );
+          }}
+        />
+
+        <FunctionField
+          label="Contry"
+          render={(user: User) => {
+            return (
+              user?.countryId.name
             );
           }}
         />

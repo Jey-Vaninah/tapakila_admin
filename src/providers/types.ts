@@ -1,21 +1,33 @@
-export enum Role {
-  USER = "USER",
-  ADMIN_EVENTS = "ADMIN_EVENTS",
+export enum RoleEnum {
+  USER = "Organizer",
+  ADMIN_EVENTS = "Admin",
 }
+
+export type Role = {
+  id: string;
+  title: RoleEnum;
+};
+
+export type contry = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 export type User = {
   id: string;
   username: string;
   name: string;
   email: string;
-  email_verified_at: Date | null;
+  emailVerifiedAt: Date | null;
   password: string;
-  image_url: string;
-  country_id: string;
-  create_at: Date;
-  updated_at: Date;
-  deleted_at: Date | null;
-  role: Role;
+  imageUrl: string;
+  countryId: contry;
+  createAt: Date;
+  updatedAat: Date;
+  deletedAt: Date | null;
+  roleId: Role;
 };
 
 export enum Status {
@@ -24,37 +36,71 @@ export enum Status {
   CANCELED = "CANCELED",
   EVENT = "EVENT",
 }
+
+export type EventHall = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Host = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 export type Event = {
   id: string;
-  event_hall_id: string;
-  host_id: string;
-  user_id: string;
+  eventHallId: EventHall;
+  hostId: Host;
+  userId: User;
   title: string;
   slug: string;
   description: string;
-  start_date: Date;
-  start_time: string;
-  end_date: Date;
-  end_time: string;
-  age_limit: string;
-  create_at: Date;
-  updated_at: Date;
-  deleted_at: Date | null;
-  status: Status;
+  startDate: Date;
+  startTime: Date;
+  endDate: Date;
+  endTime: Date;
+  ageLimit: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Currency = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type TicketType = {
+  id: string;
+  eventId: Event;
+  title: string;
+  slug: string;
+  description: string;
+  availableTicket: string;
+  price: string;
+  currencyId: Currency;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type Ticket = {
   id: string;
-  event_id: string;
-  ticket_type_id: string;
-  user_id: string;
-  ticket_number: string;
-  amount_paid: number;
-  currency_id: string;
-  payment_confirmed: boolean;
-  create_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+  eventId: Event;
+  ticketType: TicketType;
+  userId: User;
+  ticketNumber: string;
+  amountPaid: number;
+  currencyId: Currency;
+  paymentConfirmed: boolean;
+  createAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
 };
 
 export type Edit = {
@@ -62,12 +108,12 @@ export type Edit = {
   username: string;
   name: string;
   email: string;
-  email_verified_at: Date | null;
+  emailVerifiedAt: Date | null;
   password: string;
-  image_url: string;
-  country_id: string;
-  create_at: Date;
-  updated_at: Date;
-  deleted_at: Date | null;
+  imageUrl: string;
+  countryId: contry;
+  createAt: Date;
+  updatedAt: Date;
+  deletedAt: Date | null;
   role: Role;
 };

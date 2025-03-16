@@ -9,9 +9,11 @@ import {
   DateInput,
   Toolbar,
   TopToolbar,
+  FunctionField,
+  required,
 } from "react-admin";
+import { Ticket } from "../../providers";
 
-// Custom toolbar for the form
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
     <SaveButton />
@@ -20,7 +22,6 @@ const CustomToolbar = () => (
   </Toolbar>
 );
 
-// Custom actions for the Edit view
 const TicketEditActions = () => (
   <TopToolbar>
     <ShowButton />
@@ -32,15 +33,13 @@ const TicketEditActions = () => (
 export const TicketEdit = () => (
   <Edit actions={<TicketEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
-      <TextInput disabled label="Ticket ID" source="id" />
-      <TextInput label="Ticket Number" source="ticket_number" />
-      <TextInput label="Ticket Type" source="ticket_type_id" />
-      <TextInput label="User ID" source="user_id" />
-      <NumberInput label="Amount Paid" source="amount_paid" />
-      <TextInput label="Currency" source="currency_id" />
-      <DateInput label="Created At" source="create_at" />
-      <DateInput label="Updated At" source="updated_at" />
-      <DateInput label="Deleted At" source="deleted_at" />
+      <TextInput readOnly label="Ticket Id" source="id" />
+      <TextInput label="Ticket Number" source="ticketNumber" />
+      <TextInput label="Ticket Type" source="ticketType.title" />
+      <NumberInput label="Amount Paid" source="amountPaid" />
+      <DateInput label="Created At" source="createAt" />
+      <DateInput label="Updated At" source="updatedAt" />
+      <DateInput label="Deleted At" source="deletedAt" />
     </SimpleForm>
   </Edit>
 );

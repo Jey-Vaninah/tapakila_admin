@@ -15,8 +15,8 @@ export const EventList = () => {
       <Datagrid bulkActionButtons={false}>
         <TextField source="title" label="Title" />
         <TextField source="slug" label="Slug" />
-        <DateField source="start_date" label="Start Date" showTime />
-        <TextField source="start_time" label="Start Time" />
+        <DateField source="startDate" label="Start Date" showTime />
+        <TextField source="startTime" label="Start Time" />
         <FunctionField
           label="Actions"
           render={() => {
@@ -28,7 +28,7 @@ export const EventList = () => {
             );
           }}
         />
-        <FunctionField
+        {/* <FunctionField
           label="Status"
           render={(event: Event) => {
             return (
@@ -36,7 +36,7 @@ export const EventList = () => {
               event.status.slice(1).toLocaleLowerCase()
             );
           }}
-        />
+        /> */}
       </Datagrid>
     </List>
   );

@@ -17,15 +17,23 @@ export const UserShow = () => (
         <SimpleShowLayout>
           <FunctionField
             render={(user) => {
-              return <Avatar src={user.image_url} />;
+              return <Avatar src={user.imageUrl} />;
             }}
           />
           <FunctionField
             label="Role"
             render={(user: User) => {
               return (
-                user.role[0].toUpperCase() +
-                user.role.slice(1).toLocaleLowerCase()
+                user?.roleId?.title[0].toUpperCase() +
+                user?.roleId?.title.slice(1)?.toLocaleLowerCase()
+              );
+            }}
+          />
+          <FunctionField
+            label="Contry"
+            render={(user: User) => {
+              return (
+                user?.countryId.name
               );
             }}
           />
@@ -36,11 +44,11 @@ export const UserShow = () => (
       </Box>
       <Box sx={{ width: "45%" }}>
         <SimpleShowLayout>
-          <DateField source="email_verified_at" showTime />
+          <DateField source="emailVerifiedAt" showTime />
           <EmailField source="email" />
-          <DateField source="create_at" showTime />
-          <DateField source="updated_at" showTime />
-          <DateField source="deleted_at" showTime />
+          <DateField source="createAt" showTime />
+          <DateField source="updatedAt" showTime />
+          <DateField source="deletedAt" showTime />
         </SimpleShowLayout>
       </Box>
     </FlexBox>

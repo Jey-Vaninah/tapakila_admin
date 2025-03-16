@@ -1,5 +1,5 @@
 const getEnvValue = (name: string): string => {
-  return import.meta.env[name];
+  return process.env[name]!;
 };
 
 export const Env = {

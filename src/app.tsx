@@ -34,7 +34,6 @@ export const App = () => {
       title="Tapakila Admin"
       dataProvider={dataProvider}
       authProvider={authProvider}
-
     >
       <Resource
         name="user"
@@ -60,10 +59,10 @@ export const App = () => {
         edit={TicketEdit}
         create={TicketCreate}
       />
-	<CustomRoutes>
-      <Route path="/profile" element={<ProfilePage />} />
-	  <Route path="/profile/edit" element={<ProfileEdit />} />
-    </CustomRoutes>
+      <CustomRoutes>
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+      </CustomRoutes>
     </Admin>
-  )
+  );
 };

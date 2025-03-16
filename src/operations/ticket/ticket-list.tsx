@@ -2,23 +2,35 @@ import {
   List,
   Datagrid,
   TextField,
-  DateField,
-  NumberField,
   DeleteButton,
   EditButton,
   FunctionField,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
+import { Ticket } from "../../providers";
 
 export const TicketList = () => {
   return (
     <List>
       <Datagrid bulkActionButtons={false}>
-        <TextField source="ticket_number" label="Ticket Number" />
-        <TextField source="ticket_type_id" label="Ticket Type" />
-        <TextField source="user_id" label="User ID" />
-        <TextField source="amount_paid" label="Amount Paid" />
-        <TextField source="currency_id" label="Currency" />
+        <TextField source="ticketNumber" label="Ticket Number" />
+        <FunctionField
+          label="Ticket Type"
+          render={(ticket: Ticket) => {
+            return (
+              ticket?.ticketType.title
+            );
+          }}
+        />
+        <TextField source="amountPaid" label="Amount Paid" />
+        <FunctionField
+          label="Currency"
+          render={(ticket: Ticket) => {
+            return (
+              ticket?.currencyId.title
+            );
+          }}
+        />
         <FunctionField
           label="Actions"
           render={() => {

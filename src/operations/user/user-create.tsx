@@ -7,7 +7,7 @@ import {
   TextInput,
   UrlField,
 } from "react-admin";
-import { Role } from "../../providers";
+import { RoleEnum } from "../../providers";
 import { v4 } from "uuid";
 
 export const UserCreate = () => (
@@ -18,15 +18,16 @@ export const UserCreate = () => (
   >
     <SimpleForm>
       <SelectInput
-        defaultValue={Role.USER}
+        defaultValue={RoleEnum.USER}
         validate={[required()]}
-        source="role"
-        choices={[Role.ADMIN_EVENTS, Role.USER]}
+        source="roleId"
+        choices={[RoleEnum.ADMIN_EVENTS, RoleEnum.USER]}
       />
       <TextInput source="name" validate={[required()]} />
       <TextInput source="username" validate={[required()]} />
       <TextInput source="email" validate={[required(), email()]} />
-      <UrlField source="image_url" />
+      <TextInput label="Country" source="countryId.name" validate={[required()]} />
+      <UrlField source="imageUrl" />
     </SimpleForm>
   </Create>
 );

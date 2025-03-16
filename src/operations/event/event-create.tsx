@@ -7,7 +7,6 @@ import {
   required,
   SelectInput,
 } from "react-admin";
-import { Status } from "../../providers";
 import { v4 } from "uuid";
 
 export const EventCreate = () => (
@@ -20,17 +19,17 @@ export const EventCreate = () => (
       <TextInput source="title" validate={[required()]} />
       <TextInput source="slug" validate={[required()]} />
       <TextInput source="description" validate={[required()]} />
-      <DateInput source="start_date" validate={[required()]} />
-      <TimeInput source="start_time" validate={[required()]} />
-      <DateInput source="end_date" validate={[required()]} />
-      <TimeInput source="end_time" validate={[required()]} />
-      <TextInput source="age_limit" validate={[required()]} />
-      <SelectInput
+      <DateInput source="startDate" validate={[required()]} />
+      <TimeInput source="startTime" validate={[required()]} />
+      <DateInput source="endDate" validate={[required()]} />
+      <TimeInput source="endTime" validate={[required()]} />
+      <TextInput source="ageLimit" validate={[required()]} />
+      {/* <SelectInput
         defaultValue={Status.CANCELED}
         validate={[required()]}
         source="status"
         choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]}
-      />
+      /> */}
     </SimpleForm>
   </Create>
 );

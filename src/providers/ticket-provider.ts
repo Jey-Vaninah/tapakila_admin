@@ -1,43 +1,31 @@
 import { ResourceProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { Ticket } from "./types";
+import { getAxiosInstance } from "../config/axios";
 
-let TICKETS: Ticket[] = [
-  {
-    id: "TICKET001",
-    event_id: "1",
-    ticket_type_id: "VIP",
-    user_id: "FAN001",
-    ticket_number: "A123456",
-    amount_paid: 100,
-    currency_id: "EUR",
-    payment_confirmed: true,
-    create_at: new Date(),
-    updated_at: new Date(),
-    deleted_at: new Date(),
-  },
-];
 export const ticketProvider: ResourceProvider<Ticket> = {
   resource: "ticket",
-  getOne: async ({ id }) => TICKETS.find((ticket) => ticket.id === id)!,
-  getList: async () => Promise.resolve(TICKETS),
-  saveOrUpdate: async ({ data, meta }) => {
+  getOne: async ({ id }) =>
+    getAxiosInstance()
+      .get<Ticket>("/tickets/" + id)
+      .then((response) => response.data),
+  getList: async () =>
+    getAxiosInstance()
+      .get<Ticket[]>("/tickets")
+      .then((response) => response.data),
+  saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
-      TICKETS.push(data as Ticket);
-      return TICKETS.find((ticket) => ticket.id === data.id)!;
+      return getAxiosInstance()
+        .post<Ticket>("/tickets", data)
+        .then((response) => response.data);
     } else {
-      TICKETS = TICKETS.map((ticket) => {
-        return ticket.id === data.id ? (data as Ticket) : ticket;
-      });
-      return TICKETS.find((ticket) => ticket.id == data.id)!;
+      return getAxiosInstance()
+        .put<Ticket>("/tickets", data)
+        .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
-    const toDeleted = TICKETS.find((ticket) => {
-      return ticket.id === id;
-    });
-    TICKETS = TICKETS.filter((ticket) => {
-      return ticket.id !== id;
-    });
-    return toDeleted!;
+    return getAxiosInstance()
+      .delete<Ticket>("/tickets" + id)
+      .then((response) => response.data);
   },
 };

@@ -1,6 +1,7 @@
 import {
   Button,
   Edit,
+  FunctionField,
   required,
   SaveButton,
   SelectInput,
@@ -10,6 +11,7 @@ import {
   Toolbar,
   TopToolbar,
 } from "react-admin";
+import { Event } from "../../providers";
 import { Status } from "../../providers";
 
 const CustomToolbar = () => (
@@ -36,16 +38,19 @@ export const EventEdit = () => (
       <TextInput source="slug" />
       <TextInput source="name" />
       <TextInput source="description" />
-      <TextInput source="start_date" />
-      <TextInput source="start_time" />
-      <TextInput source="end_date" />
-      <TextInput source="end_time" />
-      <TextInput source="age_limit" />
-      <SelectInput
+      <TextInput source="startDate" />
+      <TextInput source="startTime" />
+      <TextInput source="endDate" />
+      <TextInput source="endTime" />
+      <TextInput source="ageLimit" />
+      <TextInput readOnly label="User Id" source="userId.id" />
+      <TextInput readOnly label="Host Id" source="hostId.id" />
+      <TextInput readOnly label="Event Hall Id" source="eventHallId.id" />
+      {/* <SelectInput
         validate={[required()]}
         source="status"
         choices={[Status.CANCELED, Status.DRAFT, Status.PUBLISHED]}
-      />
+      /> */}
     </SimpleForm>
   </Edit>
 );

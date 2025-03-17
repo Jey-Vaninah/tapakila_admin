@@ -1,10 +1,8 @@
 import { CircularProgress } from "@mui/material";
 import {
 	List,
-	Datagrid,
 	TextField,
 	DateField,
-	FunctionField,
 	DeleteButton,
 	EditButton,
 	useListContext,
@@ -33,12 +31,14 @@ const EventListContent = () => {
 	}
 
 	return (
-		<FlexBox sx={{ flexWrap: "wrap", justifyContent:"start", gap: 2, padding: 2, backgroundColor: (theme) => theme.palette.background.default }}>
+		<FlexBox sx={{ flexWrap: "wrap", justifyContent: "start", gap: 2, padding: 2, backgroundColor: (theme) => theme.palette.background.default }}>
 			{data && data.map((record) => (
 				<FlexBox
 					key={record.id}
 					sx={{
 						flexDirection: "column",
+						justifyContent: "start",
+						alignItems: "start",
 						border: "1px solid",
 						borderColor: (theme) => theme.palette.divider,
 						borderRadius: "8px",
@@ -48,17 +48,28 @@ const EventListContent = () => {
 						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 					}}
 				>
-					<TextField source="title" record={record} label="Title" />
-					<TextField source="slug" record={record} label="Slug" />
-					<DateField source="startDate" record={record} label="Start Date" showTime />
-					<TextField source="startTime" record={record} label="Start Time" />
-					<TextField source="eventHallId.name" record={record} label="Event Hall" />
-					<TextField source="hostId.name" record={record} label="Host" />
-					<TextField source="userId.name" record={record} label="User" />
-					<FlexBox sx={{ justifyContent: "start", gap: 2, marginTop: 2 }}>
-						<DeleteButton record={record} />
-						<EditButton record={record} />
+					{[
+						{ source: "title", label: "Title" },
+						{ source: "slug", label: "Slug" },
+						{ source: "startDate", label: "Start Date", showTime: true },
+						{ source: "startTime", label: "Start Time" },
+						{ source: "eventHallId.name", label: "Event Hall" },
+						{ source: "hostId.name", label: "Host" },
+						{ source: "userId.name", label: "User" },
+					].map((field) => (
+						<FlexBox key={field.source} sx={{ flexDirection: "row", alignItems: "center", marginBottom: 1 }}>
+							<label style={{ marginRight: 8, fontWeight: "bold" }}>{field.label}:</label>
+							{field.source === "startDate" ? (
+								<DateField source={field.source} record={record} showTime={field.showTime} />
+							) : (
+								<TextField source={field.source} record={record} />
+							)}
+						</FlexBox>
+					))}
+					<FlexBox sx={{ justifyContent: "start", gap: 2, marginTop: 2, borderTop:"1px solid ", borderTopColor: (theme) => theme.palette.divider}}>
 						<ShowButton record={record} />
+						<EditButton record={record} />
+						<DeleteButton record={record} />
 					</FlexBox>
 				</FlexBox>
 			))}

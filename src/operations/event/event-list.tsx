@@ -33,7 +33,7 @@ const EventListContent = () => {
 	}
 
 	return (
-		<FlexBox sx={{ flexWrap: "wrap", gap: 2, padding: 2, backgroundColor: (theme) => theme.palette.background.default }}>
+		<FlexBox sx={{ flexWrap: "wrap", justifyContent:"start", gap: 2, padding: 2, backgroundColor: (theme) => theme.palette.background.default }}>
 			{data && data.map((record) => (
 				<FlexBox
 					key={record.id}

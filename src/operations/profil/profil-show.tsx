@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Avatar, Button } from "@mui/material";
+import { Card, CardContent, Typography, Avatar, Button, CircularProgress, Box } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
 
 const ProfilePage = () => {
   const redirect = useRedirect();
   const dataProvider = useDataProvider();
-  const userId = "1"; // Supposons que l'utilisateur actuel est "1"
+  const userId = "552648f0-e00d-4724-ac24-9c4d4b0c6d7e"; // Supposons que l'utilisateur actuel est "1"
 
   const [user, setUser] = useState<User | null>(null);
 
@@ -16,7 +16,11 @@ const ProfilePage = () => {
       .then(({ data }) => setUser(data));
   }, [dataProvider]);
 
-  if (!user) return <p>Chargement...</p>;
+  if (!user) return (
+			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+				<CircularProgress />
+			</Box>
+		);
 
   return (
     <Card sx={{ maxWidth: 500, margin: "auto", mt: 5, p: 3 }}>

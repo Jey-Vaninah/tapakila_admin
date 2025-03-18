@@ -9,10 +9,7 @@ import {
   DateInput,
   Toolbar,
   TopToolbar,
-  FunctionField,
-  required,
 } from "react-admin";
-import { Ticket } from "../../providers";
 
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>

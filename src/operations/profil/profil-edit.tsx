@@ -21,12 +21,14 @@ const ProfileEdit = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    dataProvider.getOne("user", { id: "552648f0-e00d-4724-ac24-9c4d4b0c6d7e" }).then(({ data }) => {
-      setUser(data);
-      Object.keys(data).forEach((key) =>
-        setValue(key as keyof User, data[key])
-      );
-    });
+    dataProvider
+      .getOne("user", { id: "552648f0-e00d-4724-ac24-9c4d4b0c6d7e" })
+      .then(({ data }) => {
+        setUser(data);
+        Object.keys(data).forEach((key) =>
+          setValue(key as keyof User, data[key])
+        );
+      });
   }, [dataProvider, setValue]);
 
   const onSubmit = async (formData: User) => {
@@ -45,11 +47,19 @@ const ProfileEdit = () => {
     }
   };
 
-  if (!user) return (
-			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-				<CircularProgress />
-			</Box>
-		);
+  if (!user)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

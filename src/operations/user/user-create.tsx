@@ -26,7 +26,11 @@ export const UserCreate = () => (
       <TextInput source="name" validate={[required()]} />
       <TextInput source="username" validate={[required()]} />
       <TextInput source="email" validate={[required(), email()]} />
-      <TextInput label="Country" source="countryId.name" validate={[required()]} />
+      <TextInput
+        label="Country"
+        source="countryId.name"
+        validate={[required()]}
+      />
       <UrlField source="imageUrl" />
     </SimpleForm>
   </Create>

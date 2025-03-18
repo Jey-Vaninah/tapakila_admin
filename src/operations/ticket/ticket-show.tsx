@@ -17,26 +17,20 @@ export const TicketShow = () => {
         <FunctionField
           label="Ticket Type"
           render={(ticket: Ticket) => {
-            return (
-              ticket?.ticketType.title
-            );
+            return ticket?.ticketType.title;
           }}
         />
         <FunctionField
           label="User Id"
           render={(ticket: Ticket) => {
-            return (
-              ticket?.userId.id
-            );
+            return ticket?.userId.id;
           }}
         />
         <NumberField source="amountPaid" />
         <FunctionField
           label="Currency"
           render={(ticket: Ticket) => {
-            return (
-              ticket?.currencyId.title
-            );
+            return ticket?.currencyId.title;
           }}
         />
         <DateField source="createAt" showTime />

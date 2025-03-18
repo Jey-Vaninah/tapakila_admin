@@ -13,7 +13,7 @@ import {
 } from "react-admin";
 import { Google as GoogleIcon } from "@mui/icons-material";
 
-export const LoginPage: FC = ({}) => {
+export const LoginPage: FC = () => {
   const login = useLogin();
 
   return (

@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Avatar, Button, CircularProgress, Box } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Avatar,
+  Button,
+  CircularProgress,
+  Box,
+} from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
 
@@ -16,11 +24,19 @@ const ProfilePage = () => {
       .then(({ data }) => setUser(data));
   }, [dataProvider]);
 
-  if (!user) return (
-			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-				<CircularProgress />
-			</Box>
-		);
+  if (!user)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
 
   return (
     <Card sx={{ maxWidth: 500, margin: "auto", mt: 5, p: 3 }}>

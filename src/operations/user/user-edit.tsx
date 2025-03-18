@@ -2,7 +2,6 @@ import {
   Button,
   Edit,
   email,
-  FunctionField,
   ImageInput,
   required,
   SaveButton,
@@ -13,7 +12,7 @@ import {
   Toolbar,
   TopToolbar,
 } from "react-admin";
-import { RoleEnum, User } from "../../providers";
+import { RoleEnum } from "../../providers";
 
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -45,7 +44,6 @@ export const UserEdit = () => (
       <TextInput source="email" validate={[required(), email()]} />
       <TextInput label="Country" source="countryId.name" />
       <ImageInput source="imageUrl" />
-
     </SimpleForm>
   </Edit>
 );

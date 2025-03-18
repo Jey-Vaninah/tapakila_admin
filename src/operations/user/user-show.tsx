@@ -32,9 +32,7 @@ export const UserShow = () => (
           <FunctionField
             label="Contry"
             render={(user: User) => {
-              return (
-                user?.countryId.name
-              );
+              return user?.countryId.name;
             }}
           />
           <TextField source="name" />

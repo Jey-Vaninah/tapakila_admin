@@ -1,14 +1,12 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import { FC } from "react";
 import { Logout, Menu as RaMenu, useTheme } from "react-admin";
-import { useNavigate } from "react-router-dom";
 import { useRedirect } from "react-admin";
 
 import profileImage from "../assets/images/profile.png";
 
 export const Menu: FC = () => {
   const [theme] = useTheme();
-  const navigate = useNavigate();
   const redirect = useRedirect();
 
   return (

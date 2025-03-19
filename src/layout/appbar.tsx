@@ -1,63 +1,63 @@
 import {
-  Notifications as NotificationsIcon,
-  Search as SearchIcon,
+	Notifications as NotificationsIcon,
+	Search as SearchIcon,
+	Settings,
 } from "@mui/icons-material";
 import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import { FC } from "react";
 import {
-  IconButtonWithTooltip,
-  ToggleThemeButton,
-  useTheme,
+	IconButtonWithTooltip,
+	ToggleThemeButton,
 } from "react-admin";
+import { useTheme } from "@mui/material/styles";
 
 export const AppBar: FC = () => {
-  const [theme] = useTheme();
-  return (
-    <Box
-      sx={{
-        "ml": "300px",
-        "width": "calc(100%-300px)",
-        "bgcolor": theme === "dark" ? "black" : "rgb(20, 61, 24)",
-        "color": "white",
-        "& *:not(.RaMenuItemLink-active)": { color: "white !important" },
-        "& .RaMenuItemLink-active": { color: "rgb(20, 229, 41) !important" },
-        "display": "flex",
-        "justifyContent": "space-between",
-        "alignItems": "center",
-        "p": 1,
-      }}
-    >
-      <Typography
-        variant="h1"
-        sx={{
-          fontSize: "1.3rem",
-          fontWeight: "bold",
-        }}
-      >
-        Tapakila
-      </Typography>
-      <Box sx={{ display: "flex", gap: 2 }}>
-        <TextField
-          sx={{ width: "300px" }}
-          name="q"
-          variant="outlined"
-          label="Search"
-          slotProps={{
-            input: {
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            },
-          }}
-        />
-        <IconButtonWithTooltip label="Notification">
-          {" "}
-          <NotificationsIcon />
-        </IconButtonWithTooltip>
-        <ToggleThemeButton />
-      </Box>
-    </Box>
-  );
+	const theme = useTheme();
+	return (
+		<Box
+			sx={{
+				ml: "256px",
+				width: "calc(100% - 256px)",
+				bgcolor: theme.palette.mode === "dark" ? theme.palette.background.default : "rgb(255, 255, 255)",
+				color: "black",
+				"& *:not(.RaMenuItemLink-active)": { color: "black !important" },
+				"& .RaMenuItemLink-active": { color: theme.palette.primary.main + " !important" },
+				display: "flex",
+				justifyContent: "space-between",
+				alignItems: "center",
+				position: "sticky",
+				top: 0,
+				zIndex: theme.zIndex.appBar,
+				p: 1,
+			}}
+		>
+			<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+				<img src="/src/assets/images/logo-png.png" alt="Logo" style={{ height: "60px" }} />
+			</Box>
+			<Box sx={{ display: "flex", gap: 2 }}>
+				<TextField
+					sx={{ width: "300px" }}
+					name="q"
+					variant="outlined"
+					label="Search"
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position="end">
+								<SearchIcon />
+							</InputAdornment>
+						),
+					}}
+				/>
+				<IconButtonWithTooltip label="Notification">
+					<NotificationsIcon />
+				</IconButtonWithTooltip>
+
+				<IconButtonWithTooltip label="Setting">
+					<Settings/>
+				</IconButtonWithTooltip>
+
+				{/* <ToggleThemeButton /> */}
+			</Box>
+		</Box>
+	);
 };

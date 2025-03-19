@@ -9,7 +9,7 @@ const Loading: React.FC = () => {
 			setProgress((oldProgress) => {
 				if (oldProgress >= 99) {
 					clearInterval(interval);
-					return 100;
+					return 99;
 				}
 				return oldProgress + 5;
 			});

@@ -1,4 +1,3 @@
-import { CircularProgress } from "@mui/material";
 import {
   List,
   TextField,

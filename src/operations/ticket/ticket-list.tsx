@@ -10,6 +10,7 @@ import {
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import { Ticket } from "../../providers";
+import Loading from "../../common/components/loading";
 
 export const TicketList = () => {
   return (
@@ -32,8 +33,7 @@ const TicketListContent = () => {
           height: "80vh",
         }}
       >
-        <h2>Loading Tickets</h2>
-        <CircularProgress />
+        <Loading />
       </FlexBox>
     );
   }

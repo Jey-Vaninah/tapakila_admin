@@ -12,6 +12,8 @@ import { useDataProvider, useNotify } from "react-admin";
 import { useForm } from "react-hook-form";
 import { User } from "../../providers/types";
 import { useRedirect } from "react-admin";
+import Loading from "../../common/components/loading";
+import { FlexBox } from "../../common/components/flex-box";
 
 const ProfileEdit = () => {
   const redirect = useRedirect();
@@ -49,16 +51,17 @@ const ProfileEdit = () => {
 
   if (!user)
     return (
-      <Box
+      <FlexBox
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+		  backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
-        <CircularProgress />
-      </Box>
+        <Loading />
+      </FlexBox>
     );
 
   return (

@@ -5,11 +5,12 @@ import {
   Typography,
   Avatar,
   Button,
-  CircularProgress,
   Box,
 } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
+import Loading from "../../common/components/loading";
+import { FlexBox } from "../../common/components/flex-box";
 
 const ProfilePage = () => {
   const redirect = useRedirect();
@@ -26,16 +27,17 @@ const ProfilePage = () => {
 
   if (!user)
     return (
-      <Box
+      <FlexBox
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+		  backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
-        <CircularProgress />
-      </Box>
+        <Loading />
+      </FlexBox>
     );
 
   return (

@@ -9,6 +9,7 @@ import {
   ShowButton,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
+import Loading from "../../common/components/loading";
 
 export const EventList = () => {
   return (
@@ -31,8 +32,7 @@ const EventListContent = () => {
           height: "80vh",
         }}
       >
-        <h2>Loading Events</h2>
-        <CircularProgress />
+        <Loading />
       </FlexBox>
     );
   }

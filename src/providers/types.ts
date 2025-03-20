@@ -51,6 +51,23 @@ export type Host = {
   updatedAt: Date;
 };
 
+export type Newsletter = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
+};
+export type Tag = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
+};
+
 export type Event = {
   id: string;
   eventHallId: EventHall;

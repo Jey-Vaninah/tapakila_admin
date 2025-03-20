@@ -49,7 +49,8 @@ export const Menu: FC = () => {
           <RaMenu.ResourceItem name="event" />
           <RaMenu.ResourceItem name="ticket" />
           <RaMenu.ResourceItem name="country" />
-          <RaMenu.ResourceItem name="host" />
+          <RaMenu.ResourceItem name="tag" />
+          <RaMenu.ResourceItem name="newsletter" />
           <RaMenu.ResourceItem name="edit" />
         </RaMenu>
       </Box>

@@ -4,7 +4,9 @@ import {
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
   Public as PublicIcon,
-  CameraIndoor as CameraIndoorIcon
+  CameraIndoor as CameraIndoorIcon,
+  Subscriptions as SubscriptionsIcon,
+  Sell as SellIcon
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -26,10 +28,18 @@ import { Layout } from "./layout/layout";
 import { LoginPage } from "./security/components/login-page";
 import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
-import { CountryList } from "./operations/contry/county-list";
-import { CountryShow } from "./operations/contry/country-show";
-import { CountryEdit } from "./operations/contry/county-edit";
-import { CountryCreate } from "./operations/contry/country-create";
+import { CountryList } from "./operations/country/county-list";
+import { CountryShow } from "./operations/country/country-show";
+import { CountryEdit } from "./operations/country/county-edit";
+import { CountryCreate } from "./operations/country/country-create";
+import { TagCreate } from "./operations/tag/tag-create";
+import { TagEdit } from "./operations/tag/tag-edit";
+import { TagList } from "./operations/tag/tag-list";
+import { TagShow } from "./operations/tag/tag-show";
+import { NewsletterCreate } from "./operations/newsletter/newsletter-create";
+import { NewsletterEdit } from "./operations/newsletter/newsletter-edit";
+import { NewsletterList } from "./operations/newsletter/newsletter-list";
+import { NewsletterShow } from "./operations/newsletter/newsletter-show";
 
 export const App = () => {
   return (
@@ -73,6 +83,22 @@ export const App = () => {
         show={CountryShow}
         edit={CountryEdit}
         create={CountryCreate}
+      />
+      <Resource
+        name="tag"
+        icon={SellIcon}
+        list={TagList}
+        show={TagShow}
+        edit={TagEdit}
+        create={TagCreate}
+      />
+       <Resource
+        name="newsletter"
+        icon={SubscriptionsIcon}
+        list={NewsletterList}
+        show={NewsletterShow}
+        edit={NewsletterEdit}
+        create={NewsletterCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

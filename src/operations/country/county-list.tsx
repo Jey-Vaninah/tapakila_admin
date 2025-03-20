@@ -9,7 +9,6 @@ import {
   DateField,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
-import { User } from "../../providers";
 import Loading from "../../common/components/loading";
 
 export const CountryList = () => {

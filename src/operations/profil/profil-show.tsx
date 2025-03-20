@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Avatar,
-  Button,
-} from "@mui/material";
+import { Card, CardContent, Typography, Avatar, Button } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
 import Loading from "../../common/components/loading";

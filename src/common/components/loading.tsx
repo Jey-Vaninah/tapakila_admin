@@ -27,7 +27,7 @@ const Loading: React.FC = () => {
       flexDirection="column"
     >
       <img
-        src="/src/assets/images/logo.gif"
+        src="/src/public/logo.gif"
         alt="Loading..."
         style={{ width: "200px", height: "200px" }}
       />

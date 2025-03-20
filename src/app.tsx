@@ -1,8 +1,10 @@
 import { Admin, CustomRoutes, Resource, defaultTheme } from "react-admin";
 import {
-	Person as PersonIcon,
-	Celebration as CelebrationIcon,
-	LocalActivity as LocalActivityIcon,
+  Person as PersonIcon,
+  Celebration as CelebrationIcon,
+  LocalActivity as LocalActivityIcon,
+  Public as PublicIcon,
+  CameraIndoor as CameraIndoorIcon
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -24,46 +26,58 @@ import { Layout } from "./layout/layout";
 import { LoginPage } from "./security/components/login-page";
 import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
+import { CountryList } from "./operations/contry/county-list";
+import { CountryShow } from "./operations/contry/country-show";
+import { CountryEdit } from "./operations/contry/county-edit";
+import { CountryCreate } from "./operations/contry/country-create";
 
 export const App = () => {
-	return (
-		<Admin
-			requireAuth
-			layout={Layout}
-			loginPage={<LoginPage />}
-			title="Tapakila Admin"
-			dataProvider={dataProvider}
-			authProvider={authProvider}
-			theme={defaultTheme} // Ajoutez cette ligne pour définir le thème par défaut en mode clair
-		>
-			<Resource
-				name="user"
-				icon={PersonIcon}
-				list={UserList}
-				show={UserShow}
-				edit={UserEdit}
-				create={UserCreate}
-			/>
-			<Resource
-				name="event"
-				icon={CelebrationIcon}
-				list={EventList}
-				show={EventShow}
-				edit={EventEdit}
-				create={EventCreate}
-			/>
-			<Resource
-				name="ticket"
-				icon={LocalActivityIcon}
-				list={TicketList}
-				show={TicketShow}
-				edit={TicketEdit}
-				create={TicketCreate}
-			/>
-			<CustomRoutes>
-				<Route path="/profile" element={<ProfilePage />} />
-				<Route path="/profile/edit" element={<ProfileEdit />} />
-			</CustomRoutes>
-		</Admin>
-	);
+  return (
+    <Admin
+      requireAuth
+      layout={Layout}
+      loginPage={<LoginPage />}
+      title="Tapakila Admin"
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      theme={defaultTheme} // Ajoutez cette ligne pour définir le thème par défaut en mode clair
+    >
+      <Resource
+        name="user"
+        icon={PersonIcon}
+        list={UserList}
+        show={UserShow}
+        edit={UserEdit}
+        create={UserCreate}
+      />
+      <Resource
+        name="event"
+        icon={CelebrationIcon}
+        list={EventList}
+        show={EventShow}
+        edit={EventEdit}
+        create={EventCreate}
+      />
+      <Resource
+        name="ticket"
+        icon={LocalActivityIcon}
+        list={TicketList}
+        show={TicketShow}
+        edit={TicketEdit}
+        create={TicketCreate}
+      />
+      <Resource
+        name="country"
+        icon={PublicIcon}
+        list={CountryList}
+        show={CountryShow}
+        edit={CountryEdit}
+        create={CountryCreate}
+      />
+      <CustomRoutes>
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+      </CustomRoutes>
+    </Admin>
+  );
 };

@@ -57,7 +57,7 @@ const ProfileEdit = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-		  backgroundColor: (theme) => theme.palette.background.default,
+          backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
         <Loading />

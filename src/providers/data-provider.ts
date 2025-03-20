@@ -3,9 +3,10 @@ import { userProvider } from "./user-provider";
 import { eventProvider } from "./event-provider";
 import { ticketProvider } from "./ticket-provider";
 import { currencyProvider } from "./currency-provider";
+import { hostProvider } from "./host-provider";
 
 export const dataProvider = createRaProvider(
-  [userProvider, eventProvider, ticketProvider, currencyProvider],
+  [userProvider, eventProvider, ticketProvider, currencyProvider, hostProvider],
   {
     getListOptions: {
       defaultPagination: {

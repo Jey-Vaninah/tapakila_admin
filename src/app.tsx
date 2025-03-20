@@ -3,7 +3,8 @@ import {
   Person as PersonIcon,
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
-  MonetizationOn as MonetizationOn
+  MonetizationOn as MonetizationOn,
+  Gite as Gite
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -29,6 +30,10 @@ import { CurrencyList } from "./operations/currency/currency-list";
 import { CurrencyShow } from "./operations/currency/currency-show";
 import { CurrencyEdit } from "./operations/currency/currency-edit";
 import { CurrencyCreate } from "./operations/currency/currency-create";
+import { HostList } from "./operations/host/host-list";
+import { HostShow } from "./operations/host/host-show";
+import { HostEdit } from "./operations/host/host-edit";
+import { HostCreate } from "./operations/host/host-create";
 
 export const App = () => {
   return (
@@ -73,6 +78,15 @@ export const App = () => {
         show={CurrencyShow}
         edit={CurrencyEdit}
         create={CurrencyCreate}
+      />
+
+      <Resource
+        name="host"
+        icon={Gite}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
       />
 
       <CustomRoutes>

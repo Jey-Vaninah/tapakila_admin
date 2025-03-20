@@ -49,6 +49,7 @@ export const Menu: FC = () => {
           <RaMenu.ResourceItem name="event" />
           <RaMenu.ResourceItem name="ticket" />
           <RaMenu.ResourceItem name="edit" />
+          <RaMenu.ResourceItem name="currency" />
         </RaMenu>
       </Box>
       <Box sx={{ width: "100%" }}>

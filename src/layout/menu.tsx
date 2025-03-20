@@ -51,6 +51,7 @@ export const Menu: FC = () => {
           <RaMenu.ResourceItem name="edit" />
           <RaMenu.ResourceItem name="currency" />
           <RaMenu.ResourceItem name="host" />
+          <RaMenu.ResourceItem name="eventHall" />
         </RaMenu>
       </Box>
       <Box sx={{ width: "100%" }}>

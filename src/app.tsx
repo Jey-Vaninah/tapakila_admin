@@ -4,7 +4,8 @@ import {
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
   MonetizationOn as MonetizationOn,
-  Gite as Gite
+  Gite as Gite,
+  Stadium as Stadium
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -83,6 +84,15 @@ export const App = () => {
       <Resource
         name="host"
         icon={Gite}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
+      />
+
+      <Resource
+        name="eventHall"
+        icon={Stadium}
         list={HostList}
         show={HostShow}
         edit={HostEdit}

@@ -32,7 +32,7 @@ export const NewsletterEdit = () => (
   <Edit actions={<NewsletterEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput readOnly label="Newsletter Id" source="id" />
-      <TextInput  label="Name" source="name" />
+      <TextInput label="Name" source="name" />
       <TextInput source="email" validate={[required(), email()]} />
       <DateInput readOnly label="Created Date" source="createAt" />
       <DateInput readOnly label="Updated Date" source="updatedAt" />

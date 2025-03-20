@@ -30,8 +30,8 @@ export const TagEdit = () => (
   <Edit actions={<TagEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput readOnly label="Tag Id" source="id" />
-      <TextInput  label="Title" source="title" />
-      <TextInput  label="Description" source="description" />
+      <TextInput label="Title" source="title" />
+      <TextInput label="Description" source="description" />
       <DateInput readOnly label="Created Date" source="createAt" />
       <DateInput readOnly label="Updated Date" source="updatedAt" />
       <DateInput readOnly label="Delete Date" source="updatedAt" />

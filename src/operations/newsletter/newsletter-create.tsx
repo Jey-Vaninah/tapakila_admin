@@ -1,10 +1,4 @@
-import {
-  Create,
-  SimpleForm,
-  TextInput,
-  email,
-  required,
-} from "react-admin";
+import { Create, SimpleForm, TextInput, email, required } from "react-admin";
 
 export const NewsletterCreate = () => (
   <Create>

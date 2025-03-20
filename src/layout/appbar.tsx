@@ -3,9 +3,9 @@ import {
   Search as SearchIcon,
   Settings,
 } from "@mui/icons-material";
-import { Box, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, InputAdornment, TextField } from "@mui/material";
 import { FC } from "react";
-import { IconButtonWithTooltip, ToggleThemeButton } from "react-admin";
+import { IconButtonWithTooltip } from "react-admin";
 import { useTheme } from "@mui/material/styles";
 
 export const AppBar: FC = () => {

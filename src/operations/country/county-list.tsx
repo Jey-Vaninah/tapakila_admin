@@ -40,8 +40,8 @@ const CountryListContent = () => {
   return (
     <Datagrid bulkActionButtons={false}>
       <TextField source="name" label="Name" />
-      <DateField source="createdAt" label="Creation date"/>
-      <DateField source="updatedAt" label="Updated date"/>
+      <DateField source="createdAt" label="Creation date" />
+      <DateField source="updatedAt" label="Updated date" />
       <FunctionField
         label="Actions"
         render={() => {

@@ -1,9 +1,4 @@
-import {
-  Show,
-  SimpleShowLayout,
-  TextField,
-  DateField,
-} from "react-admin";
+import { Show, SimpleShowLayout, TextField, DateField } from "react-admin";
 
 export const CountryShow = () => {
   return (

@@ -41,9 +41,9 @@ const TagListContent = () => {
     <Datagrid bulkActionButtons={false}>
       <TextField source="title" label="Title" />
       <TextField source="description" label="Description" />
-      <DateField source="createdAt" label="Creation date"/>
-      <DateField source="updatedAt" label="Updated date"/>
-      <DateField source="createdAt" label="delete date"/>
+      <DateField source="createdAt" label="Creation date" />
+      <DateField source="updatedAt" label="Updated date" />
+      <DateField source="createdAt" label="delete date" />
       <FunctionField
         label="Actions"
         render={() => {

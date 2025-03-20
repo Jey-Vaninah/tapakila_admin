@@ -4,9 +4,8 @@ import {
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
   Public as PublicIcon,
-  CameraIndoor as CameraIndoorIcon,
   Subscriptions as SubscriptionsIcon,
-  Sell as SellIcon
+  Sell as SellIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -92,7 +91,7 @@ export const App = () => {
         edit={TagEdit}
         create={TagCreate}
       />
-       <Resource
+      <Resource
         name="newsletter"
         icon={SubscriptionsIcon}
         list={NewsletterList}

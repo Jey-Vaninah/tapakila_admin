@@ -41,10 +41,10 @@ const NewsletterListContent = () => {
   return (
     <Datagrid bulkActionButtons={false}>
       <TextField source="name" label="Name" />
-      <EmailField source="email" label="Email"/>
-      <DateField source="createdAt" label="Creation date"/>
-      <DateField source="updatedAt" label="Updated date"/>
-      <DateField source="deleteddAt" label="Deleted date"/>
+      <EmailField source="email" label="Email" />
+      <DateField source="createdAt" label="Creation date" />
+      <DateField source="updatedAt" label="Updated date" />
+      <DateField source="deleteddAt" label="Deleted date" />
       <FunctionField
         label="Actions"
         render={() => {

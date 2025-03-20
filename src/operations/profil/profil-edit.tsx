@@ -5,7 +5,6 @@ import {
   Button,
   Box,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useDataProvider, useNotify } from "react-admin";

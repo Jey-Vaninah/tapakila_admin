@@ -5,7 +5,6 @@ import {
   Typography,
   Avatar,
   Button,
-  Box,
 } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";

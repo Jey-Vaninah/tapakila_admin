@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Avatar,
-  Button,
-  Box,
-} from "@mui/material";
+import { Card, CardContent, Typography, Avatar, Button } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
 import Loading from "../../common/components/loading";
@@ -33,7 +26,7 @@ const ProfilePage = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-		  backgroundColor: (theme) => theme.palette.background.default,
+          backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
         <Loading />

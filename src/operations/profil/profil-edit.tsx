@@ -5,7 +5,6 @@ import {
   Button,
   Box,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useDataProvider, useNotify } from "react-admin";
@@ -57,7 +56,7 @@ const ProfileEdit = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-		  backgroundColor: (theme) => theme.palette.background.default,
+          backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
         <Loading />

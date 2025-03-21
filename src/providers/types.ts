@@ -8,7 +8,7 @@ export type Role = {
   title: RoleEnum;
 };
 
-export type contry = {
+export type Country = {
   id: string;
   name: string;
   createdAt: Date;
@@ -23,7 +23,7 @@ export type User = {
   emailVerifiedAt: Date | null;
   password: string;
   imageUrl: string;
-  countryId: contry;
+  countryId: Country;
   createAt: Date;
   updatedAat: Date;
   deletedAt: Date | null;
@@ -49,6 +49,23 @@ export type Host = {
   name: string;
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type Newsletter = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
+};
+export type Tag = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
 };
 
 export type Event = {
@@ -111,7 +128,7 @@ export type Edit = {
   emailVerifiedAt: Date | null;
   password: string;
   imageUrl: string;
-  countryId: contry;
+  countryId: Country;
   createAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;

@@ -85,7 +85,7 @@ export type Event = {
   updatedAt: Date;
 };
 
-export type nncy = {
+export type Currency = {
   id: string;
   title: string;
   description: string;

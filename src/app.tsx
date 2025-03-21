@@ -3,6 +3,9 @@ import {
   Person as PersonIcon,
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
+  MonetizationOn as MonetizationOn,
+  Gite as Gite,
+  Stadium as Stadium
   Public as PublicIcon,
   Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
@@ -27,6 +30,14 @@ import { Layout } from "./layout/layout";
 import { LoginPage } from "./security/components/login-page";
 import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
+import { CurrencyList } from "./operations/currency/currency-list";
+import { CurrencyShow } from "./operations/currency/currency-show";
+import { CurrencyEdit } from "./operations/currency/currency-edit";
+import { CurrencyCreate } from "./operations/currency/currency-create";
+import { HostList } from "./operations/host/host-list";
+import { HostShow } from "./operations/host/host-show";
+import { HostEdit } from "./operations/host/host-edit";
+import { HostCreate } from "./operations/host/host-create";
 import { CountryList } from "./operations/country/county-list";
 import { CountryShow } from "./operations/country/country-show";
 import { CountryEdit } from "./operations/country/county-edit";
@@ -49,7 +60,7 @@ export const App = () => {
       title="Tapakila Admin"
       dataProvider={dataProvider}
       authProvider={authProvider}
-      theme={defaultTheme} // Ajoutez cette ligne pour définir le thème par défaut en mode clair
+      theme={defaultTheme}
     >
       <Resource
         name="user"
@@ -74,6 +85,33 @@ export const App = () => {
         show={TicketShow}
         edit={TicketEdit}
         create={TicketCreate}
+      />
+
+      <Resource
+        name="currency"
+        icon={MonetizationOn}
+        list={CurrencyList}
+        show={CurrencyShow}
+        edit={CurrencyEdit}
+        create={CurrencyCreate}
+      />
+
+      <Resource
+        name="host"
+        icon={Gite}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
+      />
+
+      <Resource
+        name="eventHall"
+        icon={Stadium}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
       />
       <Resource
         name="country"

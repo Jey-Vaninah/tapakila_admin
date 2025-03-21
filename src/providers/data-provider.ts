@@ -2,6 +2,12 @@ import { createRaProvider } from "@rck.princy/ra-data-provider-wrapper";
 import { userProvider } from "./user-provider";
 import { eventProvider } from "./event-provider";
 import { ticketProvider } from "./ticket-provider";
+import { currencyProvider } from "./currency-provider";
+import { hostProvider } from "./host-provider";
+import { eventHallProvider } from "./eventHall-provider";
+
+export const dataProvider = createRaProvider(
+  [userProvider, eventProvider, ticketProvider, currencyProvider, hostProvider, eventHallProvider],
 import { countryProvider } from "./counrty-provider";
 import { tagProvider } from "./tag-provider";
 import { newsletterProvider } from "./newsletter-provider";

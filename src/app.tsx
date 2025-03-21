@@ -4,8 +4,8 @@ import {
   Celebration as CelebrationIcon,
   LocalActivity as LocalActivityIcon,
   MonetizationOn as MonetizationOn,
-  Gite as Gite,
-  Stadium as Stadium
+  Gite as GiteIcon,
+  Stadium as StadiumIcon,
   Public as PublicIcon,
   Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
@@ -98,7 +98,7 @@ export const App = () => {
 
       <Resource
         name="host"
-        icon={Gite}
+        icon={GiteIcon}
         list={HostList}
         show={HostShow}
         edit={HostEdit}
@@ -107,7 +107,7 @@ export const App = () => {
 
       <Resource
         name="eventHall"
-        icon={Stadium}
+        icon={StadiumIcon}
         list={HostList}
         show={HostShow}
         edit={HostEdit}

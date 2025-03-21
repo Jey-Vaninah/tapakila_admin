@@ -41,9 +41,9 @@ const CurrencyListContent = () => {
     <Datagrid bulkActionButtons={false}>
       <TextField source="id" label="Id" />
       <TextField source="title" label="Title" />
-      <TextField source="description" label="Description"/>
-      <DateField source="createdAt"label="Creation Date"/>
-      <DateField source="updatedAt"label="Update Date"/>
+      <TextField source="description" label="Description" />
+      <DateField source="createdAt" label="Creation Date" />
+      <DateField source="updatedAt" label="Update Date" />
       <FunctionField
         label="Actions"
         render={() => {

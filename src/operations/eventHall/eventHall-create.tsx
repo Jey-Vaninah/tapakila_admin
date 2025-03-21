@@ -1,9 +1,4 @@
-import {
-  Create,
-  SimpleForm,
-  TextInput,
-  required,
-} from "react-admin";
+import { Create, SimpleForm, TextInput, required } from "react-admin";
 
 export const EventHallCreate = () => (
   <Create>

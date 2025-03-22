@@ -16,17 +16,17 @@ export const currencyProvider: ResourceProvider<Currency> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Currency>("/currencies", data)
+        .post<Currency>("/currencies" + "/save", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Currency>("/currencies", data)
+        .put<Currency>("/currencies" + "/save", data)
         .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<Currency>("/currencies" + id)
+      .delete<Currency>("/currencies" + "/delete" + id)
       .then((response) => response.data);
   },
 };

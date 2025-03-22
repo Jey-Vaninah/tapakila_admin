@@ -1,8 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { CalendarToday, LocationOn, AccessTime } from '@mui/icons-material';
 import { List, useListContext, ShowButton, EditButton, DeleteButton } from "react-admin";
-import { Box, Card, CardContent, Typography, Button, CircularProgress } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import { FlexBox } from '../../common/components/flex-box';
 import Loading from '../../common/components/loading';
 

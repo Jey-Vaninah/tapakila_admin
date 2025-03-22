@@ -34,11 +34,7 @@ export const AppBar: FC = () => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        <img
-          src="/src/public/logo-png.png"
-          alt="Logo"
-          style={{ height: "60px" }}
-        />
+        <img src="/logo-png.png" alt="Logo" style={{ height: "60px" }} />
       </Box>
       <Box sx={{ display: "flex", gap: 2 }}>
         <TextField

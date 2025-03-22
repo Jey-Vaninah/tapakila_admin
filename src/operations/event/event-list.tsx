@@ -1,114 +1,171 @@
-import {
-  List,
-  TextField,
-  DateField,
-  DeleteButton,
-  EditButton,
-  useListContext,
-  ShowButton,
-} from "react-admin";
-import { FlexBox } from "../../common/components/flex-box";
-import Loading from "../../common/components/loading";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { CalendarToday, LocationOn, AccessTime } from '@mui/icons-material';
+import { List, useListContext, ShowButton, EditButton, DeleteButton } from "react-admin";
+import { Box, Card, CardContent, Typography, Button, CircularProgress } from '@mui/material';
+import { FlexBox } from '../../common/components/flex-box';
+import Loading from '../../common/components/loading';
 
 export const EventList = () => {
-  return (
-    <List>
-      <EventListContent />
-    </List>
-  );
+	return (
+		<List>
+			<EventListContent />
+		</List>
+	);
 };
 
 const EventListContent = () => {
-  const { isLoading, data } = useListContext();
+	const { isLoading, data } = useListContext();
 
-  if (isLoading) {
-    return (
-      <FlexBox
-        sx={{
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "80vh",
-        }}
-      >
-        <Loading />
-      </FlexBox>
-    );
-  }
+	if (isLoading) {
+		return (
+			<FlexBox
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '80vh',
+				}}
+			>
+				<Loading />
+			</FlexBox>
+		);
+	}
 
-  return (
-    <FlexBox
-      sx={{
-        flexWrap: "wrap",
-        justifyContent: "start",
-        gap: 2,
-        padding: 2,
-        backgroundColor: (theme) => theme.palette.background.default,
-      }}
-    >
-      {data &&
-        data.map((record) => (
-          <FlexBox
-            key={record.id}
-            sx={{
-              flexDirection: "column",
-              justifyContent: "start",
-              alignItems: "start",
-              border: "1px solid",
-              borderColor: (theme) => theme.palette.divider,
-              borderRadius: "8px",
-              padding: 2,
-              width: "300px",
-              backgroundColor: (theme) => theme.palette.background.paper,
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            {[
-              { source: "title", label: "Title" },
-              { source: "slug", label: "Slug" },
-              { source: "startDate", label: "Start Date", showTime: true },
-              { source: "startTime", label: "Start Time" },
-              { source: "eventHallId.name", label: "Event Hall" },
-              { source: "hostId.name", label: "Host" },
-              { source: "userId.name", label: "User" },
-            ].map((field) => (
-              <FlexBox
-                key={field.source}
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginBottom: 1,
-                }}
-              >
-                <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                  {field.label}:
-                </label>
-                {field.source === "startDate" ? (
-                  <DateField
-                    source={field.source}
-                    record={record}
-                    showTime={field.showTime}
-                  />
-                ) : (
-                  <TextField source={field.source} record={record} />
-                )}
-              </FlexBox>
-            ))}
-            <FlexBox
-              sx={{
-                justifyContent: "start",
-                gap: 2,
-                marginTop: 2,
-                borderTop: "1px solid ",
-                borderTopColor: (theme) => theme.palette.divider,
-              }}
-            >
-              <ShowButton record={record} />
-              <EditButton record={record} />
-              <DeleteButton record={record} />
-            </FlexBox>
-          </FlexBox>
-        ))}
-    </FlexBox>
-  );
+	return (
+		<Box
+			sx={{
+				display: 'flex',
+				flexWrap: 'wrap',
+				justifyContent: 'start',
+				gap: 2,
+				padding: 2,
+				backgroundColor: 'background.default',
+			}}
+		>
+			{data &&
+				data.map((record) => (
+					<EventCard key={record.id} event={record} />
+				))}
+		</Box>
+	);
+};
+
+interface EventCardProps {
+	event: any;
+	className?: string;
+}
+
+const EventCard = ({ event, className }: EventCardProps) => {
+	const { slug, title, startDate, startTime, eventHallId, hostId, userId } = event;
+
+	return (
+		<Card
+			className={className}
+			sx={{
+				width: 380,
+				margin: 2,
+				'&:hover': {
+					boxShadow: 6,
+				},
+				position:"relative"
+			}}
+		>
+			<Box
+				sx={{
+					position: 'relative',
+					width: '100%',
+					paddingTop: '56.25%', // 16:9 aspect ratio
+					overflow: 'hidden',
+				}}
+			>
+				<img
+					src="/src/assets/images/42.jpg"
+					alt={title}
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%',
+						objectFit: 'cover',
+						objectPosition: 'center',
+						transition: 'transform 0.3s',
+					}}
+					loading="lazy"
+				/>
+
+			</Box>
+
+			<Box
+				sx={{
+					position: 'absolute',
+					top: 16,
+					left: 16,
+					backgroundColor: 'primary.main',
+					color: 'primary.contrastText',
+					padding: '4px 12px',
+					borderRadius: '16px',
+					fontSize: '0.75rem',
+					fontWeight: 'medium',
+				}}
+			>
+				{slug}
+			</Box>
+			<CardContent>
+				<Typography variant="h5" component="div" gutterBottom>
+					{title}
+				</Typography>
+
+				<Box sx={{ mb: 2 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+						<CalendarToday sx={{ mr: 1 }} />
+						<Typography variant="body2" color="text.secondary">
+							{startDate}
+						</Typography>
+					</Box>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+						<AccessTime sx={{ mr: 1 }} />
+						<Typography variant="body2" color="text.secondary">
+							{startTime}
+						</Typography>
+					</Box>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+						<LocationOn sx={{ mr: 1 }} />
+						<Typography variant="body2" color="text.secondary">
+							{eventHallId?.name || 'N/A'}
+						</Typography>
+					</Box>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+						<Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
+							Host:
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							{hostId?.name || 'N/A'}
+						</Typography>
+					</Box>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+						<Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
+							User:
+						</Typography>
+						<Typography variant="body2" color="text.secondary">
+							{userId?.name || 'N/A'}
+						</Typography>
+					</Box>
+				</Box>
+
+				<Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+					<ShowButton record={event} />
+					<EditButton record={event} />
+					<DeleteButton record={event} />
+				</Box>
+
+			</CardContent>
+		</Card>
+	);
 };

@@ -1,192 +1,109 @@
 import {
-  Show,
-  TextField,
-  DateField,
-  FunctionField,
-  Button,
-  useRecordContext,
-  useGetRecordId,
+	Show,
+	TextField,
+	DateField,
+	FunctionField,
+	Button,
+	useRecordContext,
+	useGetRecordId,
+	useShowController,
+	ShowControllerProps,
 } from "react-admin";
 import { Event } from "../../providers";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
+import Loading from "../../common/components/loading";
 
-export const EventShow = () => {
-  const record = useRecordContext<Event>();
-  const idEvent = useGetRecordId();
-  return (
-    <Show sx={{ padding: "10px" }}>
-      <FlexBox
-        sx={{
-          padding: "20px",
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          justifyContent: "start",
-          gap: "20px",
-        }}
-      >
-        <Box
-          sx={{
-            height: "100%",
-            width: "50%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "start",
-            alignItems: "start",
-            gap: "20px",
-          }}
-        >
-          {[
-            { source: "title", label: "Title" },
-            { source: "slug", label: "Slug" },
-            { source: "description", label: "Description" },
-            { source: "startDate", label: "Start Date", showTime: true },
-            { source: "startTime", label: "Start Time" },
-            { source: "ageLimit", label: "Age Limit" },
-          ].map((field) => (
-            <FlexBox
-              key={field.source}
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 1,
-              }}
-            >
-              <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                {field.label}:
-              </label>
-              {field.source === "startDate" ? (
-                <DateField
-                  source={field.source}
-                  record={record}
-                  showTime={field.showTime}
-                />
-              ) : (
-                <TextField
-                  source={field.source as keyof Event}
-                  record={record}
-                />
-              )}
-            </FlexBox>
-          ))}
-        </Box>
-        <div>
-          <label style={{ marginRight: 8, fontWeight: "bold" }}>
-            Event Hall
-          </label>
-          <FunctionField
-            label="Event Hall"
-            render={(event: Event) => {
-              return (
-                <Box
-                  sx={{
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                    marginBottom: "10px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Name:
-                    </label>
-                    {event?.eventHallId.name}
-                  </div>
-                  {/* <div>{event?.eventHallId.id}</div> */}
-                </Box>
-              );
-            }}
-          />
-          <label style={{ marginRight: 8, fontWeight: "bold" }}>Host</label>
-          <FunctionField
-            label="Host"
-            render={(event: Event) => {
-              return (
-                <Box
-                  sx={{
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                    marginBottom: "10px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Name:
-                    </label>
-                    {event?.hostId.name}
-                  </div>
-                  {/* <div>{event?.hostId.id}</div> */}
-                </Box>
-              );
-            }}
-          />
-          <label style={{ marginRight: 8, fontWeight: "bold" }}>
-            Organisateur
-          </label>
-          <FunctionField
-            label="User"
-            render={(event: Event) => {
-              return (
-                <Box
-                  sx={{
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                    marginBottom: "10px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Name:
-                    </label>
-                    {event?.userId.name}
-                  </div>
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      UserName:
-                    </label>
-                    {event?.userId.username}
-                  </div>
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Email:
-                    </label>
-                    {event?.userId.email}
-                  </div>
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Role:
-                    </label>
-                    {event?.userId.roleId.title}
-                  </div>
-                  <div>
-                    <label style={{ marginRight: 8, fontWeight: "bold" }}>
-                      Country:
-                    </label>
-                    {event?.userId.countryId.name}
-                  </div>
-                </Box>
-              );
-            }}
-          />
-          <Button
-            component={Link}
-            to={`/tickets?eventId=${idEvent}`}
-            label="View Tickets"
-            sx={{
-              "backgroundColor": "#007bff",
-              "color": "white",
-              "&:hover": {
-                backgroundColor: "#0056b3",
-              },
-              "gridColumn": "span 2",
-            }}
-          />
-        </div>
-      </FlexBox>
-    </Show>
-  );
+export const EventShow = (props: ShowControllerProps<any, Error> | undefined) => {
+	const { record, isLoading } = useShowController(props);
+	const idEvent = useGetRecordId();
+	if (isLoading) {
+		return (
+			<FlexBox
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '80vh',
+				}}
+			>
+				<Loading />
+			</FlexBox>
+		);
+	}
+	return (
+		<Show sx={{ padding: "20px" }}>
+			<Card sx={{ padding: "20px", borderRadius: "10px", boxShadow: 3 }}>
+				<Grid container spacing={3}>
+					{/* Image Section */}
+					<Grid item xs={12} md={4}>
+						<CardMedia
+							component="img"
+							height="250"
+							image="/src/assets/images/42.jpg"
+							alt={record?.title || "Event Image"}
+							sx={{ borderRadius: "10px" }}
+						/>
+					</Grid>
+
+					{/* Event Details */}
+					<Grid item xs={12} md={8}>
+						<Typography variant="h5" fontWeight="bold">{record?.title}</Typography>
+						<Typography variant="body1" color="textSecondary">{record?.description}</Typography>
+
+						<Box sx={{ marginTop: 2 }}>
+							{[
+								{ source: "slug", label: "Slug" },
+								{ source: "startDate", label: "Start Date", showTime: true },
+								{ source: "startTime", label: "Start Time" },
+								{ source: "ageLimit", label: "Age Limit" },
+							].map((field) => (
+								<Box key={field.source} sx={{ marginBottom: 1 }}>
+									<Typography variant="body2" fontWeight="bold">{field.label}:</Typography>
+									{field.source === "startDate" ? (
+										<DateField source={field.source} record={record} showTime={field.showTime} />
+									) : (
+										<TextField source={field.source as keyof Event} record={record} />
+									)}
+								</Box>
+							))}
+						</Box>
+					</Grid>
+				</Grid>
+
+				{/* Additional Info */}
+				<Box sx={{ marginTop: 3, padding: 2, border: "1px solid #ddd", borderRadius: "5px" }}>
+					<Typography variant="h6" fontWeight="bold">Event Hall</Typography>
+					<Typography>{record?.eventHallId?.name || "N/A"}</Typography>
+				</Box>
+
+				<Box sx={{ marginTop: 2, padding: 2, border: "1px solid #ddd", borderRadius: "5px" }}>
+					<Typography variant="h6" fontWeight="bold">Host</Typography>
+					<Typography>{record?.hostId?.name || "N/A"}</Typography>
+				</Box>
+
+				<Box sx={{ marginTop: 2, padding: 2, border: "1px solid #ddd", borderRadius: "5px" }}>
+					<Typography variant="h6" fontWeight="bold">Organizer</Typography>
+					<Typography>{record?.userId?.name || "N/A"}</Typography>
+					<Typography>Email: {record?.userId?.email || "N/A"}</Typography>
+					<Typography>Role: {record?.userId?.roleId?.title || "N/A"}</Typography>
+					<Typography>Country: {record?.userId?.countryId?.name || "N/A"}</Typography>
+				</Box>
+
+				<Button
+					component={Link}
+					to={`/tickets?eventId=${idEvent}`}
+					label="View Tickets"
+					sx={{
+						backgroundColor: "#007bff",
+						color: "white",
+						marginTop: 3,
+						"&:hover": { backgroundColor: "#0056b3" },
+					}}
+				/>
+			</Card>
+		</Show>
+	);
 };

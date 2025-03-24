@@ -16,11 +16,11 @@ export const tagProvider: ResourceProvider<Tag> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Tag>("/tags", data)
+        .post<Tag>("/tags/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Tag>("/tags", data)
+        .put<Tag>("/tags/", data)
         .then((response) => response.data);
     }
   },

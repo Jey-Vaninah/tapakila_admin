@@ -15,17 +15,17 @@ export const ticketProvider: ResourceProvider<Ticket> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Ticket>("/tickets", data)
+        .post<Ticket>("/tickets/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Ticket>("/tickets", data)
+        .put<Ticket>("/tickets/", data)
         .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<Ticket>("/tickets" + id)
+      .delete<Ticket>("/tickets/" + id)
       .then((response) => response.data);
   },
 };

@@ -62,7 +62,7 @@ const UserListContent = () => {
       <FunctionField
         label="Country"
         render={(user: User) => {
-          return user?.countryId.name;
+          return user?.country.name;
         }}
       />
       <FunctionField

@@ -16,11 +16,11 @@ export const newsletterProvider: ResourceProvider<Newsletter> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Newsletter>("/newsletters", data)
+        .post<Newsletter>("/newsletters/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Newsletter>("/newsletters", data)
+        .put<Newsletter>("/newsletters/", data)
         .then((response) => response.data);
     }
   },

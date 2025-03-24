@@ -10,22 +10,22 @@ export const userProvider: ResourceProvider<User> = {
       .then((response) => response.data),
   getList: async () =>
     getAxiosInstance()
-      .get<User[]>("/users")
+      .get<User[]>("/users/")
       .then((response) => response.data),
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<User>("/users", data)
+        .post<User>("/users/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<User>("/users", data)
+        .put<User>("/users/", data)
         .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<User>("/users" + id)
+      .delete<User>("/users/" + id)
       .then((response) => response.data);
   },
 };

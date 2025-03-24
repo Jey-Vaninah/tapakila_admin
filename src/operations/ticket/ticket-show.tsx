@@ -23,14 +23,14 @@ export const TicketShow = () => {
         <FunctionField
           label="User Id"
           render={(ticket: Ticket) => {
-            return ticket?.userId.id;
+            return ticket?.user.id;
           }}
         />
         <NumberField source="amountPaid" />
         <FunctionField
           label="Currency"
           render={(ticket: Ticket) => {
-            return ticket?.currencyId.title;
+            return ticket?.currency.title;
           }}
         />
         <DateField source="createAt" showTime />

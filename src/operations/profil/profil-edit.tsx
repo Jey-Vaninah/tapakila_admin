@@ -91,7 +91,7 @@ const ProfileEdit = () => {
             <TextField
               fullWidth
               label="Pays"
-              {...register("countryId.name")}
+              {...register("country.name")}
               margin="normal"
             />
           </CardContent>

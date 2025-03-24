@@ -23,7 +23,7 @@ export type User = {
   emailVerifiedAt: Date | null;
   password: string;
   imageUrl: string;
-  countryId: Country;
+  country: Country;
   createAt: Date;
   updatedAat: Date;
   deletedAt: Date | null;
@@ -72,7 +72,7 @@ export type Event = {
   id: string;
   eventHallId: EventHall;
   hostId: Host;
-  userId: User;
+  user: User;
   title: string;
   slug: string;
   description: string;
@@ -101,7 +101,7 @@ export type TicketType = {
   description: string;
   availableTicket: string;
   price: string;
-  currencyId: Currency;
+  currency: Currency;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -110,10 +110,10 @@ export type Ticket = {
   id: string;
   eventId: Event;
   ticketType: TicketType;
-  userId: User;
+  user: User;
   ticketNumber: string;
   amountPaid: number;
-  currencyId: Currency;
+  currency: Currency;
   paymentConfirmed: boolean;
   createAt: Date;
   updatedAt: Date;
@@ -128,7 +128,7 @@ export type Edit = {
   emailVerifiedAt: Date | null;
   password: string;
   imageUrl: string;
-  countryId: Country;
+  country: Country;
   createAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;

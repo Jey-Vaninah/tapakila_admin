@@ -9,6 +9,7 @@ import {
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
+import EventLineChart from "./components/event-chart";
 
 export const EventList = () => {
   return (
@@ -19,7 +20,7 @@ export const EventList = () => {
 };
 
 const EventListContent = () => {
-  const { isLoading, data } = useListContext();
+  const { isLoading, data = [] } = useListContext();
 
   if (isLoading) {
     return (
@@ -48,8 +49,14 @@ const EventListContent = () => {
         backgroundColor: "background.default",
       }}
     >
-      {data &&
-        data.map((record) => <EventCard key={record.id} event={record} />)}
+      {!isLoading && (
+        <>
+          <EventLineChart events={data} />
+          {data.map((record) => (
+            <EventCard key={record.id} event={record} />
+          ))}
+        </>
+      )}
     </Box>
   );
 };

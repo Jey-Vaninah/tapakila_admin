@@ -16,17 +16,17 @@ export const hostProvider: ResourceProvider<Host> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Host>("/hosts", data)
+        .post<Host>("/hosts/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Host>("/hosts", data)
+        .put<Host>("/hosts/", data)
         .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<Host>("/hosts" + id)
+      .delete<Host>("/hosts/" + id)
       .then((response) => response.data);
   },
 };

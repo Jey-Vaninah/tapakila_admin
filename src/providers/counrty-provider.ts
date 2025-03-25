@@ -16,11 +16,11 @@ export const countryProvider: ResourceProvider<Country> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<Country>("/countries", data)
+        .post<Country>("/countries/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<Country>("/countries", data)
+        .put<Country>("/countries/", data)
         .then((response) => response.data);
     }
   },

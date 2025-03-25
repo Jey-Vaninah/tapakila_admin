@@ -20,9 +20,11 @@
     "@rck.princy/ra-data-provider-wrapper": "^0.0.3",
     "@types/node": "^22.13.10",
     "axios": "^1.8.1",
+    "chart.js": "^4.4.8",
     "ra-language-french": "^5.6.3",
     "react": "^19.0.0",
     "react-admin": "^5.6.2",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
     "uuid": "^11.1.0",
     "zustand": "^5.0.3"

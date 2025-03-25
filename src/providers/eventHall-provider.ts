@@ -16,17 +16,17 @@ export const eventHallProvider: ResourceProvider<EventHall> = {
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
-        .post<EventHall>("/eventHalls", data)
+        .post<EventHall>("/eventHalls/", data)
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-        .put<EventHall>("/eventHalls", data)
+        .put<EventHall>("/eventHalls/", data)
         .then((response) => response.data);
     }
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<EventHall>("/evenHalls" + id)
+      .delete<EventHall>("/evenHalls/" + id)
       .then((response) => response.data);
   },
 };

@@ -50,7 +50,7 @@ const TicketListContent = () => {
       <FunctionField
         label="Currency"
         render={(ticket: Ticket) => {
-          return ticket?.currencyId.title;
+          return ticket?.currency.title;
         }}
       />
       <FunctionField

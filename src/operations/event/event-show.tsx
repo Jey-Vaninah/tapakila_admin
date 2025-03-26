@@ -138,7 +138,7 @@ export const EventShow = (
 
         <Button
           component={Link}
-          to={`/tickets?eventId=${idEvent}`}
+          to={`/ticketTypes/eventId/${idEvent}`}
           label="View Tickets"
           sx={{
             "backgroundColor": "#007bff",

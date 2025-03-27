@@ -51,6 +51,10 @@ import { NewsletterEdit } from "./operations/newsletter/newsletter-edit";
 import { NewsletterList } from "./operations/newsletter/newsletter-list";
 import { NewsletterShow } from "./operations/newsletter/newsletter-show";
 import EventTickets from "./common/components/EventTickets";
+import { TicketTypeList } from "./operations/ticketType/ticketType-list";
+import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
+import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
+import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
 
 export const App = () => {
   return (
@@ -140,6 +144,10 @@ export const App = () => {
       />
       <Resource
         name="ticketType"
+		list={TicketTypeList}
+		show={TicketTypeShow}
+		edit={TicketTypeEdit}
+		create={TicketTypeCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

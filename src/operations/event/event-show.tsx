@@ -42,7 +42,7 @@ export const EventShow = (
 						<CardMedia
 							component="img"
 							height="250"
-							image="/src/assets/images/bg.jpg"
+							image="/bg.jpg"
 							alt={record?.title || "Event Image"}
 							sx={{ borderRadius: "10px" }}
 						/>

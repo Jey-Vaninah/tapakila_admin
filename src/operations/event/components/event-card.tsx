@@ -38,7 +38,7 @@ const EventCard = ({ event, className }: EventCardProps) => {
 				}}
 			>
 				<img
-					src="/src/assets/images/bg.jpg"
+					src="/bg.jpg"
 					alt={title}
 					style={{
 						position: "absolute",

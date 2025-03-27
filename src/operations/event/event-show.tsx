@@ -132,7 +132,7 @@ export const EventShow = (
             Role: {record?.userId?.roleId?.title || "N/A"}
           </Typography>
           <Typography>
-            Country: {record?.userId?.countryId?.name || "N/A"}
+            Country: {record?.userId?.country?.name || "N/A"}
           </Typography>
         </Box>
 

@@ -10,6 +10,7 @@ import {
 import { FlexBox } from "../../common/components/flex-box";
 import { Ticket } from "../../providers";
 import Loading from "../../common/components/loading";
+import TicketLineChart from "./components/ticket-chart";
 
 export const TicketList = () => {
   return (
@@ -20,7 +21,7 @@ export const TicketList = () => {
 };
 
 const TicketListContent = () => {
-  const { isLoading } = useListContext();
+  const { isLoading, data = [] } = useListContext();
 
   if (isLoading) {
     return (
@@ -38,32 +39,35 @@ const TicketListContent = () => {
   }
 
   return (
-    <Datagrid bulkActionButtons={false}>
-      <TextField source="ticketNumber" label="Ticket Number" />
-      <FunctionField
-        label="Ticket Type"
-        render={(ticket: Ticket) => {
-          return ticket?.ticketType.title;
-        }}
-      />
-      <TextField source="amountPaid" label="Amount Paid" />
-      <FunctionField
-        label="Currency"
-        render={(ticket: Ticket) => {
-          return ticket?.currency.title;
-        }}
-      />
-      <FunctionField
-        label="Actions"
-        render={() => {
-          return (
-            <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
-              <DeleteButton />
-              <EditButton />
-            </FlexBox>
-          );
-        }}
-      />
-    </Datagrid>
+    <>
+      <TicketLineChart tickets={data} />
+      <Datagrid bulkActionButtons={false}>
+        <TextField source="ticketNumber" label="Ticket Number" />
+        <FunctionField
+          label="Ticket Type"
+          render={(ticket: Ticket) => {
+            return ticket?.ticketType.title;
+          }}
+        />
+        <TextField source="amountPaid" label="Amount Paid" />
+        <FunctionField
+          label="Currency"
+          render={(ticket: Ticket) => {
+            return ticket?.currency.title;
+          }}
+        />
+        <FunctionField
+          label="Actions"
+          render={() => {
+            return (
+              <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
+                <DeleteButton />
+                <EditButton />
+              </FlexBox>
+            );
+          }}
+        />
+      </Datagrid>
+    </>
   );
 };

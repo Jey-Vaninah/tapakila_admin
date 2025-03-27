@@ -38,7 +38,7 @@ export const UserEdit = () => (
       <TextInput source="name" validate={[required()]} />
       <TextInput source="username" validate={[required()]} />
       <TextInput source="email" validate={[required(), email()]} />
-      <TextInput label="Country" source="countryId.name" />
+      <TextInput label="Country" source="country.name" />
       <ImageInput source="imageUrl" />
     </SimpleForm>
   </Edit>

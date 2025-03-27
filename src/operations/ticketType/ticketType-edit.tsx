@@ -9,36 +9,39 @@ import {
   DateInput,
   Toolbar,
   TopToolbar,
+  useGetList,
+  SelectInput,
+  required,
 } from "react-admin";
 
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
     <SaveButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </Toolbar>
 );
 
 const TicketTypeEditActions = () => (
   <TopToolbar>
     <ShowButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </TopToolbar>
 );
 
-export const TicketTypeEdit = () => (
+export const TicketTypeEdit = () => {
+
+	return (
   <Edit actions={<TicketTypeEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
-      <TextInput readOnly label="TicketType Id" source="id" />
-      <TextInput label="Ticket Number" source="ticketNumber" />
+      <TextInput label="id" source="id" readOnly />
+      <TextInput label="Event" source="event.title" readOnly/>
       <TextInput label="Title" source="title" />
       <TextInput label="Slug" source="slug" />
       <TextInput label="Description" source="description" />
 	  <NumberInput label="Available Ticket" source="availableTicket" />
 	  <NumberInput label="Price" source="price" />
+	  <TextInput label="Currency" source="currency.title" readOnly />
       <DateInput label="Created At" source="createAt" />
       <DateInput label="Updated At" source="updatedAt" />
     </SimpleForm>
   </Edit>
-);
+	)
+};

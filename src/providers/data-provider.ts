@@ -9,6 +9,7 @@ import { countryProvider } from "./counrty-provider";
 import { tagProvider } from "./tag-provider";
 import { newsletterProvider } from "./newsletter-provider";
 import { ticketTypeProvider } from "./ticketType-provider";
+import { roleProvider } from "./role-provider";
 
 export const dataProvider = createRaProvider(
   [
@@ -22,6 +23,7 @@ export const dataProvider = createRaProvider(
     hostProvider,
     eventHallProvider,
     ticketTypeProvider,
+    roleProvider,
   ],
   {
     getListOptions: {

@@ -120,7 +120,7 @@ const TicketPriceVsSalesScatterPlot: FC<Props> = ({ tickets }) => {
       >
         {[
           ...new Set(
-            tickets.map((ticket) => new Date(ticket.createAt).getFullYear())
+            tickets.map((ticket) => new Date(ticket.createdAt).getFullYear())
           ),
         ]
           .sort((a, b) => b - a)

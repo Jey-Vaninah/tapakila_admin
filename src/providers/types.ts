@@ -6,6 +6,8 @@ export enum RoleEnum {
 export type Role = {
   id: string;
   title: RoleEnum;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type Country = {

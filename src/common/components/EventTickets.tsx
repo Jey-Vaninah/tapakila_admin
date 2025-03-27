@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useGetList } from "react-admin";
 import { Box, Button, Typography } from "@mui/material";

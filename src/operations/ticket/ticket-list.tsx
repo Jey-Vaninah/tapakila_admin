@@ -49,6 +49,12 @@ const TicketListContent = () => {
             return ticket?.ticketType.title;
           }}
         />
+        <FunctionField
+          label="Price"
+          render={(ticket: Ticket) => {
+            return ticket?.ticketType.price;
+          }}
+        />
         <TextField source="amountPaid" label="Amount Paid" />
         <FunctionField
           label="Currency"

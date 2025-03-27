@@ -13,6 +13,7 @@ export const ticketProvider: ResourceProvider<Ticket> = {
       .get<Ticket[]>("/tickets")
       .then((response) => response.data),
   saveOrUpdate: async ({ meta, data }) => {
+	console.log(data)
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
         .post<Ticket>("/tickets/", data)

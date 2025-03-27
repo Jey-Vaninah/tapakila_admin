@@ -9,13 +9,13 @@ import {
 } from "react-admin";
 
 export const TicketTypeCreate = () => {
-const { data: events = [] } = useGetList('event');
-const { data: currencies = [] } = useGetList('currency');
+  const { data: events = [] } = useGetList("event");
+  const { data: currencies = [] } = useGetList("currency");
 
-return (
-  <Create>
-    <SimpleForm>
-      <SelectInput
+  return (
+    <Create>
+      <SimpleForm>
+        <SelectInput
           label="Event"
           source="event.id"
           choices={events.map((event) => ({
@@ -24,12 +24,12 @@ return (
           }))}
           validate={[required()]}
         />
-      <TextInput source="title" validate={[required()]} />
-      <TextInput source="slug" validate={[required()]} />
-      <TextInput source="description" validate={[required()]} />
-      <NumberInput source="availableTicket" validate={[required()]} />
-      <NumberInput source="price" validate={[required()]} />
-	  <SelectInput
+        <TextInput source="title" validate={[required()]} />
+        <TextInput source="slug" validate={[required()]} />
+        <TextInput source="description" validate={[required()]} />
+        <NumberInput source="availableTicket" validate={[required()]} />
+        <NumberInput source="price" validate={[required()]} />
+        <SelectInput
           label="Currency"
           source="currency.id"
           choices={currencies.map((currency) => ({
@@ -38,7 +38,7 @@ return (
           }))}
           validate={[required()]}
         />
-    </SimpleForm>
-  </Create>
-);
+      </SimpleForm>
+    </Create>
+  );
 };

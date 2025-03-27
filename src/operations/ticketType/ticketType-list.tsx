@@ -44,17 +44,17 @@ const TicketTypeListContent = () => {
       <FunctionField
         label="Event"
         render={(ticket: TicketType) => {
-			return ticket?.event.title;
+          return ticket?.event.title;
         }}
       />
-		<TextField source="availableTicket" label="Available Ticket" />
-		<TextField source="price" label="Price" />
-		<FunctionField
-				  label="Currency"
-				  render={(ticket: TicketType) => {
-					return ticket?.currency.title;
-				  }}
-		/>
+      <TextField source="availableTicket" label="Available Ticket" />
+      <TextField source="price" label="Price" />
+      <FunctionField
+        label="Currency"
+        render={(ticket: TicketType) => {
+          return ticket?.currency.title;
+        }}
+      />
       <FunctionField
         label="Actions"
         render={() => {

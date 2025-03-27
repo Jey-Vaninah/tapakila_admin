@@ -21,7 +21,7 @@ export const dataProvider = createRaProvider(
     currencyProvider,
     hostProvider,
     eventHallProvider,
-	ticketTypeProvider,
+    ticketTypeProvider,
   ],
   {
     getListOptions: {

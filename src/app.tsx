@@ -58,33 +58,33 @@ import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
 
 export const App = () => {
   return (
-	<Admin
-	  requireAuth
-	  layout={Layout}
-	  loginPage={<LoginPage />}
-	  title="Tapakila Admin"
-	  dataProvider={dataProvider}
-	  authProvider={authProvider}
-	  theme={defaultTheme}
-	>
-	  <Resource
-		name="user"
-		icon={PersonIcon}
-		list={UserList}
-		show={UserShow}
-		edit={UserEdit}
-		create={UserCreate}
-	  />
-	  <Resource
-		name="event"
-		icon={CelebrationIcon}
-		list={EventList}
-		show={EventShow}
-		edit={EventEdit}
-		create={EventCreate}
-	  />
-	  <Resource
-		name="ticket"
+    <Admin
+      requireAuth
+      layout={Layout}
+      loginPage={<LoginPage />}
+      title="Tapakila Admin"
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      theme={defaultTheme}
+    >
+      <Resource
+        name="user"
+        icon={PersonIcon}
+        list={UserList}
+        show={UserShow}
+        edit={UserEdit}
+        create={UserCreate}
+      />
+      <Resource
+        name="event"
+        icon={CelebrationIcon}
+        list={EventList}
+        show={EventShow}
+        edit={EventEdit}
+        create={EventCreate}
+      />
+      <Resource
+        name="ticket"
         icon={LocalActivityIcon}
         list={TicketList}
         show={TicketShow}
@@ -144,15 +144,18 @@ export const App = () => {
       />
       <Resource
         name="ticketType"
-		list={TicketTypeList}
-		show={TicketTypeShow}
-		edit={TicketTypeEdit}
-		create={TicketTypeCreate}
+        list={TicketTypeList}
+        show={TicketTypeShow}
+        edit={TicketTypeEdit}
+        create={TicketTypeCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />
-		<Route path="/ticketTypes/eventId/:eventId" element={<EventTickets />} />
+        <Route
+          path="/ticketTypes/eventId/:eventId"
+          element={<EventTickets />}
+        />
       </CustomRoutes>
     </Admin>
   );

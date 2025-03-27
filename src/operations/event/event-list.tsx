@@ -1,7 +1,4 @@
-import {
-  List,
-  useListContext,
-} from "react-admin";
+import { List, useListContext } from "react-admin";
 import { Box } from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
@@ -36,40 +33,40 @@ const EventListContent = () => {
   }
 
   return (
-	<>
-	<Box
-      sx={{
-		display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "start",
-		padding: 2,
-        backgroundColor: "background.default",
-        width: "100%",
-        margin: "0 auto",
-		height: "max-content",
-      }}
-	>
-	<EventLineChart events={data} />
-	</Box>
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "start",
-        gap: 4,
-        padding: 2,
-        backgroundColor: "background.default",
-      }}
-    >
-      {!isLoading && (
-        <>
-          {data.map((record) => (
-            <EventCard key={record.id} event={record} />
-          ))}
-        </>
-      )}
-    </Box>
-	</>
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "start",
+          padding: 2,
+          backgroundColor: "background.default",
+          width: "100%",
+          margin: "0 auto",
+          height: "max-content",
+        }}
+      >
+        <EventLineChart events={data} />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "start",
+          gap: 4,
+          padding: 2,
+          backgroundColor: "background.default",
+        }}
+      >
+        {!isLoading && (
+          <>
+            {data.map((record) => (
+              <EventCard key={record.id} event={record} />
+            ))}
+          </>
+        )}
+      </Box>
+    </>
   );
 };

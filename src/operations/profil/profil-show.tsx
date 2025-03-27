@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
-import {
-  Typography,
-  Avatar,
-  Button,
-  Box,
-} from "@mui/material";
+import { Typography, Avatar, Button, Box } from "@mui/material";
 import { useRedirect, useDataProvider } from "react-admin";
 import { User } from "../../providers/types";
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
-import { Email as EmailIcon,
-          Person as PersonIcon,
-          Phone as PhoneIcone,
-          Place as PlaceIcone
- } from "@mui/icons-material";
+import {
+  Email as EmailIcon,
+  Person as PersonIcon,
+  Phone as PhoneIcone,
+  Place as PlaceIcone,
+} from "@mui/icons-material";
 
 const ProfilePage = () => {
   const redirect = useRedirect();
   const dataProvider = useDataProvider();
-  const userId = "552648f0-e00d-4724-ac24-9c4d4b0c6d7e"; 
+  const userId = "552648f0-e00d-4724-ac24-9c4d4b0c6d7e";
 
   const [user, setUser] = useState<User | null>(null);
 
@@ -65,8 +61,8 @@ const ProfilePage = () => {
             transform: "translate(-50%, -50%)",
             fontWeight: "bold",
             fontSize: "3rem",
-            color: "white", 
-            textAlign: "center", 
+            color: "white",
+            textAlign: "center",
           }}
         >
           Welcome to Tapak'ila
@@ -158,7 +154,11 @@ const ProfilePage = () => {
                 boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <Typography sx={{ fontWeight: "bold",color: "rgb(43, 200, 190) " }}>Coordonnée</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", color: "rgb(43, 200, 190) " }}
+              >
+                Coordonnée
+              </Typography>
               <Box
                 sx={{
                   height: "1px",
@@ -174,8 +174,8 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "0.1px solid black " ,
-                    bgcolor:"rgb(43, 200, 190)"
+                    border: "0.1px solid black ",
+                    bgcolor: "rgb(43, 200, 190)",
                   }}
                 >
                   <EmailIcon sx={{ fontSize: 30, color: "black " }} />
@@ -196,14 +196,14 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PhoneIcone sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                   Number
+                    Number
                   </Typography>
                   0345933238
                 </Box>
@@ -235,7 +235,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PlaceIcone sx={{ fontSize: 30, color: "black" }} />
@@ -256,7 +256,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -295,7 +295,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "blackwhite" }} />
@@ -315,7 +315,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -338,7 +338,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -358,8 +358,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -382,8 +381,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -403,8 +401,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -427,8 +424,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -448,8 +444,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -472,8 +467,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />
@@ -493,8 +487,7 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) "
-
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
                   <PersonIcon sx={{ fontSize: 30, color: "black" }} />

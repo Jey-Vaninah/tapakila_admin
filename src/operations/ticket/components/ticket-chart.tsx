@@ -1,6 +1,13 @@
 import { FC, useState, useMemo } from "react";
 import { Scatter } from "react-chartjs-2";
-import { Chart as ChartJS, Title, Tooltip, Legend, LinearScale, PointElement } from "chart.js";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LinearScale,
+  PointElement,
+} from "chart.js";
 import { groupTicketsByPrice, TicketGroup } from "../utils/group-tickets";
 import { Ticket } from "../../../providers";
 import { TextField, MenuItem } from "@mui/material";
@@ -12,11 +19,16 @@ type Props = {
 };
 
 const TicketPriceVsSalesScatterPlot: FC<Props> = ({ tickets }) => {
-  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState<number>(
+    new Date().getFullYear()
+  );
 
   // Filtrage des tickets par année
   const filteredTickets = useMemo(
-    () => tickets.filter((ticket) => new Date(ticket.createdAt).getFullYear() === selectedYear),
+    () =>
+      tickets.filter(
+        (ticket) => new Date(ticket.createdAt).getFullYear() === selectedYear
+      ),
     [tickets, selectedYear]
   );
 
@@ -106,7 +118,11 @@ const TicketPriceVsSalesScatterPlot: FC<Props> = ({ tickets }) => {
         size="small"
         style={{ marginBottom: 20 }}
       >
-        {[...new Set(tickets.map((ticket) => new Date(ticket.createAt).getFullYear()))]
+        {[
+          ...new Set(
+            tickets.map((ticket) => new Date(ticket.createAt).getFullYear())
+          ),
+        ]
           .sort((a, b) => b - a)
           .map((year) => (
             <MenuItem key={year} value={year}>

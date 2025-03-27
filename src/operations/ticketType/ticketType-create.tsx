@@ -8,16 +8,13 @@ import {
   SelectInput,
 } from "react-admin";
 
-export const TicketCreate = () => {
-const { data: ticketTypes = [] } = useGetList('ticketType');
+export const TicketTypeCreate = () => {
 const { data: events = [] } = useGetList('event');
-const { data: users = [] } = useGetList('user');
 const { data: currencies = [] } = useGetList('currency');
 
 return (
   <Create>
     <SimpleForm>
-      <TextInput source="ticketNumber" validate={[required()]} />
       <SelectInput
           label="Event"
           source="event.id"
@@ -27,26 +24,11 @@ return (
           }))}
           validate={[required()]}
         />
-      <SelectInput
-          label="Ticket Type"
-          source="ticketType.id"
-          choices={ticketTypes.map((ticketType) => ({
-            id: ticketType.id,
-            name: ticketType.title,
-          }))}
-          validate={[required()]}
-        />
-
-      <SelectInput
-          label="User"
-          source="user.id"
-          choices={users.map((user) => ({
-            id: user.id,
-            name: user.name,
-          }))}
-          validate={[required()]}
-        />
-      <NumberInput source="amountPaid" validate={[required()]} />
+      <TextInput source="title" validate={[required()]} />
+      <TextInput source="slug" validate={[required()]} />
+      <TextInput source="description" validate={[required()]} />
+      <NumberInput source="availableTicket" validate={[required()]} />
+      <NumberInput source="price" validate={[required()]} />
 	  <SelectInput
           label="Currency"
           source="currency.id"

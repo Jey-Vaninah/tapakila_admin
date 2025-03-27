@@ -14,16 +14,12 @@ import {
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
     <SaveButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </Toolbar>
 );
 
 const TicketEditActions = () => (
   <TopToolbar>
     <ShowButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </TopToolbar>
 );
 

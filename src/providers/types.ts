@@ -95,7 +95,7 @@ export type Currency = {
 
 export type TicketType = {
   id: string;
-  eventId: Event;
+  event: Event;
   title: string;
   slug: string;
   description: string;

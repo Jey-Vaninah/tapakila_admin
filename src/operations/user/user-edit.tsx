@@ -17,16 +17,12 @@ import { RoleEnum } from "../../providers";
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
     <SaveButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </Toolbar>
 );
 
 const UserEditActions = () => (
   <TopToolbar>
     <ShowButton />
-    <Button label="Shutdown" />
-    <Button label="Shutdown Force" />
   </TopToolbar>
 );
 

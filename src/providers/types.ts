@@ -24,7 +24,7 @@ export type User = {
   password: string;
   imageUrl: string;
   country: Country;
-  createAt: Date;
+  createdAt: Date;
   updatedAat: Date;
   deletedAt: Date | null;
   roleId: Role;
@@ -115,7 +115,7 @@ export type Ticket = {
   amountPaid: number;
   currency: Currency;
   paymentConfirmed: boolean;
-  createAt: Date;
+  createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 };
@@ -129,7 +129,7 @@ export type Edit = {
   password: string;
   imageUrl: string;
   country: Country;
-  createAt: Date;
+  createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
   role: Role;

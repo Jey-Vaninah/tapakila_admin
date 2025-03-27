@@ -9,6 +9,8 @@ import {
   Public as PublicIcon,
   Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
+  ManageAccounts as ManageAccountsIcon,
+  Category as CategoryIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -55,6 +57,10 @@ import { TicketTypeList } from "./operations/ticketType/ticketType-list";
 import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
 import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
 import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
+import { RoleCreate } from "./operations/role/role-create";
+import { RoleEdit } from "./operations/role/role-edit";
+import { RoleList } from "./operations/role/role-list";
+import { RoleShow } from "./operations/role/role-show";
 
 export const App = () => {
   return (
@@ -144,10 +150,19 @@ export const App = () => {
       />
       <Resource
         name="ticketType"
+        icon={CategoryIcon}
         list={TicketTypeList}
         show={TicketTypeShow}
         edit={TicketTypeEdit}
         create={TicketTypeCreate}
+      />
+      <Resource
+        name="role"
+        icon={ManageAccountsIcon}
+        list={RoleList}
+        show={RoleShow}
+        edit={RoleEdit}
+        create={RoleCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

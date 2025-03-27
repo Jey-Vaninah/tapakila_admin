@@ -28,4 +28,4 @@ export const ticketTypeProvider: ResourceProvider<TicketType> = {
       .delete<TicketType>("/ticketTypes/" + id)
       .then((response) => response.data);
   },
-}; 
+};

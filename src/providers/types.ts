@@ -29,7 +29,7 @@ export type User = {
   createdAt: Date;
   updatedAat: Date;
   deletedAt: Date | null;
-  roleId: Role;
+  role: Role;
 };
 
 export enum Status {

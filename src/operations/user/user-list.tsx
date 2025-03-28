@@ -53,11 +53,8 @@ const UserListContent = () => {
       <FunctionField
         label="Role"
         render={(user: User) => {
-          return (
-            user?.roleId?.title[0].toUpperCase() +
-            user?.roleId?.title.slice(1)?.toLocaleLowerCase()
-          );
-        }}
+			return user?.role.title;
+		  }}
       />
       <FunctionField
         label="Country"

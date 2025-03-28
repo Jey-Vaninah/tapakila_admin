@@ -1,12 +1,18 @@
-import { AuthProvider } from "react-admin";
+import { AuthProvider } from 'react-admin';
+import { getAxiosInstance } from "../config/axios";
 
 export const authProvider: AuthProvider = {
-  login: ({ username, password }) => {
-    if (username === "admin" && password === "admin") {
-      localStorage.setItem("auth", JSON.stringify({ username }));
-      return Promise.resolve();
-    }
-    return Promise.reject(new Error("Identifiants incorrects"));
+  login: async ({ username, password }) => {
+	try {
+		const response = await getAxiosInstance()
+			.post("/users/login", { email : username, password });
+		const { token } = response.data;
+		localStorage.setItem("auth", token);
+		return await Promise.resolve();
+	} catch (error) {
+		// console.error("Login error:", error);
+		return await Promise.reject(new Error("Identifiants incorrects"));
+	}
   },
 
   logout: () => {
@@ -20,6 +26,9 @@ export const authProvider: AuthProvider = {
 
   checkError: (error) => {
     console.error("Erreur d'authentification :", error);
+	if (error?.response?.status === 401) {
+        return Promise.reject(new Error("Unauthorized"));
+    }
     return Promise.resolve();
   },
 

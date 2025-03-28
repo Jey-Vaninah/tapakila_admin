@@ -9,8 +9,7 @@ import {
 } from "react-admin";
 
 const validateTimeFormat = (value: string) => {
-	if (!value) return 'L\'heure est requise.';
-
+	if (value == null || value == "" ) return undefined;
 	const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$/;
 	if (!timeRegex.test(value)) {
 		return 'L\'heure doit être au format HH:mm.';

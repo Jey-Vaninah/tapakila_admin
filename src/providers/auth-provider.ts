@@ -30,4 +30,5 @@ export const authProvider: AuthProvider = {
   },
 
   getPermissions: () => Promise.resolve(),
+
 };

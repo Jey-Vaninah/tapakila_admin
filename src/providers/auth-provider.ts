@@ -10,7 +10,7 @@ export const authProvider: AuthProvider = {
 		localStorage.setItem("auth", token);
 		return await Promise.resolve();
 	} catch (error) {
-		// console.error("Login error:", error);
+		console.error("Login error:", error);
 		return await Promise.reject(new Error("Identifiants incorrects"));
 	}
   },
@@ -26,9 +26,6 @@ export const authProvider: AuthProvider = {
 
   checkError: (error) => {
     console.error("Erreur d'authentification :", error);
-	if (error?.response?.status === 401) {
-        return Promise.reject(new Error("Unauthorized"));
-    }
     return Promise.resolve();
   },
 

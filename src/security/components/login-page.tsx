@@ -22,6 +22,7 @@ export const LoginPage: FC = () => {
 		try {
 			await login(data);
 		} catch (error) {
+			console.error("Login error:", error);
 			notify("Authentication error", { type: "error" });
 		}
 	};

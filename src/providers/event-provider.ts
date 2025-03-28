@@ -14,6 +14,7 @@ export const eventProvider: ResourceProvider<Event> = {
       .get<Event[]>("/events")
       .then((response) => response.data),
   saveOrUpdate: async ({ meta, data }) => {
+	console.log(data);
     if (meta?.mutationType === "CREATE") {
       return getAxiosInstance()
         .post<Event>("/events/", data)

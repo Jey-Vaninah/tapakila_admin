@@ -1,11 +1,6 @@
-export enum RoleEnum {
-  USER = "Organizer",
-  ADMIN_EVENTS = "Admin",
-}
-
 export type Role = {
   id: string;
-  title: RoleEnum;
+  title: string;
   createdAt: Date;
   updatedAt: Date;
 };

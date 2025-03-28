@@ -14,7 +14,6 @@ export const userProvider: ResourceProvider<User> = {
       .then((response) => response.data),
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
-		console.log(data);
       return getAxiosInstance()
         .post<User>("/users/register", data)
         .then((response) => response.data);

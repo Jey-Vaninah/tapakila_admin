@@ -27,13 +27,6 @@ export type User = {
   role: Role;
 };
 
-export enum Status {
-  DRAFT = "DRAFT",
-  PUBLISHED = "PUBLISHED",
-  CANCELED = "CANCELED",
-  EVENT = "EVENT",
-}
-
 export type EventHall = {
   id: string;
   name: string;

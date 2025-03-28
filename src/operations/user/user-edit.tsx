@@ -11,7 +11,6 @@ import {
   TopToolbar,
   SelectInput,
   useGetList,
-  useEditContext,
 } from "react-admin";
 import { supabase } from "./supabaseClient";
 import { Avatar, Box, Button, Typography, Paper } from "@mui/material";
@@ -42,7 +41,7 @@ export const UserEdit = () => {
     const fileName = `${Date.now()}-${file.name}`;
     const filePath = `avatars/${fileName}`;
 
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("images")
       .upload(filePath, file);
 

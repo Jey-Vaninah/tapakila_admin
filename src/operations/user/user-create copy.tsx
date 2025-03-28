@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Create, SimpleForm, TextInput, SelectInput, ImageInput, required, useGetList } from "react-admin";
+import { Create, SimpleForm, TextInput, SelectInput, required, useGetList } from "react-admin";
 import { supabase } from './supabaseClient';  // Import your Supabase client
 
 export const UserCreate = () => {
@@ -18,7 +18,7 @@ export const UserCreate = () => {
       const filePath = `avatars/${fileName}`;
 
       // Upload the image to Supabase storage
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from("images") // Replace with your storage bucket name
         .upload(filePath, file);
 

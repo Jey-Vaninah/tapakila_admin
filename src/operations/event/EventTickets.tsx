@@ -124,10 +124,9 @@ const EventTickets = () => {
 					sx={{ fontWeight: "bold", fontSize: "18px", color: "#333" }}
 				>
 					🎫 Total Tickets:{" "}
-					{filteredData.reduce(
-						(total, ticketTipe) => total + ticketTipe.availableTicket,
-						0
-					)}
+					{Array.isArray(filteredData)
+						? filteredData.reduce((total, ticketTipe) => total + Number(ticketTipe.availableTicket || 0), 0)
+						: 0}
 				</Typography>
 			</Box>
 		</Box>

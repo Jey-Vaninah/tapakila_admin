@@ -8,7 +8,7 @@ interface EventCardProps {
 }
 
 const EventCard = ({ event, className }: EventCardProps) => {
-	const { slug, title, startDate, startTime, eventHallId, hostId, userId } =
+	const { slug, eventImage, title, startDate, startTime, eventHallId, hostId, userId } =
 		event;
 
 	return (
@@ -38,7 +38,7 @@ const EventCard = ({ event, className }: EventCardProps) => {
 				}}
 			>
 				<img
-					src="/bg.jpg"
+					src={eventImage}
 					alt={title}
 					style={{
 						position: "absolute",

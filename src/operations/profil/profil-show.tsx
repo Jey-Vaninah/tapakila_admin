@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+
 import { Typography, Avatar, Button, Box } from "@mui/material";
-import { useRedirect, useDataProvider } from "react-admin";
-import { User } from "../../providers/types";
+import { useRedirect, useGetList } from "react-admin";
+
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
 import {
@@ -13,17 +13,10 @@ import {
 
 const ProfilePage = () => {
   const redirect = useRedirect();
-  const dataProvider = useDataProvider();
-  const userId = "552648f0-e00d-4724-ac24-9c4d4b0c6d7e";
+	const { data: users = [] } = useGetList("user");
 
-  const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    dataProvider
-      .getOne("user", { id: userId })
-      .then(({ data }) => setUser(data));
-  }, [dataProvider]);
-
+	const user = users[0];
   if (!user)
     return (
       <FlexBox

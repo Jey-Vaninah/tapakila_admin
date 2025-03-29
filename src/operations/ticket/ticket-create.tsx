@@ -9,7 +9,7 @@ import {
 } from "react-admin";
 
 export const TicketCreate = () => {
-  const { data: ticketTypes = [] } = useGetList("ticketType");
+  const { data: ticketTypes = [] } = useGetList("typeTicket");
   const { data: events = [] } = useGetList("event");
   const { data: users = [] } = useGetList("user");
   const { data: currencies = [] } = useGetList("currency");

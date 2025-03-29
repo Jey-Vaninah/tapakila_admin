@@ -23,7 +23,7 @@ const ProfileEdit = () => {
 
   useEffect(() => {
     dataProvider
-      .getOne("user", { id: "552648f0-e00d-4724-ac24-9c4d4b0c6d7e" })
+      .getOne("user", { id: "357d2a42-ec74-4fbd-8b1d-6ef5630696dd" })
       .then(({ data }) => {
         setUser(data);
         Object.keys(data).forEach((key) =>

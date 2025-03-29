@@ -35,6 +35,12 @@ const TicketTypeTickets = () => {
 	}
 
 	return (
+		<>
+		{filteredData.length === 0 ? (
+			<Typography variant="h6" sx={{ textAlign: "center", color: "red", marginTop: "20px" }}>
+				🚫 Aucune Ticket disponible
+			</Typography>
+		) : (
 		<Box
 			sx={{ padding: "24px", backgroundColor: "#f8f9fa", borderRadius: "12px" }}
 		>
@@ -102,7 +108,7 @@ const TicketTypeTickets = () => {
 					</Box>
 				))}
 			</Box>
-		</Box>
+		</Box> )}</>
 	);
 };
 

@@ -3,7 +3,7 @@ import { TicketType } from "./types";
 import { getAxiosInstance } from "../config/axios";
 
 export const ticketTypeProvider: ResourceProvider<TicketType> = {
-  resource: "ticketType",
+  resource: "typeTicket",
   getOne: async ({ id }) =>
     getAxiosInstance()
       .get<TicketType>("/ticketTypes/" + id)

@@ -150,7 +150,7 @@ export const App = () => {
 				create={NewsletterCreate}
 			/>
 			<Resource
-				name="ticketType"
+				name="typeTicket"
 				icon={CategoryIcon}
 				list={TicketTypeList}
 				show={TicketTypeShow}

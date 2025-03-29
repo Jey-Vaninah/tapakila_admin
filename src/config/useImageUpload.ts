@@ -13,7 +13,8 @@ export const useImageUpload = (initialImageUrl?: string) => {
     const handleImageUpload = async (file: File) => {
         if (!file) return;
 
-        const fileName = `${Date.now()}-${file.name}`;
+        const extension = file.name.split('.').pop(); // Récupère l'extension
+		const fileName = `${Date.now()}.${extension}`;
         const filePath = `avatars/${fileName}`;
 
         const { error } = await supabase.storage

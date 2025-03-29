@@ -7,7 +7,7 @@ import Loading from "../../common/components/loading";
 const EventTickets = () => {
 	const { eventId } = useParams<{ eventId: string }>();
 
-	const { data, isLoading, error } = useGetList("ticketType");
+	const { data, isLoading, error } = useGetList("typeTicket");
 
 	const filteredData = data
 		? data.filter((ticketTipe: any) => ticketTipe.event.id === eventId)
@@ -34,6 +34,12 @@ const EventTickets = () => {
 	}
 
 	return (
+		<>
+		{filteredData.length === 0 ? (
+			<Typography variant="h6" sx={{ textAlign: "center", color: "red", marginTop: "20px" }}>
+				🚫 Aucune Ticket disponible
+			</Typography>
+		) : (
 		<Box
 			sx={{ padding: "24px", backgroundColor: "#f8f9fa", borderRadius: "12px" }}
 		>
@@ -124,13 +130,12 @@ const EventTickets = () => {
 					sx={{ fontWeight: "bold", fontSize: "18px", color: "#333" }}
 				>
 					🎫 Total Tickets:{" "}
-					{filteredData.reduce(
-						(total, ticketTipe) => total + ticketTipe.availableTicket,
-						0
-					)}
+					{Array.isArray(filteredData)
+						? filteredData.reduce((total, ticketTipe) => total + Number(ticketTipe.availableTicket || 0), 0)
+						: 0}
 				</Typography>
 			</Box>
-		</Box>
+		</Box>)}</>
 	);
 };
 

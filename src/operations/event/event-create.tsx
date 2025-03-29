@@ -22,6 +22,7 @@ export const EventCreate = () => {
 	const { data: eventHalls = [] } = useGetList("eventHall");
 	const { data: hosts = [] } = useGetList("host");
 	const { data: users = [] } = useGetList("user");
+	const { data: tags = [] } = useGetList("tag");
 
 	return (
 		<Create>
@@ -74,7 +75,15 @@ export const EventCreate = () => {
 
 				<TextInput source="ageLimit" />
 				<TextInput source="eventImage" />
-				<TextInput source="category" validate={[required()]} />
+				<SelectInput
+					label="Tags"
+					source="tag.id"
+					choices={tags.map((tag) => ({
+						id: tag.id,
+						name: tag.title,
+					}))}
+					validate={[required()]}
+				/>
 			</SimpleForm>
 		</Create>
 	);

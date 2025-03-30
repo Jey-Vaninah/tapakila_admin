@@ -1,4 +1,3 @@
-
 import { Typography, Avatar, Button, Box } from "@mui/material";
 import { useRedirect, useGetList } from "react-admin";
 
@@ -13,10 +12,9 @@ import {
 
 const ProfilePage = () => {
   const redirect = useRedirect();
-	const { data: users = [] } = useGetList("user");
+  const { data: users = [] } = useGetList("user");
 
-
-	const user = users[0];
+  const user = users[0];
   if (!user)
     return (
       <FlexBox

@@ -1,16 +1,16 @@
 import { Admin, CustomRoutes, Resource, defaultTheme } from "react-admin";
 import {
-	Person as PersonIcon,
-	Celebration as CelebrationIcon,
-	LocalActivity as LocalActivityIcon,
-	MonetizationOn as MonetizationOn,
-	Gite as GiteIcon,
-	Stadium as StadiumIcon,
-	Public as PublicIcon,
-	Subscriptions as SubscriptionsIcon,
-	Sell as SellIcon,
-	ManageAccounts as ManageAccountsIcon,
-	Category as CategoryIcon,
+  Person as PersonIcon,
+  Celebration as CelebrationIcon,
+  LocalActivity as LocalActivityIcon,
+  MonetizationOn as MonetizationOn,
+  Gite as GiteIcon,
+  Stadium as StadiumIcon,
+  Public as PublicIcon,
+  Subscriptions as SubscriptionsIcon,
+  Sell as SellIcon,
+  ManageAccounts as ManageAccountsIcon,
+  Category as CategoryIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -64,119 +64,119 @@ import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
 
 export const App = () => {
-	return (
-		<Admin
-			requireAuth
-			layout={Layout}
-			loginPage={<LoginPage />}
-			title="Tapakila Admin"
-			dataProvider={dataProvider}
-			authProvider={authProvider}
-			theme={defaultTheme}
-		>
-			<Resource
-				name="user"
-				icon={PersonIcon}
-				list={UserList}
-				show={UserShow}
-				edit={UserEdit}
-				create={UserCreate}
-			/>
-			<Resource
-				name="event"
-				icon={CelebrationIcon}
-				list={EventList}
-				show={EventShow}
-				edit={EventEdit}
-				create={EventCreate}
-			/>
-			<Resource
-				name="ticket"
-				icon={LocalActivityIcon}
-				list={TicketList}
-				show={TicketShow}
-				edit={TicketEdit}
-				create={TicketCreate}
-			/>
+  return (
+    <Admin
+      requireAuth
+      layout={Layout}
+      loginPage={<LoginPage />}
+      title="Tapakila Admin"
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      theme={defaultTheme}
+    >
+      <Resource
+        name="user"
+        icon={PersonIcon}
+        list={UserList}
+        show={UserShow}
+        edit={UserEdit}
+        create={UserCreate}
+      />
+      <Resource
+        name="event"
+        icon={CelebrationIcon}
+        list={EventList}
+        show={EventShow}
+        edit={EventEdit}
+        create={EventCreate}
+      />
+      <Resource
+        name="ticket"
+        icon={LocalActivityIcon}
+        list={TicketList}
+        show={TicketShow}
+        edit={TicketEdit}
+        create={TicketCreate}
+      />
 
-			<Resource
-				name="currency"
-				icon={MonetizationOn}
-				list={CurrencyList}
-				show={CurrencyShow}
-				edit={CurrencyEdit}
-				create={CurrencyCreate}
-			/>
+      <Resource
+        name="currency"
+        icon={MonetizationOn}
+        list={CurrencyList}
+        show={CurrencyShow}
+        edit={CurrencyEdit}
+        create={CurrencyCreate}
+      />
 
-			<Resource
-				name="host"
-				icon={GiteIcon}
-				list={HostList}
-				show={HostShow}
-				edit={HostEdit}
-				create={HostCreate}
-			/>
+      <Resource
+        name="host"
+        icon={GiteIcon}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
+      />
 
-			<Resource
-				name="eventHall"
-				icon={StadiumIcon}
-				list={HostList}
-				show={HostShow}
-				edit={HostEdit}
-				create={HostCreate}
-			/>
-			<Resource
-				name="country"
-				icon={PublicIcon}
-				list={CountryList}
-				show={CountryShow}
-				edit={CountryEdit}
-				create={CountryCreate}
-			/>
-			<Resource
-				name="tag"
-				icon={SellIcon}
-				list={TagList}
-				show={TagShow}
-				edit={TagEdit}
-				create={TagCreate}
-			/>
-			<Resource
-				name="newsletter"
-				icon={SubscriptionsIcon}
-				list={NewsletterList}
-				show={NewsletterShow}
-				edit={NewsletterEdit}
-				create={NewsletterCreate}
-			/>
-			<Resource
-				name="typeTicket"
-				icon={CategoryIcon}
-				list={TicketTypeList}
-				show={TicketTypeShow}
-				edit={TicketTypeEdit}
-				create={TicketTypeCreate}
-			/>
-			<Resource
-				name="role"
-				icon={ManageAccountsIcon}
-				list={RoleList}
-				show={RoleShow}
-				edit={RoleEdit}
-				create={RoleCreate}
-			/>
-			<CustomRoutes>
-				<Route path="/profile" element={<ProfilePage />} />
-				<Route path="/profile/edit" element={<ProfileEdit />} />
-				<Route
-					path="/ticketTypes/eventId/:eventId"
-					element={<EventTickets />}
-				/>
-				<Route
-					path="/tickets/ticketTypeId/:ticketTypeId"
-					element={<TicketTypeTickets />}
-				/>
-			</CustomRoutes>
-		</Admin>
-	);
+      <Resource
+        name="eventHall"
+        icon={StadiumIcon}
+        list={HostList}
+        show={HostShow}
+        edit={HostEdit}
+        create={HostCreate}
+      />
+      <Resource
+        name="country"
+        icon={PublicIcon}
+        list={CountryList}
+        show={CountryShow}
+        edit={CountryEdit}
+        create={CountryCreate}
+      />
+      <Resource
+        name="tag"
+        icon={SellIcon}
+        list={TagList}
+        show={TagShow}
+        edit={TagEdit}
+        create={TagCreate}
+      />
+      <Resource
+        name="newsletter"
+        icon={SubscriptionsIcon}
+        list={NewsletterList}
+        show={NewsletterShow}
+        edit={NewsletterEdit}
+        create={NewsletterCreate}
+      />
+      <Resource
+        name="typeTicket"
+        icon={CategoryIcon}
+        list={TicketTypeList}
+        show={TicketTypeShow}
+        edit={TicketTypeEdit}
+        create={TicketTypeCreate}
+      />
+      <Resource
+        name="role"
+        icon={ManageAccountsIcon}
+        list={RoleList}
+        show={RoleShow}
+        edit={RoleEdit}
+        create={RoleCreate}
+      />
+      <CustomRoutes>
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route
+          path="/ticketTypes/eventId/:eventId"
+          element={<EventTickets />}
+        />
+        <Route
+          path="/tickets/ticketTypeId/:ticketTypeId"
+          element={<TicketTypeTickets />}
+        />
+      </CustomRoutes>
+    </Admin>
+  );
 };

@@ -75,4 +75,3 @@
 - [Jey-Vaninah](https://github.com/Jey-Vaninah)
 - [Tsilavina Andriamiharison](https://github.com/Tsilavina007)
 - [Noum's Randrianirina](https://github.com/NomenaFitahiana)
-

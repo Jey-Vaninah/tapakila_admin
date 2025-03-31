@@ -21,7 +21,7 @@ export const TicketList = () => {
 };
 
 const TicketListContent = () => {
-  const { isLoading, data = [] } = useListContext();
+  const { isLoading } = useListContext();
 
   if (isLoading) {
     return (

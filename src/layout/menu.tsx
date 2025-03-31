@@ -150,6 +150,7 @@ export const Menu: FC = () => {
               <CustomMenuItem name="newsletter" />
               <CustomMenuItem name="currency" />
               <CustomMenuItem name="host" />
+              <CustomMenuItem name="eventHall" />
             </Box>
           </Box>
         </Box>

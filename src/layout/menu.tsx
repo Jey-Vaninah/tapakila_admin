@@ -118,6 +118,7 @@ export const Menu: FC = () => {
               </Typography>
             )}
             <Box sx={{ pl: isSiderBarOpen ? "3px" : 0, mb: 5 }}>
+              <CustomMenuItem name="home" />
               <CustomMenuItem name="event" />
               <CustomMenuItem name="ticket" />
               <CustomMenuItem name="user" />

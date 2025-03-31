@@ -222,7 +222,7 @@ export const EventShow = (
 								<Typography variant="h6" fontWeight="bold" gutterBottom>
 									Ticket Types
 								</Typography>
-								{tickets && tickets.length > 0 ? (
+								{ticketTypes && ticketTypes.length > 0 ? (
 									<TableContainer>
 										<Table sx={{ border: '1px solid #e0e0e0' }}>
 											<TableHead sx={{ backgroundColor: "#f9fafb" }}>

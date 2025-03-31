@@ -24,7 +24,7 @@ import {
 } from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const TicketTypesTab = ({
@@ -181,8 +181,8 @@ export const EventShow = (props: ShowControllerProps<any, Error> | undefined) =>
 		filter: { event: idEvent }
 	});
 
-	const ticketTypes = useMemo(() => ticketTypeData || [], [ticketTypeData]);
-	const tickets = useMemo(() => ticketData || [], [ticketData]);
+	const ticketTypes = ticketTypeData;
+	const tickets = ticketData;
 
 	const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setTabValue(newValue);
@@ -428,10 +428,9 @@ export const EventShow = (props: ShowControllerProps<any, Error> | undefined) =>
 									</Typography>
 									<CardMedia
 										component="img"
-										width="300"
-										image={record?.image || "/bg.jpg"}
+										image={record?.eventImage || "/e.png"}
 										alt={record?.title || "Event Image"}
-										sx={{ borderRadius: "10px", objectFit: "cover" }}
+										sx={{ borderRadius: "10px", objectFit: "fit", width:"350px" }}
 									/>
 								</Paper>
 

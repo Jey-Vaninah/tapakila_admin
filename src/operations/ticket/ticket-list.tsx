@@ -10,7 +10,7 @@ import {
 import { FlexBox } from "../../common/components/flex-box";
 import { Ticket } from "../../providers";
 import Loading from "../../common/components/loading";
-import TicketLineChart from "./components/ticket-chart";
+// import TicketLineChart from "./components/ticket-chart";
 
 export const TicketList = () => {
   return (

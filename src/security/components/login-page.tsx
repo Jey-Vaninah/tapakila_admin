@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { FlexBox } from "../../common/components/flex-box";
 import { Box, Typography } from "@mui/material";
 import {
@@ -17,13 +17,17 @@ import { Google as GoogleIcon } from "@mui/icons-material";
 export const LoginPage: FC = () => {
   const login = useLogin();
   const notify = useNotify();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (data: any) => {
     try {
+      setIsLoading(true);
       await login(data);
     } catch (error) {
       console.error("Login error:", error);
       notify("Authentication error", { type: "error" });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -113,6 +117,7 @@ export const LoginPage: FC = () => {
                   sx={{ textTransform: "none" }}
                   color="success"
                   label="Login"
+                  loading={isLoading}
                   variant="contained"
                 />
                 <Typography>Or</Typography>
@@ -123,6 +128,7 @@ export const LoginPage: FC = () => {
                   label="Login with Google"
                   variant="outlined"
                   startIcon={<GoogleIcon />}
+                  loading={isLoading}
                 />
               </Toolbar>
             }

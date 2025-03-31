@@ -45,7 +45,7 @@ export const LoginPage: FC = () => {
       >
         <FlexBox
           sx={{
-            bgcolor: "rgb(20, 61, 24)",
+            bgcolor: "#1976d2",
             flexDirection: "column",
             borderRadius: "10px",
             p: 4,
@@ -61,8 +61,7 @@ export const LoginPage: FC = () => {
           <Button
             size="medium"
             label="Register"
-            sx={{ textTransform: "none" }}
-            color="success"
+            sx={{ textTransform: "none", bgcolor: "white", color: "black" }}
             variant="contained"
           />
         </FlexBox>
@@ -74,7 +73,7 @@ export const LoginPage: FC = () => {
             p: 4,
           }}
         >
-          <Typography sx={{ fontWeight: "bold" }} variant="h4" color="success">
+          <Typography sx={{ fontWeight: "bold" }} variant="h4" color="primary">
             Login
           </Typography>
           <Typography sx={{ color: "gray" }}>
@@ -115,7 +114,7 @@ export const LoginPage: FC = () => {
                   type="submit"
                   size="medium"
                   sx={{ textTransform: "none" }}
-                  color="success"
+                  color="primary"
                   label="Login"
                   loading={isLoading}
                   variant="contained"
@@ -124,7 +123,7 @@ export const LoginPage: FC = () => {
                 <Button
                   size="medium"
                   sx={{ textTransform: "none" }}
-                  color="success"
+                  color="primary"
                   label="Login with Google"
                   variant="outlined"
                   startIcon={<GoogleIcon />}
@@ -135,19 +134,19 @@ export const LoginPage: FC = () => {
           >
             <TextInput
               validate={[required("This field is required")]}
-              color="success"
+              color="primary"
               source="username"
               label="Username"
             />
             <PasswordInput
               validate={[required("This field is required")]}
-              color="success"
+              color="primary"
               source="password"
               label="Password"
             />
             <FlexBox>
               <BooleanInput
-                color="success"
+                color="primary"
                 source="remember"
                 label="Remember me"
               />

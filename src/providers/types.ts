@@ -60,8 +60,8 @@ export type Tag = {
 
 export type Event = {
   id: string;
-  eventHallId: EventHall;
-  hostId: Host;
+  eventHall: EventHall;
+  host: Host;
   user: User;
   title: string;
   slug: string;
@@ -73,6 +73,7 @@ export type Event = {
   ageLimit: string;
   createdAt: Date;
   updatedAt: Date;
+  eventImage:string;
 };
 
 export type Currency = {
@@ -98,7 +99,7 @@ export type TicketType = {
 
 export type Ticket = {
   id: string;
-  eventId: Event;
+  event: Event;
   ticketType: TicketType;
   user: User;
   ticketNumber: string;

@@ -40,7 +40,7 @@ const TicketListContent = () => {
 
   return (
     <>
-      <TicketLineChart tickets={data} />
+      {/* <TicketLineChart tickets={data} /> */}
       <Datagrid bulkActionButtons={false}>
         <TextField source="ticketNumber" label="Ticket Number" />
         <FunctionField

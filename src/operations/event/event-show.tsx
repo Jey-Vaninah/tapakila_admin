@@ -181,8 +181,8 @@ export const EventShow = (props: ShowControllerProps<any, Error> | undefined) =>
 		filter: { event: idEvent }
 	});
 
-	const ticketTypes = ticketTypeData;
-	const tickets = ticketData;
+	const ticketTypes : TicketType [] = ticketTypeData as TicketType[];
+	const tickets : Ticket [] = ticketData as Ticket[];
 
 	const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setTabValue(newValue);

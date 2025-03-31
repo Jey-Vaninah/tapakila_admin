@@ -62,6 +62,7 @@ import { RoleEdit } from "./operations/role/role-edit";
 import { RoleList } from "./operations/role/role-list";
 import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
+import "./assets/css/index.css";
 
 export const App = () => {
   return (

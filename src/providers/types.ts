@@ -73,7 +73,7 @@ export type Event = {
   ageLimit: string;
   createdAt: Date;
   updatedAt: Date;
-  eventImage:string;
+  eventImage: string;
 };
 
 export type Currency = {

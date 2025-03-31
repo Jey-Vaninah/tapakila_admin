@@ -13,7 +13,13 @@ import { useRedirect, useResourceDefinition } from "react-admin";
 import { useLocation } from "react-router-dom";
 import { FlexBox } from "../common/components/flex-box";
 
-const CustomMenuItem = ({ name }: { name: string }) => {
+const CustomMenuItem = ({
+  name,
+  customRedirect,
+}: {
+  customRedirect?: string;
+  name: string;
+}) => {
   const redirect = useRedirect();
   const resource = useResourceDefinition({ resource: name });
   const location = useLocation();
@@ -21,7 +27,7 @@ const CustomMenuItem = ({ name }: { name: string }) => {
 
   return (
     <MenuItem
-      onClick={() => redirect(`/${name}`)}
+      onClick={() => redirect(customRedirect ?? `/${name}`)}
       sx={{
         "marginBlock": "3px",
         "display": "flex",
@@ -118,7 +124,7 @@ export const Menu: FC = () => {
               </Typography>
             )}
             <Box sx={{ pl: isSiderBarOpen ? "3px" : 0, mb: 5 }}>
-              <CustomMenuItem name="home" />
+              <CustomMenuItem customRedirect="/" name="home" />
               <CustomMenuItem name="event" />
               <CustomMenuItem name="ticket" />
               <CustomMenuItem name="user" />

@@ -11,6 +11,7 @@ import {
   Sell as SellIcon,
   ManageAccounts as ManageAccountsIcon,
   Category as CategoryIcon,
+  Home as HomeIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -160,6 +161,7 @@ export const App = () => {
         edit={TicketTypeEdit}
         create={TicketTypeCreate}
       />
+      <Resource name="home" icon={HomeIcon} />
       <Resource
         name="role"
         icon={ManageAccountsIcon}

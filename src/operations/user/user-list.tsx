@@ -12,10 +12,11 @@ import {
 import { FlexBox } from "../../common/components/flex-box";
 import { User } from "../../providers";
 import Loading from "../../common/components/loading";
+import { Pagination } from "../../common/components/pagination";
 
 export const UserList = () => {
   return (
-    <List resource="user">
+    <List pagination={<Pagination />} resource="user">
       <UserListContent />
     </List>
   );

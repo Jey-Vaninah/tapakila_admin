@@ -20,12 +20,14 @@ import {
 } from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
+import { Pagination } from "../../common/components/pagination";
 
 export const EventList = () => {
   return (
     <List
       actions={false}
       component="div"
+      pagination={<Pagination />}
       sx={{
         backgroundColor: "#f5f5f5",
       }}
@@ -82,7 +84,7 @@ const EventListContent = () => {
         />
       </Box>
       <Paper elevation={3} sx={{ padding: 2, backgroundColor: "white" }}>
-        <Box sx={{}}>
+        <Box>
           <Typography variant="h6" fontWeight="bold" gutterBottom>
             All Events
           </Typography>

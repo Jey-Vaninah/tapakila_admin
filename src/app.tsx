@@ -11,6 +11,7 @@ import {
   Sell as SellIcon,
   ManageAccounts as ManageAccountsIcon,
   Category as CategoryIcon,
+  Apartment as ApartmentIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -63,6 +64,10 @@ import { RoleList } from "./operations/role/role-list";
 import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
 import "./assets/css/index.css";
+import { EventHallCreate } from "./operations/eventHall/eventHall-create";
+import { EventHallEdit } from "./operations/eventHall/eventHall-edit";
+import { EventHallList } from "./operations/eventHall/eventHall-list";
+import { EventHallShow } from "./operations/eventHall/eventHall-show";
 
 export const App = () => {
   return (
@@ -165,6 +170,14 @@ export const App = () => {
         show={RoleShow}
         edit={RoleEdit}
         create={RoleCreate}
+      />
+      <Resource
+        name="eventHall"
+        icon={ApartmentIcon}
+        list={EventHallList}
+        show={EventHallShow}
+        edit={EventHallEdit}
+        create={EventHallCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

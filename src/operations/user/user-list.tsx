@@ -12,10 +12,11 @@ import {
 import { FlexBox } from "../../common/components/flex-box";
 import { User } from "../../providers";
 import Loading from "../../common/components/loading";
+import { Pagination } from "../../common/components/pagination";
 
 export const UserList = () => {
   return (
-    <List resource="user">
+    <List pagination={<Pagination />} resource="user">
       <UserListContent />
     </List>
   );
@@ -53,8 +54,8 @@ const UserListContent = () => {
       <FunctionField
         label="Role"
         render={(user: User) => {
-			return user?.role.title;
-		  }}
+          return user?.role.title;
+        }}
       />
       <FunctionField
         label="Country"

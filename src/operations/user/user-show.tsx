@@ -1,4 +1,11 @@
-import { Avatar, Box, Card, CardContent, Divider, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Typography,
+} from "@mui/material";
 import {
   DateField,
   EmailField,
@@ -11,8 +18,11 @@ import { User } from "../../providers";
 
 export const UserShow = () => (
   <Show>
-    <Box display="flex" gap={3} sx={{ flexDirection: { xs: "column", md: "row" } }}>
-
+    <Box
+      display="flex"
+      gap={3}
+      sx={{ flexDirection: { xs: "column", md: "row" } }}
+    >
       {/* Profile Section */}
       <Card sx={{ minWidth: 280, textAlign: "center", p: 2 }}>
         <CardContent>
@@ -32,11 +42,17 @@ export const UserShow = () => (
           <Divider sx={{ my: 2 }} />
           <Typography variant="body1">
             <strong>Role:</strong>{" "}
-            <FunctionField label="Role" render={(user: User) => user?.role.title} />
+            <FunctionField
+              label="Role"
+              render={(user: User) => user?.role.title}
+            />
           </Typography>
           <Typography variant="body1">
             <strong>Country:</strong>{" "}
-            <FunctionField label="Country" render={(user: User) => user?.country.name} />
+            <FunctionField
+              label="Country"
+              render={(user: User) => user?.country.name}
+            />
           </Typography>
         </CardContent>
       </Card>
@@ -55,14 +71,17 @@ export const UserShow = () => (
             <Typography variant="h6" gutterBottom>
               Account Details
             </Typography>
-            <DateField source="emailVerifiedAt" label="Email Verified At" showTime />
+            <DateField
+              source="emailVerifiedAt"
+              label="Email Verified At"
+              showTime
+            />
             <DateField source="createAt" label="Created At" showTime />
             <DateField source="updatedAt" label="Updated At" showTime />
             <DateField source="deletedAt" label="Deleted At" showTime />
           </SimpleShowLayout>
         </CardContent>
       </Card>
-
     </Box>
   </Show>
 );

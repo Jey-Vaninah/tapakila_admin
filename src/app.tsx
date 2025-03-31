@@ -11,6 +11,7 @@ import {
   Sell as SellIcon,
   ManageAccounts as ManageAccountsIcon,
   Category as CategoryIcon,
+  Home as HomeIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -63,11 +64,13 @@ import { RoleList } from "./operations/role/role-list";
 import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
 import "./assets/css/index.css";
+import { HomePage } from "./operations/home/home-page";
 
 export const App = () => {
   return (
     <Admin
       requireAuth
+      dashboard={HomePage}
       layout={Layout}
       loginPage={<LoginPage />}
       title="Tapakila Admin"
@@ -158,6 +161,7 @@ export const App = () => {
         edit={TicketTypeEdit}
         create={TicketTypeCreate}
       />
+      <Resource name="home" icon={HomeIcon} />
       <Resource
         name="role"
         icon={ManageAccountsIcon}

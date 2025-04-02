@@ -7,14 +7,17 @@ import {
   EditButton,
   useListContext,
   DateField,
-  CreateButton,
+  Button,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
 import { Box, Paper, Typography } from "@mui/material";
 import { Pagination } from "../../common/components/pagination";
+import useStore from '../../common/utils/useStore.ts';
+import BasicModal from "../../common/components/BasicModal";
 
 export const RoleList = () => {
+  const {isOpen, openButton, closeButton} = useStore();
   return (
     <>
       <FlexBox sx={{ justifyContent: "space-between", mb: 5 }}>
@@ -24,11 +27,15 @@ export const RoleList = () => {
         >
           Roles
         </Typography>
-        <CreateButton
+
+        <Button
           resource="role"
-          label=" Add Role"
+          label=" + Add Role"
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
+          onClick={openButton}
         />
+
+        <BasicModal isOpen={isOpen} onClose={closeButton}/>
       </FlexBox>
       <List resource="role" pagination={<Pagination />} actions={false}>
         <RoleListContent />

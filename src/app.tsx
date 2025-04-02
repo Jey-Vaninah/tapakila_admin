@@ -59,8 +59,6 @@ import { TicketTypeList } from "./operations/ticketType/ticketType-list";
 import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
 import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
 import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
-import { RoleCreate } from "./operations/role/role-create";
-import { RoleEdit } from "./operations/role/role-edit";
 import { RoleList } from "./operations/role/role-list";
 import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
@@ -172,8 +170,6 @@ export const App = () => {
         icon={ManageAccountsIcon}
         list={RoleList}
         show={RoleShow}
-        edit={RoleEdit}
-        create={RoleCreate}
       />
       <Resource
         name="eventHall"

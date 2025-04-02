@@ -2,17 +2,23 @@ import {
   Notifications as NotificationsIcon,
   Search as SearchIcon,
 } from "@mui/icons-material";
-import { Badge, Box, Avatar, Typography } from "@mui/material";
+import { Badge, Box, Avatar, Typography, Button } from "@mui/material";
 import { FC } from "react";
 import { IconButtonWithTooltip, useSidebarState } from "react-admin";
 import { useTheme } from "@mui/material/styles";
 import { FlexBox } from "../common/components/flex-box";
-import profileImage from "../assets/images/profile.png";
+import { useNavigate } from 'react-router-dom';
+import { useProfile } from "../config/useProfile";
 
 export const AppBar: FC = () => {
   const theme = useTheme();
   const [isSiderBarOpen] = useSidebarState();
-
+  const navigate = useNavigate();
+  const user = useProfile();
+  
+  const handleClick = () => {
+    navigate('/profile');
+  };
   return (
     <Box
       sx={{
@@ -63,18 +69,20 @@ export const AppBar: FC = () => {
             <NotificationsIcon />
           </Badge>
         </IconButtonWithTooltip>
-        <FlexBox sx={{ gap: 2 }}>
+          <Button onClick={handleClick} sx={{ textAlign: 'left', minWidth: 0 }}>
+        <FlexBox sx={{ gap: 2, alignItems: "center"}}>
           <Avatar
-            sx={{ width: "40px", height: "40px", mb: 1 }}
-            src={profileImage}
+            sx={{ width: "40px", height: "40px"}}
+            src={user?.imageUrl}
           />
-          <Box>
-            <Typography sx={{ fontWeight: "bold" }}>Jey Vaninah</Typography>
-            <Typography variant="body2" sx={{ opacity: 0.7 }}>
-              hei.vaninah@gmail.com
+            <Box>
+            <Typography sx={{ fontWeight: "bold", textTransform:"none" }}>{user?.name}</Typography>
+            <Typography variant="body2" sx={{ opacity: 0.7, textTransform:"none" }}>
+              {user?.email}
             </Typography>
           </Box>
         </FlexBox>
+          </Button> 
       </Box>
     </Box>
   );

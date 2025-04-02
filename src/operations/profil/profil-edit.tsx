@@ -6,31 +6,32 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDataProvider, useNotify } from "react-admin";
 import { useForm } from "react-hook-form";
-import { User } from "../../providers/types";
 import { useRedirect } from "react-admin";
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
+import { useProfile } from "../../config/useProfile";
+import { User } from "../../providers/types";
+
 
 const ProfileEdit = () => {
   const redirect = useRedirect();
   const dataProvider = useDataProvider();
   const notify = useNotify();
   const { register, handleSubmit, setValue } = useForm<User>();
-  const [user, setUser] = useState<User | null>(null);
+  const user = useProfile(); // Utilisation du hook
 
   useEffect(() => {
-    dataProvider
-      .getOne("user", { id: "357d2a42-ec74-4fbd-8b1d-6ef5630696dd" })
-      .then(({ data }) => {
-        setUser(data);
-        Object.keys(data).forEach((key) =>
-          setValue(key as keyof User, data[key])
-        );
+    if (user) {
+      Object.keys(user).forEach((key) => {
+        const typedKey = key as keyof User;
+        setValue(typedKey, user[typedKey]); 
       });
-  }, [dataProvider, setValue]);
+      
+    }
+  }, [user, setValue]);
 
   const onSubmit = async (formData: User) => {
     try {
@@ -66,7 +67,6 @@ const ProfileEdit = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" gap={2}>
-        {/* Section Générale */}
         <Card sx={{ flex: 1 }}>
           <CardContent>
             <Typography variant="h6">Informations Générales</Typography>
@@ -97,7 +97,6 @@ const ProfileEdit = () => {
           </CardContent>
         </Card>
 
-        {/* Section Sécurité */}
         <Card sx={{ flex: 1 }}>
           <CardContent>
             <Typography variant="h6">Sécurité</Typography>
@@ -108,9 +107,6 @@ const ProfileEdit = () => {
               {...register("password")}
               margin="normal"
             />
-            {/* <TextField fullWidth label="Mot de passe actuel" type="password" {...register("currentPassword")} margin="normal" />
-			<TextField fullWidth label="Nouveau mot de passe" type="password" {...register("newPassword")} margin="normal" />
-			<TextField fullWidth label="Confirmer le nouveau mot de passe" type="password" {...register("confirmNewPassword")} margin="normal" /> */}
           </CardContent>
         </Card>
       </Box>

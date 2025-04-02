@@ -1,5 +1,5 @@
 import { Typography, Avatar, Button, Box } from "@mui/material";
-import { useRedirect, useGetList } from "react-admin";
+import { useRedirect } from "react-admin";
 
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
@@ -10,11 +10,12 @@ import {
   Place as PlaceIcone,
 } from "@mui/icons-material";
 
+import { useProfile } from "../../config/useProfile";
+
 const ProfilePage = () => {
   const redirect = useRedirect();
-  const { data: users = [] } = useGetList("user");
+  const user = useProfile();
 
-  const user = users[0];
   if (!user)
     return (
       <FlexBox
@@ -84,10 +85,15 @@ const ProfilePage = () => {
           paddingTop: 3,
         }}
       >
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-          {user.name} <br />
-          {user.username}
-        </Typography>
+        <Box>
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            {user.name}
+          </Typography>
+          <Typography variant="h5">
+            {user.email}
+          </Typography>
+        </Box>
+        
 
         <Button
           variant="contained"

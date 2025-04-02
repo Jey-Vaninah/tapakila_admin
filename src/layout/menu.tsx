@@ -86,7 +86,7 @@ export const Menu: FC = () => {
         pl: isSiderBarOpen ? 1 : "5px",
       }}
     >
-      <Box>
+      <Box>Logout
         <FlexBox
           sx={{
             "& *": { ".MuiSvgIcon-root": { color: "gray" } },

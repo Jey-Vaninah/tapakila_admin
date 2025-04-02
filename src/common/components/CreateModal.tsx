@@ -16,7 +16,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-export default function BasicModal({ isOpen, onClose }: ModalProps) {
+export default function CreateModal({ isOpen, onClose }: ModalProps) {
   const [title, setTitle] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

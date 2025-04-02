@@ -4,20 +4,41 @@ import {
   TextField,
   FunctionField,
   DeleteButton,
-  EditButton,
   useListContext,
   DateField,
   Button,
+  EditButton,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
 import { Box, Paper, Typography } from "@mui/material";
 import { Pagination } from "../../common/components/pagination";
-import useStore from '../../common/utils/useStore.ts';
-import BasicModal from "../../common/components/BasicModal";
+import useStore from "../../common/utils/useStore.ts";
+import BasicModal from "../../common/components/CreateModal.tsx";
+import EditModal from "../../common/components/EditModal.tsx";
+import { useState } from "react";
+
+interface Role {
+  id: string;
+  title: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
 
 export const RoleList = () => {
-  const {isOpen, openButton, closeButton} = useStore();
+  const { isOpen, openButton, closeButton } = useStore();
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+
+  const handleEditClick = (role: Role) => {
+    setSelectedRole(role);
+    setEditModalOpen(true);
+  };
+
+  const handleEditSuccess = () => {
+    setEditModalOpen(false);
+  };
+
   return (
     <>
       <FlexBox sx={{ justifyContent: "space-between", mb: 5 }}>
@@ -35,16 +56,26 @@ export const RoleList = () => {
           onClick={openButton}
         />
 
-        <BasicModal isOpen={isOpen} onClose={closeButton}/>
+        <BasicModal isOpen={isOpen} onClose={closeButton} />
+        <EditModal
+          isOpen={editModalOpen}
+          onClose={() => setEditModalOpen(false)}
+          roleData={selectedRole}
+          onSuccess={handleEditSuccess}
+        />
       </FlexBox>
       <List resource="role" pagination={<Pagination />} actions={false}>
-        <RoleListContent />
+        <RoleListContent onEditClick={handleEditClick} />
       </List>
     </>
   );
 };
 
-const RoleListContent = () => {
+interface RoleListContentProps {
+  onEditClick: (role: Role) => void;
+}
+
+const RoleListContent = ({ onEditClick }: RoleListContentProps) => {
   const { isLoading } = useListContext();
 
   if (isLoading) {
@@ -79,11 +110,18 @@ const RoleListContent = () => {
           <DateField source="updatedAt" label="Updated date" />
           <FunctionField
             label="Actions"
-            render={() => {
+            render={(record: Role) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton />
+                  {/* Replace EditButton with custom button */}
+                  <EditButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onEditClick(record);
+                    }}
+                  />
                 </FlexBox>
               );
             }}

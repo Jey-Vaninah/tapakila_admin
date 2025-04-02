@@ -31,7 +31,6 @@ import { TicketEdit } from "./operations/ticket/ticket-edit";
 import { TicketList } from "./operations/ticket/ticket-list";
 import { TicketShow } from "./operations/ticket/ticket-show";
 import { Layout } from "./layout/layout";
-import { LoginPage } from "./security/components/login-page";
 import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
 import { CurrencyList } from "./operations/currency/currency-list";
@@ -70,6 +69,8 @@ import { EventHallCreate } from "./operations/eventHall/eventHall-create";
 import { EventHallEdit } from "./operations/eventHall/eventHall-edit";
 import { EventHallList } from "./operations/eventHall/eventHall-list";
 import { EventHallShow } from "./operations/eventHall/eventHall-show";
+import { Login } from "./security/components/login";
+
 
 export const App = () => {
   return (
@@ -77,7 +78,7 @@ export const App = () => {
       requireAuth
       dashboard={HomePage}
       layout={Layout}
-      loginPage={<LoginPage />}
+      loginPage={<Login />}
       title="Tapakila Admin"
       dataProvider={dataProvider}
       authProvider={authProvider}

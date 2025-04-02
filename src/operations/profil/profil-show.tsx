@@ -1,31 +1,20 @@
-import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Avatar,
-  Button,
-  Box,
-  Icon,
-} from "@mui/material";
-import { useRedirect, useDataProvider } from "react-admin";
-import { User } from "../../providers/types";
+import { Typography, Avatar, Button, Box } from "@mui/material";
+import { useRedirect } from "react-admin";
+
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
-import { Person as PersonIcon } from "@mui/icons-material";
+import {
+  Email as EmailIcon,
+  Person as PersonIcon,
+  Phone as PhoneIcone,
+  Place as PlaceIcone,
+} from "@mui/icons-material";
+
+import { useProfile } from "../../config/useProfile";
 
 const ProfilePage = () => {
   const redirect = useRedirect();
-  const dataProvider = useDataProvider();
-  const userId = "552648f0-e00d-4724-ac24-9c4d4b0c6d7e"; // Supposons que l"utilisateur actuel est "1"
-
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    dataProvider
-      .getOne("user", { id: userId })
-      .then(({ data }) => setUser(data));
-  }, [dataProvider]);
+  const user = useProfile();
 
   if (!user)
     return (
@@ -46,7 +35,6 @@ const ProfilePage = () => {
     <>
       <Box
         sx={{
-          bgcolor: "red",
           width: "100%",
           height: "35vh",
           position: "relative",
@@ -62,11 +50,11 @@ const ProfilePage = () => {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)", // Ajuste le positionnement pour centrer parfaitement
+            transform: "translate(-50%, -50%)",
             fontWeight: "bold",
             fontSize: "3rem",
-            color: "white", // Couleur du texte
-            textAlign: "center", // Centrer le texte
+            color: "white",
+            textAlign: "center",
           }}
         >
           Welcome to Tapak'ila
@@ -97,10 +85,15 @@ const ProfilePage = () => {
           paddingTop: 3,
         }}
       >
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-          {user.name} <br />
-          {user.username}
-        </Typography>
+        <Box>
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            {user.name}
+          </Typography>
+          <Typography variant="h5">
+            {user.email}
+          </Typography>
+        </Box>
+        
 
         <Button
           variant="contained"
@@ -158,7 +151,11 @@ const ProfilePage = () => {
                 boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <Typography sx={{ fontWeight: "bold" }}>Coordonnée</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", color: "rgb(43, 200, 190) " }}
+              >
+                Coordonnée
+              </Typography>
               <Box
                 sx={{
                   height: "1px",
@@ -172,12 +169,13 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "0.1px solid black ",
+                    bgcolor: "rgb(43, 200, 190)",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <EmailIcon sx={{ fontSize: 30, color: "black " }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -193,18 +191,18 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PhoneIcone sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Number
                   </Typography>
-                  {user.email}
+                  0345933238
                 </Box>
               </FlexBox>
             </Box>
@@ -232,18 +230,18 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PlaceIcone sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Adress
                   </Typography>
-                  {user.email}
+                  Andakana 232
                 </Box>
               </FlexBox>
 
@@ -253,12 +251,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -292,12 +290,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "blackwhite" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -312,12 +310,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -335,12 +333,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -355,12 +353,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -378,12 +376,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -398,12 +396,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -421,12 +419,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -441,12 +439,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -464,12 +462,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
@@ -484,12 +482,12 @@ const ProfilePage = () => {
                     borderRadius: "50%",
                     width: 50,
                     height: 50,
-                    bgcolor: "grey",
                     justifyContent: "center",
                     alignItems: "center",
+                    border: "2px solid rgb(43, 200, 190) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "white" }} />
+                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>

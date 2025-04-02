@@ -1,11 +1,8 @@
-export enum RoleEnum {
-  USER = "Organizer",
-  ADMIN_EVENTS = "Admin",
-}
-
 export type Role = {
   id: string;
-  title: RoleEnum;
+  title: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type Country = {
@@ -24,18 +21,11 @@ export type User = {
   password: string;
   imageUrl: string;
   country: Country;
-  createAt: Date;
+  createdAt: Date;
   updatedAat: Date;
   deletedAt: Date | null;
-  roleId: Role;
+  role: Role;
 };
-
-export enum Status {
-  DRAFT = "DRAFT",
-  PUBLISHED = "PUBLISHED",
-  CANCELED = "CANCELED",
-  EVENT = "EVENT",
-}
 
 export type EventHall = {
   id: string;
@@ -70,8 +60,8 @@ export type Tag = {
 
 export type Event = {
   id: string;
-  eventHallId: EventHall;
-  hostId: Host;
+  eventHall: EventHall;
+  host: Host;
   user: User;
   title: string;
   slug: string;
@@ -83,6 +73,7 @@ export type Event = {
   ageLimit: string;
   createdAt: Date;
   updatedAt: Date;
+  eventImage: string;
 };
 
 export type Currency = {
@@ -95,7 +86,7 @@ export type Currency = {
 
 export type TicketType = {
   id: string;
-  eventId: Event;
+  event: Event;
   title: string;
   slug: string;
   description: string;
@@ -108,14 +99,14 @@ export type TicketType = {
 
 export type Ticket = {
   id: string;
-  eventId: Event;
+  event: Event;
   ticketType: TicketType;
   user: User;
   ticketNumber: string;
   amountPaid: number;
   currency: Currency;
   paymentConfirmed: boolean;
-  createAt: Date;
+  createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 };
@@ -129,7 +120,7 @@ export type Edit = {
   password: string;
   imageUrl: string;
   country: Country;
-  createAt: Date;
+  createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
   role: Role;

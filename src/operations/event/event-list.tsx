@@ -1,24 +1,41 @@
-import { CalendarToday, LocationOn, AccessTime } from "@mui/icons-material";
 import {
   List,
   useListContext,
+  CreateButton,
   ShowButton,
-  EditButton,
   DeleteButton,
+  EditButton,
 } from "react-admin";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Chip,
+} from "@mui/material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
-import EventLineChart from "./components/event-chart";
+import { Pagination } from "../../common/components/pagination";
 
 export const EventList = () => {
   return (
-    <List>
+    <List
+      actions={false}
+      component="div"
+      pagination={<Pagination />}
+      sx={{
+        backgroundColor: "#f5f5f5",
+      }}
+    >
       <EventListContent />
     </List>
   );
 };
-
 const EventListContent = () => {
   const { isLoading, data = [] } = useListContext();
 
@@ -39,141 +56,113 @@ const EventListContent = () => {
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "start",
-        gap: 2,
-        padding: 2,
-        backgroundColor: "background.default",
-      }}
-    >
-      {!isLoading && (
-        <>
-          <EventLineChart events={data} />
-          {data.map((record) => (
-            <EventCard key={record.id} event={record} />
-          ))}
-        </>
-      )}
-    </Box>
-  );
-};
-
-interface EventCardProps {
-  event: any;
-  className?: string;
-}
-
-const EventCard = ({ event, className }: EventCardProps) => {
-  const { slug, title, startDate, startTime, eventHallId, hostId, userId } =
-    event;
-
-  return (
-    <Card
-      className={className}
-      sx={{
-        "width": 380,
-        "margin": 2,
-        "&:hover": {
-          boxShadow: 6,
-        },
-        "position": "relative",
-      }}
-    >
+    <>
       <Box
         sx={{
-          position: "relative",
-          width: "100%",
-          paddingTop: "56.25%", // 16:9 aspect ratio
-          overflow: "hidden",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 2,
         }}
       >
-        <img
-          src="/src/assets/images/42.jpg"
-          alt={title}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            transition: "transform 0.3s",
+        <Box>
+          <Typography variant="h5" fontWeight="bold">
+            Events
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Manage your events
+          </Typography>
+        </Box>
+        <CreateButton
+          label="Add Event"
+          sx={{
+            "padding": 1,
+            "backgroundColor": "#07e9d4",
+            "color": "white",
+            "&:hover": { backgroundColor: "#00C49F" },
           }}
-          loading="lazy"
         />
       </Box>
-
-      <Box
-        sx={{
-          position: "absolute",
-          top: 16,
-          left: 16,
-          backgroundColor: "primary.main",
-          color: "primary.contrastText",
-          padding: "4px 12px",
-          borderRadius: "16px",
-          fontSize: "0.75rem",
-          fontWeight: "medium",
-        }}
-      >
-        {slug}
-      </Box>
-      <CardContent>
-        <Typography variant="h5" component="div" gutterBottom>
-          {title}
-        </Typography>
-
-        <Box sx={{ mb: 2 }}>
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <CalendarToday sx={{ mr: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              {startDate}
-            </Typography>
-          </Box>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <AccessTime sx={{ mr: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              {startTime}
-            </Typography>
-          </Box>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <LocationOn sx={{ mr: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              {eventHallId?.name || "N/A"}
-            </Typography>
-          </Box>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
-              Host:
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {hostId?.name || "N/A"}
-            </Typography>
-          </Box>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
-              User:
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {userId?.name || "N/A"}
-            </Typography>
-          </Box>
+      <Paper elevation={3} sx={{ padding: 2, backgroundColor: "white" }}>
+        <Box>
+          <Typography variant="h6" fontWeight="bold" gutterBottom>
+            All Events
+          </Typography>
+          <Typography variant="body2" color="text.secondary" gutterBottom>
+            View and manage all events
+          </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <ShowButton record={event} />
-          <EditButton record={event} />
-          <DeleteButton record={event} />
-        </Box>
-      </CardContent>
-    </Card>
+        <TableContainer sx={{ padding: 2 }}>
+          <Table sx={{ border: "1px solid #e0e0e0" }}>
+            <TableHead sx={{ backgroundColor: "#f9fafb" }}>
+              <TableRow>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  Event
+                </TableCell>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>Slug</TableCell>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  Venue
+                </TableCell>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>Host</TableCell>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>Date</TableCell>
+                <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  Actions
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((record) => (
+                <TableRow key={record.id}>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={record.eventImage}
+                        alt={record.title}
+                        style={{
+                          width: 75,
+                          height: 50,
+                          marginRight: 10,
+                          objectFit: "cover",
+                        }}
+                      />
+                      <Box>
+                        <Typography variant="body1">{record.title}</Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {record.startDate}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <Chip
+                      label={record.slug}
+                      color={
+                        record.slug === "published" ? "success" : "default"
+                      }
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    {record.eventHall?.name}
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    {record.host?.name}
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    {record.startDate}
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <ShowButton sx={{ marginLeft: 2 }} record={record} />
+                    <EditButton sx={{ marginLeft: 2 }} record={record} />
+                    <DeleteButton sx={{ marginLeft: 2 }} record={record} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+    </>
   );
 };

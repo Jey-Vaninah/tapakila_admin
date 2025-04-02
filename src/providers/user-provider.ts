@@ -14,10 +14,12 @@ export const userProvider: ResourceProvider<User> = {
       .then((response) => response.data),
   saveOrUpdate: async ({ meta, data }) => {
     if (meta?.mutationType === "CREATE") {
+      console.log(data);
       return getAxiosInstance()
         .post<User>("/users/", data)
         .then((response) => response.data);
     } else {
+      console.log(data);
       return getAxiosInstance()
         .put<User>("/users/", data)
         .then((response) => response.data);

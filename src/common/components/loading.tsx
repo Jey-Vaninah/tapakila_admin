@@ -11,7 +11,7 @@ const Loading: React.FC = () => {
           clearInterval(interval);
           return 99;
         }
-        return oldProgress + 5;
+        return oldProgress + 1;
       });
     }, 100);
 

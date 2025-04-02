@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { FlexBox } from "../../common/components/flex-box";
 import { Box, Typography } from "@mui/material";
 import {
@@ -10,11 +10,26 @@ import {
   TextInput,
   Toolbar,
   useLogin,
+  useNotify,
 } from "react-admin";
 import { Google as GoogleIcon } from "@mui/icons-material";
 
 export const LoginPage: FC = () => {
   const login = useLogin();
+  const notify = useNotify();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (data: any) => {
+    try {
+      setIsLoading(true);
+      await login(data);
+    } catch (error) {
+      console.error("Login error:", error);
+      notify("Authentication error", { type: "error" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <FlexBox
@@ -30,7 +45,7 @@ export const LoginPage: FC = () => {
       >
         <FlexBox
           sx={{
-            bgcolor: "rgb(20, 61, 24)",
+            bgcolor: "#1976d2",
             flexDirection: "column",
             borderRadius: "10px",
             p: 4,
@@ -41,13 +56,12 @@ export const LoginPage: FC = () => {
             Welcome Back
           </Typography>
           <Typography sx={{ color: "white" }}>
-            Login to continue yourjourney
+            Login to continue your journey
           </Typography>
           <Button
             size="medium"
-            label="Registre"
-            sx={{ textTransform: "none" }}
-            color="success"
+            label="Register"
+            sx={{ textTransform: "none", bgcolor: "white", color: "black" }}
             variant="contained"
           />
         </FlexBox>
@@ -59,12 +73,11 @@ export const LoginPage: FC = () => {
             p: 4,
           }}
         >
-          <Typography sx={{ fontWeight: "bold" }} variant="h4" color="success">
+          <Typography sx={{ fontWeight: "bold" }} variant="h4" color="primary">
             Login
           </Typography>
           <Typography sx={{ color: "gray" }}>
-            {" "}
-            Login to continue yourjourney
+            Login to continue your journey
           </Typography>
           <FlexBox sx={{ gap: "5px" }}>
             <Box
@@ -94,46 +107,46 @@ export const LoginPage: FC = () => {
           </FlexBox>
           <SimpleForm
             disableInvalidFormNotification
-            onSubmit={(data: any) => {
-              login(data);
-            }}
+            onSubmit={handleSubmit}
             toolbar={
               <Toolbar sx={{ gap: 2 }}>
                 <Button
                   type="submit"
                   size="medium"
                   sx={{ textTransform: "none" }}
-                  color="success"
+                  color="primary"
                   label="Login"
+                  loading={isLoading}
                   variant="contained"
                 />
                 <Typography>Or</Typography>
                 <Button
                   size="medium"
                   sx={{ textTransform: "none" }}
-                  color="success"
+                  color="primary"
                   label="Login with Google"
                   variant="outlined"
                   startIcon={<GoogleIcon />}
+                  loading={isLoading}
                 />
               </Toolbar>
             }
           >
             <TextInput
               validate={[required("This field is required")]}
-              color="success"
+              color="primary"
               source="username"
               label="Username"
             />
             <PasswordInput
               validate={[required("This field is required")]}
-              color="success"
+              color="primary"
               source="password"
               label="Password"
             />
             <FlexBox>
               <BooleanInput
-                color="success"
+                color="primary"
                 source="remember"
                 label="Remember me"
               />

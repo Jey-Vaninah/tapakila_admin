@@ -9,6 +9,10 @@ import {
   Public as PublicIcon,
   Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
+  ManageAccounts as ManageAccountsIcon,
+  Category as CategoryIcon,
+  Home as HomeIcon,
+  Apartment as ApartmentIcon,
 } from "@mui/icons-material";
 import { Route } from "react-router-dom";
 
@@ -50,11 +54,28 @@ import { NewsletterCreate } from "./operations/newsletter/newsletter-create";
 import { NewsletterEdit } from "./operations/newsletter/newsletter-edit";
 import { NewsletterList } from "./operations/newsletter/newsletter-list";
 import { NewsletterShow } from "./operations/newsletter/newsletter-show";
+import EventTickets from "./operations/event/EventTickets";
+import { TicketTypeList } from "./operations/ticketType/ticketType-list";
+import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
+import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
+import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
+import { RoleCreate } from "./operations/role/role-create";
+import { RoleEdit } from "./operations/role/role-edit";
+import { RoleList } from "./operations/role/role-list";
+import { RoleShow } from "./operations/role/role-show";
+import TicketTypeTickets from "./operations/event/TicketTypeTickets";
+import "./assets/css/index.css";
+import { HomePage } from "./operations/home/home-page";
+import { EventHallCreate } from "./operations/eventHall/eventHall-create";
+import { EventHallEdit } from "./operations/eventHall/eventHall-edit";
+import { EventHallList } from "./operations/eventHall/eventHall-list";
+import { EventHallShow } from "./operations/eventHall/eventHall-show";
 
 export const App = () => {
   return (
     <Admin
       requireAuth
+      dashboard={HomePage}
       layout={Layout}
       loginPage={<LoginPage />}
       title="Tapakila Admin"
@@ -137,9 +158,42 @@ export const App = () => {
         edit={NewsletterEdit}
         create={NewsletterCreate}
       />
+      <Resource
+        name="typeTicket"
+        icon={CategoryIcon}
+        list={TicketTypeList}
+        show={TicketTypeShow}
+        edit={TicketTypeEdit}
+        create={TicketTypeCreate}
+      />
+      <Resource name="home" icon={HomeIcon} />
+      <Resource
+        name="role"
+        icon={ManageAccountsIcon}
+        list={RoleList}
+        show={RoleShow}
+        edit={RoleEdit}
+        create={RoleCreate}
+      />
+      <Resource
+        name="eventHall"
+        icon={ApartmentIcon}
+        list={EventHallList}
+        show={EventHallShow}
+        edit={EventHallEdit}
+        create={EventHallCreate}
+      />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route
+          path="/ticketTypes/eventId/:eventId"
+          element={<EventTickets />}
+        />
+        <Route
+          path="/tickets/ticketTypeId/:ticketTypeId"
+          element={<TicketTypeTickets />}
+        />
       </CustomRoutes>
     </Admin>
   );

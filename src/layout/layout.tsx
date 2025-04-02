@@ -2,23 +2,34 @@ import { Box } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { Menu } from "./menu";
 import { AppBar } from "./appbar";
-import { useTheme } from "react-admin";
+import { useSidebarState } from "react-admin";
 
 export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme] = useTheme();
-
+  const [isSiderBarOpen] = useSidebarState();
   return (
     <Box
       sx={{
         width: "100%",
         height: "100vh",
         overflowY: "scroll",
-        bgcolor: theme === "dark" ? "#383838" : "#f3f3f3",
+        bgcolor: "#f9fafb",
       }}
     >
       <Menu />
       <AppBar />
-      <Box sx={{ width: "calc(100% - 300px)", ml: "300px", p: 2 }}>
+      <Box
+        sx={{
+          "width": isSiderBarOpen ? "calc(100% - 300px)" : "calc(100% - 65px)",
+          "ml": isSiderBarOpen ? "300px" : "65px",
+          "transition": "all linear .2s",
+          "py": 2,
+          "pr": 3,
+          "px": isSiderBarOpen ? undefined : 2,
+          "& .list-page": {
+            bgcolor: "transparent",
+          },
+        }}
+      >
         {children}
       </Box>
     </Box>

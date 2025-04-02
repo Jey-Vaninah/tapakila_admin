@@ -44,8 +44,6 @@ import { HostEdit } from "./operations/host/host-edit";
 import { HostCreate } from "./operations/host/host-create";
 import { CountryList } from "./operations/country/county-list";
 import { CountryShow } from "./operations/country/country-show";
-import { CountryEdit } from "./operations/country/county-edit";
-import { CountryCreate } from "./operations/country/country-create";
 import { TagList } from "./operations/tag/tag-list";
 import { TagShow } from "./operations/tag/tag-show";
 import { NewsletterCreate } from "./operations/newsletter/newsletter-create";
@@ -135,8 +133,7 @@ export const App = () => {
         icon={PublicIcon}
         list={CountryList}
         show={CountryShow}
-        edit={CountryEdit}
-        create={CountryCreate}
+        
       />
       <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
       <Resource

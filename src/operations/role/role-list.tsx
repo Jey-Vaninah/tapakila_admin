@@ -14,8 +14,8 @@ import Loading from "../../common/components/loading";
 import { Box, Paper, Typography } from "@mui/material";
 import { Pagination } from "../../common/components/pagination";
 import useStore from "../../common/utils/useStore.ts";
-import BasicModal from "../../common/components/CreateModal.tsx";
-import EditModal from "../../common/components/EditModal.tsx";
+import BasicModal from "./CreateModal.tsx";
+import EditModal from "./EditModal.tsx";
 import { useState } from "react";
 
 interface Role {

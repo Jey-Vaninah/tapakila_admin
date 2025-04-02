@@ -20,7 +20,7 @@ export const roleProvider: ResourceProvider<Role> = {
         .then((response) => response.data);
     } else {
       return getAxiosInstance()
-      .put<Role>(`/roles/${data.id}`, data)
+      .put<Role>(`/roles/`, data)
         .then((response) => response.data);
     }
   },

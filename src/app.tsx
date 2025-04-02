@@ -46,8 +46,6 @@ import { CountryList } from "./operations/country/county-list";
 import { CountryShow } from "./operations/country/country-show";
 import { CountryEdit } from "./operations/country/county-edit";
 import { CountryCreate } from "./operations/country/country-create";
-import { TagCreate } from "./operations/tag/tag-create";
-import { TagEdit } from "./operations/tag/tag-edit";
 import { TagList } from "./operations/tag/tag-list";
 import { TagShow } from "./operations/tag/tag-show";
 import { NewsletterCreate } from "./operations/newsletter/newsletter-create";
@@ -140,14 +138,7 @@ export const App = () => {
         edit={CountryEdit}
         create={CountryCreate}
       />
-      <Resource
-        name="tag"
-        icon={SellIcon}
-        list={TagList}
-        show={TagShow}
-        edit={TagEdit}
-        create={TagCreate}
-      />
+      <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
       <Resource
         name="newsletter"
         icon={SubscriptionsIcon}

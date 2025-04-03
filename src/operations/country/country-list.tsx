@@ -10,10 +10,10 @@ import {
   EditButton,
   useRefresh,
 } from "react-admin";
-import { FlexBox } from "../../common/components/flex-box";
-import Loading from "../../common/components/loading";
+import { FlexBox } from "../../common/components/flex-box.tsx";
+import Loading from "../../common/components/loading.tsx";
 import { Box, Paper, Typography } from "@mui/material";
-import { Pagination } from "../../common/components/pagination";
+import { Pagination } from "../../common/components/pagination.tsx";
 import useStore from "../../common/utils/useStore.ts";
 import CreateModal from "./CreateModal.tsx";
 import EditModal from "./EditModal.tsx";
@@ -104,8 +104,6 @@ const CountryListContent = ({ onEditClick }: CountryListContentProps) => {
           sx={{ border: "2px solid rgba(0,0,0,.1)", mt: 5 }}
         >
           <TextField source="name" label="Name" />
-          <TextField source="countryCode" label="Country Code" />
-          <TextField source="phoneCode" label="Phone Code" />
           <DateField source="createdAt" label="Creation date" />
           <DateField source="updatedAt" label="Updated date" />
           <FunctionField

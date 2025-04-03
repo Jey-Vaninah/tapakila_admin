@@ -23,7 +23,7 @@ const validateTimeFormat = (value: string) => {
 };
 
 export const EventCreate = () => {
-  const { data: eventHalls = [] } = useGetList("eventHall");
+  const { data: eventHalls = [] } = useGetList("venue");
   const { data: hosts = [] } = useGetList("host");
   const { data: users = [] } = useGetList("user");
   const { data: tags = [] } = useGetList("tag");

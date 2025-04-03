@@ -4,7 +4,7 @@ import { eventProvider } from "./event-provider";
 import { ticketProvider } from "./ticket-provider";
 import { currencyProvider } from "./currency-provider";
 import { hostProvider } from "./host-provider";
-import { eventHallProvider } from "./eventHall-provider";
+import { eventHallProvider } from "./venue-provider";
 import { countryProvider } from "./counrty-provider";
 import { tagProvider } from "./tag-provider";
 import { newsletterProvider } from "./newsletter-provider";

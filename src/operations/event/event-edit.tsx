@@ -82,7 +82,7 @@ const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
 };
 
 export const EventEdit = () => {
-  const { data: eventHalls = [] } = useGetList("eventHall");
+  const { data: eventHalls = [] } = useGetList("venue");
   const { data: tags = [] } = useGetList("tag");
 
   const { imageUrl, handleImageUpload } = useImageUpload();

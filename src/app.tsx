@@ -5,7 +5,6 @@ import {
   LocalActivity as LocalActivityIcon,
   MonetizationOn as MonetizationOn,
   Gite as GiteIcon,
-  Stadium as StadiumIcon,
   Public as PublicIcon,
   Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
@@ -36,13 +35,9 @@ import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
 import { CurrencyList } from "./operations/currency/currency-list";
 import { CurrencyShow } from "./operations/currency/currency-show";
-import { CurrencyEdit } from "./operations/currency/currency-edit";
-import { CurrencyCreate } from "./operations/currency/currency-create";
 import { HostList } from "./operations/host/host-list";
 import { HostShow } from "./operations/host/host-show";
-import { HostEdit } from "./operations/host/host-edit";
-import { HostCreate } from "./operations/host/host-create";
-import { CountryList } from "./operations/country/county-list";
+import { CountryList } from "./operations/country/country-list";
 import { CountryShow } from "./operations/country/country-show";
 import { TagList } from "./operations/tag/tag-list";
 import { TagShow } from "./operations/tag/tag-show";
@@ -60,8 +55,6 @@ import { RoleShow } from "./operations/role/role-show";
 import TicketTypeTickets from "./operations/event/TicketTypeTickets";
 import "./assets/css/index.css";
 import { HomePage } from "./operations/home/home-page";
-import { EventHallCreate } from "./operations/eventHall/eventHall-create";
-import { EventHallEdit } from "./operations/eventHall/eventHall-edit";
 import { EventHallList } from "./operations/eventHall/eventHall-list";
 import { EventHallShow } from "./operations/eventHall/eventHall-show";
 
@@ -107,8 +100,6 @@ export const App = () => {
         icon={MonetizationOn}
         list={CurrencyList}
         show={CurrencyShow}
-        edit={CurrencyEdit}
-        create={CurrencyCreate}
       />
 
       <Resource
@@ -116,18 +107,8 @@ export const App = () => {
         icon={GiteIcon}
         list={HostList}
         show={HostShow}
-        edit={HostEdit}
-        create={HostCreate}
       />
 
-      <Resource
-        name="eventHall"
-        icon={StadiumIcon}
-        list={HostList}
-        show={HostShow}
-        edit={HostEdit}
-        create={HostCreate}
-      />
       <Resource
         name="country"
         icon={PublicIcon}
@@ -160,12 +141,10 @@ export const App = () => {
         show={RoleShow}
       />
       <Resource
-        name="eventHall"
+        name="venue"
         icon={ApartmentIcon}
         list={EventHallList}
         show={EventHallShow}
-        edit={EventHallEdit}
-        create={EventHallCreate}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

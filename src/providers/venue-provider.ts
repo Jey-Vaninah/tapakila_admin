@@ -3,7 +3,7 @@ import { getAxiosInstance } from "../config/axios";
 import { EventHall } from "./types";
 
 export const eventHallProvider: ResourceProvider<EventHall> = {
-  resource: "eventHall",
+  resource: "venue",
   getOne: async ({ id }) =>
     getAxiosInstance()
       .get<EventHall>("/eventHalls/" + id)
@@ -26,7 +26,7 @@ export const eventHallProvider: ResourceProvider<EventHall> = {
   },
   delete: async ({ id }) => {
     return getAxiosInstance()
-      .delete<EventHall>("/evenHalls/" + id)
+      .delete<EventHall>("/eventHalls/" + id)
       .then((response) => response.data);
   },
 };

@@ -7,14 +7,34 @@ import {
   FunctionField,
   useListContext,
   DateField,
-  CreateButton,
+  useRefresh,
+  Button,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
 import { Box, Paper, Typography } from "@mui/material";
 import { Pagination } from "../../common/components/pagination";
+import useStore from "../../common/utils/useStore";
+import { useState } from "react";
+import { Host } from "../../providers/types";
+import EditModal from "./EditModal";
+import CreateModal from "./CreateModal";
 
 export const HostList = () => {
+  const { isOpen, openButton, closeButton } = useStore();
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedHost, setSelectedHost] = useState<Host | null>(null);
+  const refresh = useRefresh();
+
+  const handleEditClick = (host: Host) => {
+    setSelectedHost(host);
+    setEditModalOpen(true);
+  };
+
+  const handleEditSuccess = () => {
+    setEditModalOpen(false);
+    refresh();
+  };
   return (
     <>
       <FlexBox sx={{ justifyContent: "space-between", mb: 5 }}>
@@ -24,20 +44,33 @@ export const HostList = () => {
         >
           All Hosts
         </Typography>
-        <CreateButton
+        <Button
           resource="host"
           label=" Add Host"
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
+          onClick={openButton}        
+        />
+        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <EditModal
+          isOpen={editModalOpen}
+          onClose={() => setEditModalOpen(false)}
+          hostData={selectedHost}
+          onSuccess={handleEditSuccess}
         />
       </FlexBox>
       <List resource="host" pagination={<Pagination />} actions={false}>
-        <HostListContent />
+        <HostListContent onEditClick={handleEditClick}/>
       </List>
     </>
   );
 };
 
-const HostListContent = () => {
+interface CountryListContentProps {
+  onEditClick: (host: Host) => void;
+}
+
+
+const HostListContent = ({ onEditClick }: CountryListContentProps) => {
   const { isLoading } = useListContext();
 
   if (isLoading) {
@@ -72,11 +105,16 @@ const HostListContent = () => {
           <DateField source="updatedAt" label="Update Date" />
           <FunctionField
             label="Actions"
-            render={() => {
+            render={(record: Host) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton />
+                  <EditButton 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onEditClick(record);
+                    }}/>
                 </FlexBox>
               );
             }}

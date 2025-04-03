@@ -8,6 +8,7 @@ import {
   DateField,
   Button,
   EditButton,
+  useRefresh,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
@@ -24,6 +25,7 @@ export const RoleList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+  const refresh = useRefresh()
 
   const handleEditClick = (role: Role) => {
     setSelectedRole(role);
@@ -32,6 +34,7 @@ export const RoleList = () => {
 
   const handleEditSuccess = () => {
     setEditModalOpen(false);
+	refresh();
   };
 
   return (
@@ -51,7 +54,7 @@ export const RoleList = () => {
           onClick={openButton}
         />
 
-        <BasicModal isOpen={isOpen} onClose={closeButton} />
+        <BasicModal isOpen={isOpen} onClose={closeButton}/>
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}

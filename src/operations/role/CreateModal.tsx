@@ -14,9 +14,10 @@ import { roleProvider } from '../../providers/role-provider';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess: () => void;
 }
 
-export default function CreateModal({ isOpen, onClose }: ModalProps) {
+export default function CreateModal({ isOpen, onClose, onSuccess }: ModalProps) {
   const [title, setTitle] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +40,8 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
         data: { title },
       });
       onClose();
-      setTitle(''); // Réinitialiser le champ après soumission
+      setTitle('');
+	  
     } catch (err) {
       setError('Failed to create role');
     } finally {

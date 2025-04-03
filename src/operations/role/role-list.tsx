@@ -20,12 +20,11 @@ import EditModal from "./EditModal.tsx";
 import { useState } from "react";
 import { Role } from "../../providers/types.ts";
 
-
 export const RoleList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
-  const refresh = useRefresh()
+  const refresh = useRefresh();
 
   const handleEditClick = (role: Role) => {
     setSelectedRole(role);
@@ -34,7 +33,7 @@ export const RoleList = () => {
 
   const handleEditSuccess = () => {
     setEditModalOpen(false);
-	refresh();
+    refresh();
   };
 
   return (
@@ -54,7 +53,7 @@ export const RoleList = () => {
           onClick={openButton}
         />
 
-        <BasicModal isOpen={isOpen} onClose={closeButton}/>
+        <BasicModal isOpen={isOpen} onClose={closeButton} />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}

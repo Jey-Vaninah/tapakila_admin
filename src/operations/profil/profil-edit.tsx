@@ -15,7 +15,6 @@ import { FlexBox } from "../../common/components/flex-box";
 import { useProfile } from "../../config/useProfile";
 import { User } from "../../providers/types";
 
-
 const ProfileEdit = () => {
   const redirect = useRedirect();
   const dataProvider = useDataProvider();
@@ -27,9 +26,8 @@ const ProfileEdit = () => {
     if (user) {
       Object.keys(user).forEach((key) => {
         const typedKey = key as keyof User;
-        setValue(typedKey, user[typedKey]); 
+        setValue(typedKey, user[typedKey]);
       });
-      
     }
   }, [user, setValue]);
 

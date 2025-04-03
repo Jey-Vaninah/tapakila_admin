@@ -20,7 +20,6 @@ import EditModal from "./EditModal.tsx";
 import { useState } from "react";
 import { Tag } from "../../providers/types.ts";
 
-
 export const TagList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -33,8 +32,8 @@ export const TagList = () => {
   };
 
   const handleEditSuccess = () => {
-	  setEditModalOpen(false);
-	  refresh();
+    setEditModalOpen(false);
+    refresh();
   };
 
   return (
@@ -54,7 +53,11 @@ export const TagList = () => {
           onClick={openButton}
         />
 
-        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <CreateModal
+          isOpen={isOpen}
+          onClose={closeButton}
+          onSuccess={handleEditSuccess}
+        />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}
@@ -65,7 +68,7 @@ export const TagList = () => {
       <List resource="tag" pagination={<Pagination />} actions={false}>
         <TagListContent onEditClick={handleEditClick} />
       </List>
-    </>	
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import {
   DateField,
   Button,
   EditButton,
+  useRefresh,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
@@ -24,6 +25,7 @@ export const CountryList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const refresh = useRefresh();
 
   const handleEditClick = (country: Country) => {
     setSelectedCountry(country);
@@ -32,6 +34,7 @@ export const CountryList = () => {
 
   const handleEditSuccess = () => {
     setEditModalOpen(false);
+    refresh();
   };
 
   return (
@@ -51,7 +54,7 @@ export const CountryList = () => {
           onClick={openButton}
         />
 
-        <CreateModal isOpen={isOpen} onClose={closeButton} />
+        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}

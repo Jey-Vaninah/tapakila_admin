@@ -100,6 +100,7 @@ export default function EditModal({
 			onClose(); // Ferme la modal
 			onSuccess(); // 🔥 Rafraîchit les données après mise à jour
 		} catch (err) {
+			console.log(err);
 			setError("Failed to update tag");
 		} finally {
 			setLoading(false);
@@ -119,7 +120,7 @@ return (
 		<Paper
 			variant="outlined"
 			sx={{
-				maxWidth: 500,
+				width: 350,
 				borderRadius: 2,
 				p: 3,
 				position: "relative",
@@ -148,21 +149,6 @@ return (
 			<form onSubmit={handleSubmit}>
 				<Stack spacing={2}>
 					<TextField
-						label="Tag ID"
-						variant="outlined"
-						value={tagData?.id || ""}
-						InputProps={{
-							readOnly: true,
-						}}
-						fullWidth
-						sx={{
-							"& .MuiInputBase-input.Mui-readOnly": {
-								cursor: "default",
-								backgroundColor: "rgba(0, 0, 0, 0.04)",
-							},
-						}}
-					/>
-					<TextField
 						label="Title"
 						name="title"
 						variant="outlined"
@@ -182,29 +168,6 @@ return (
 						multiline
 						rows={4}
 					/>
-					<TextField
-						label="Created Date"
-						variant="outlined"
-						value={formData?.createdAt.toLocaleString()}
-						InputProps={{ readOnly: true }}
-						fullWidth
-					/>
-					<TextField
-						label="Updated Date"
-						variant="outlined"
-						value={formData?.updatedAt.toLocaleString()}
-						InputProps={{ readOnly: true }}
-						fullWidth
-					/>
-					{formData?.deletedAt && (
-						<TextField
-							label="Delete Date"
-							variant="outlined"
-							value={formData?.deletedAt.toLocaleString()}
-							InputProps={{ readOnly: true }}
-							fullWidth
-						/>
-					)}
 					<Button
 						type="submit"
 						variant="contained"

@@ -25,32 +25,34 @@ export default function EditModal({
   roleData,
   onSuccess,
 }: EditModalProps) {
-  const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [initialDates, setInitialDates] = useState({
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-
+  const role: Role = {
+    id: "",
+		title: "",
+		createdAt: new Date(),
+		updatedAt: new Date()
+	}
+  const [formData, setFormData] = useState<Role>(role);
   // Initialize form with role data when modal opens or roleData changes
   useEffect(() => {
     if (roleData) {
-      setTitle(roleData.title);
-      setInitialDates({
-        createdAt: toDate(roleData.createdAt),
-        updatedAt: toDate(roleData.updatedAt),
+      setFormData({
+        id: roleData.id,
+        title: roleData.title,
+        createdAt: roleData.createdAt,
+        updatedAt: roleData.updatedAt
       });
     }
   }, [roleData]);
 
-  // Helper function to safely convert to Date
-  const toDate = (
-    date: Date | string | undefined,
-    fallback = new Date()
-  ): Date => {
-    if (!date) return fallback;
-    return date instanceof Date ? date : new Date(date);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -66,8 +68,10 @@ export default function EditModal({
     }
 
     try {
-      const updateData: Partial<Role> = {
-        title,
+      const updateData: Role = {
+        id: formData.id,
+        title: formData.title,
+        createdAt: formData.createdAt,
         updatedAt: new Date(),
       };
 
@@ -81,6 +85,7 @@ export default function EditModal({
       onClose();
       onSuccess();
     } catch (err) {
+      console.log(err);
       setError("Failed to update role");
     } finally {
       setLoading(false);
@@ -127,40 +132,12 @@ export default function EditModal({
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
             <TextField
-              label="Role ID"
-              variant="outlined"
-              value={roleData?.id || ""}
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              sx={{
-                "& .MuiInputBase-input.Mui-readOnly": {
-                  cursor: "default",
-                  backgroundColor: "rgba(0, 0, 0, 0.04)", // Fond légèrement grisé
-                },
-              }}
-            />
-            <TextField
               label="Role Name"
+              name="title"
               variant="outlined"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={formData.title}
+              onChange={handleChange}
               required
-              fullWidth
-            />
-            <TextField
-              label="Created At"
-              variant="outlined"
-              value={initialDates.createdAt.toLocaleString()}
-              InputProps={{ readOnly: true }}
-              fullWidth
-            />
-            <TextField
-              label="Updated At"
-              variant="outlined"
-              value={initialDates.updatedAt.toLocaleString()}
-              InputProps={{ readOnly: true }}
               fullWidth
             />
             <Button

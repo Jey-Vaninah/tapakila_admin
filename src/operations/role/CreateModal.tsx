@@ -41,8 +41,9 @@ export default function CreateModal({ isOpen, onClose, onSuccess }: ModalProps) 
       });
       onClose();
       setTitle('');
-	  
+      onSuccess();
     } catch (err) {
+      console.log(err);
       setError('Failed to create role');
     } finally {
       setLoading(false);

@@ -26,37 +26,26 @@ export default function EditModal({
   countryData,
   onSuccess,
 }: EditModalProps) {
-  const [formData, setFormData] = useState({
-    name: ""
-  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [initialDates, setInitialDates] = useState({
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-
+	const country: Country = {
+    id: "",
+		name: "",
+		createdAt: new Date(),
+		updatedAt: new Date()
+	}
+  const [formData, setFormData] = useState<Country>(country);
   // Initialize form with country data when modal opens or countryData changes
   useEffect(() => {
     if (countryData) {
       setFormData({
-        name: countryData.name
-      });
-      setInitialDates({
-        createdAt: toDate(countryData.createdAt),
-        updatedAt: toDate(countryData.updatedAt),
+        id: countryData.id,
+        name: countryData.name,
+        createdAt: countryData.createdAt,
+        updatedAt: countryData.updatedAt
       });
     }
   }, [countryData]);
-
-  // Helper function to safely convert to Date
-  const toDate = (
-    date: Date | string | undefined,
-    fallback = new Date()
-  ): Date => {
-    if (!date) return fallback;
-    return date instanceof Date ? date : new Date(date);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -79,8 +68,10 @@ export default function EditModal({
     }
 
     try {
-      const updateData: Partial<Country> = {
+      const updateData: Country = {
+        id: formData.id,
         name: formData.name,
+        createdAt: formData.createdAt,
         updatedAt: new Date(),
       };
 
@@ -94,6 +85,7 @@ export default function EditModal({
       onClose();
       onSuccess();
     } catch (err) {
+      console.log(err);
       setError("Failed to update country");
     } finally {
       setLoading(false);
@@ -111,7 +103,7 @@ export default function EditModal({
       <Paper
         variant="outlined"
         sx={{
-          maxWidth: 500,
+          width: 350,
           borderRadius: 2,
           p: 3,
           position: "relative",
@@ -139,21 +131,7 @@ export default function EditModal({
         {error && <Typography color="error">{error}</Typography>}
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-            <TextField
-              label="Country ID"
-              variant="outlined"
-              value={countryData?.id || ""}
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              sx={{
-                "& .MuiInputBase-input.Mui-readOnly": {
-                  cursor: "default",
-                  backgroundColor: "rgba(0, 0, 0, 0.04)",
-                },
-              }}
-            />
+
             <TextField
               label="Country Name"
               name="name"
@@ -161,20 +139,6 @@ export default function EditModal({
               value={formData.name}
               onChange={handleChange}
               required
-              fullWidth
-            />
-            <TextField
-              label="Created At"
-              variant="outlined"
-              value={initialDates.createdAt.toLocaleString()}
-              InputProps={{ readOnly: true }}
-              fullWidth
-            />
-            <TextField
-              label="Updated At"
-              variant="outlined"
-              value={initialDates.updatedAt.toLocaleString()}
-              InputProps={{ readOnly: true }}
               fullWidth
             />
             <Button

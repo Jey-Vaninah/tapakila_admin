@@ -60,6 +60,7 @@ export default function CreateModal({ isOpen, onClose, onSuccess }: ModalProps) 
       });
 	  onSuccess();
     } catch (err) {
+      console.log(err);
       setError('Failed to create tag');
     } finally {
       setLoading(false);
@@ -76,7 +77,7 @@ export default function CreateModal({ isOpen, onClose, onSuccess }: ModalProps) 
     >
       <Paper
         variant="outlined"
-        sx={{ maxWidth: 500, borderRadius: 2, p: 3, position: 'relative', boxShadow: 3 }}
+        sx={{ width: 350, borderRadius: 2, p: 3, position: 'relative', boxShadow: 3 }}
       >
         <IconButton onClick={onClose} sx={{ position: 'absolute', top: 8, right: 8, color: 'black' }}>
           <CloseIcon />

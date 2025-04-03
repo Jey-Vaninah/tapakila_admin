@@ -34,7 +34,7 @@ export const RoleList = () => {
 
   const handleEditSuccess = () => {
     setEditModalOpen(false);
-	refresh();
+	  refresh();
   };
 
   return (
@@ -54,7 +54,7 @@ export const RoleList = () => {
           onClick={openButton}
         />
 
-        <BasicModal isOpen={isOpen} onClose={closeButton}/>
+        <BasicModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess}/>
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}

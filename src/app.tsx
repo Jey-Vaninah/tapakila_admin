@@ -147,14 +147,6 @@ export const App = () => {
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />
-        <Route
-          path="/ticketTypes/eventId/:eventId"
-          element={<EventTickets />}
-        />
-        <Route
-          path="/tickets/ticketTypeId/:ticketTypeId"
-          element={<TicketTypeTickets />}
-        />
       </CustomRoutes>
     </Admin>
   );

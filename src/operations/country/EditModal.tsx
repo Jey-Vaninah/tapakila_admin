@@ -12,7 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { countryProvider } from "../../providers/counrty-provider";
 import { Country } from "../../providers/types";
 
-
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -27,7 +26,7 @@ export default function EditModal({
   onSuccess,
 }: EditModalProps) {
   const [formData, setFormData] = useState({
-    name: ""
+    name: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +39,7 @@ export default function EditModal({
   useEffect(() => {
     if (countryData) {
       setFormData({
-        name: countryData.name
+        name: countryData.name,
       });
       setInitialDates({
         createdAt: toDate(countryData.createdAt),
@@ -60,9 +59,9 @@ export default function EditModal({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 

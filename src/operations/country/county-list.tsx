@@ -19,7 +19,6 @@ import EditModal from "./EditModal.tsx";
 import { useState } from "react";
 import { Country } from "../../providers/types.ts";
 
-
 export const CountryList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);

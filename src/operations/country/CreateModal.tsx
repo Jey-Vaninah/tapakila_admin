@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Modal,
   Paper,
@@ -7,9 +7,9 @@ import {
   Button,
   Stack,
   TextField,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { countryProvider } from '../../providers/counrty-provider';
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { countryProvider } from "../../providers/counrty-provider";
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,16 +22,16 @@ interface CountryFormData {
 
 export default function CreateModal({ isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState<CountryFormData>({
-    name: ''
+    name: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -49,17 +49,17 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
 
     try {
       await countryProvider.saveOrUpdate({
-        meta: { mutationType: 'CREATE' },
+        meta: { mutationType: "CREATE" },
         data: {
-          name: formData.name
+          name: formData.name,
         },
       });
       onClose();
       setFormData({
-        name: ''
+        name: "",
       });
     } catch (err) {
-      setError('Failed to create country');
+      setError("Failed to create country");
     } finally {
       setLoading(false);
     }
@@ -71,16 +71,31 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
       onClose={onClose}
       aria-labelledby="modal-title"
       aria-describedby="modal-desc"
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Paper
         variant="outlined"
-        sx={{ maxWidth: 500, borderRadius: 2, p: 3, position: 'relative', boxShadow: 3 }}
+        sx={{
+          maxWidth: 500,
+          borderRadius: 2,
+          p: 3,
+          position: "relative",
+          boxShadow: 3,
+        }}
       >
-        <IconButton onClick={onClose} sx={{ position: 'absolute', top: 8, right: 8, color: 'black' }}>
+        <IconButton
+          onClick={onClose}
+          sx={{ position: "absolute", top: 8, right: 8, color: "black" }}
+        >
           <CloseIcon />
         </IconButton>
-        <Typography component="h2" id="modal-title" variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography
+          component="h2"
+          id="modal-title"
+          variant="h5"
+          fontWeight="bold"
+          sx={{ mb: 2 }}
+        >
           Create New Country
         </Typography>
         <Typography id="modal-desc" color="text.secondary" sx={{ mb: 2 }}>
@@ -104,7 +119,7 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
               disabled={loading}
               sx={{ bgcolor: "rgb(43, 200, 190)", color: "white" }}
             >
-              {loading ? 'Saving...' : 'Submit'}
+              {loading ? "Saving..." : "Submit"}
             </Button>
           </Stack>
         </form>

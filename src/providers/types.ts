@@ -22,7 +22,7 @@ export type User = {
   imageUrl: string;
   country: Country;
   createdAt: Date;
-  updatedAat: Date;
+  updatedAt: Date;
   deletedAt: Date | null;
   role: Role;
 };

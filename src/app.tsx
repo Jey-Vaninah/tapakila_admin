@@ -133,7 +133,6 @@ export const App = () => {
         icon={PublicIcon}
         list={CountryList}
         show={CountryShow}
-        
       />
       <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
       <Resource

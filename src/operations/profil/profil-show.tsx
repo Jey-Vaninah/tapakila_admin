@@ -5,9 +5,19 @@ import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
 import {
   Email as EmailIcon,
-  Person as PersonIcon,
   Phone as PhoneIcone,
   Place as PlaceIcone,
+  DateRange as DateRangeIcon,
+  Update as UpdateIcon,
+  ManageAccounts as ManageAccountsIcon,
+  Transgender as TransgenderIcon,
+  Login as LoginIcon,
+  Apartment as ApartmentIcon,
+  Work as WorkIcon,
+  LinkedIn as LinkedInIcon,
+  Diversity1 as Diversity1Icon,
+  Language as LanguageIcon,
+  Public as PublicIcon,
 } from "@mui/icons-material";
 
 import { useProfile } from "../../config/useProfile";
@@ -59,7 +69,7 @@ const ProfilePage = () => {
         >
           Welcome to Tapak'ila
           <Typography sx={{ fontWeight: "bold", color: "white" }}>
-            "Réservez votre place, sans aucune menace."
+            "Reserve your spot, without any threat."
           </Typography>
         </Typography>
 
@@ -86,14 +96,11 @@ const ProfilePage = () => {
         }}
       >
         <Box>
-          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
             {user.name}
           </Typography>
-          <Typography variant="h5">
-            {user.email}
-          </Typography>
+          <Typography>{user.email}</Typography>
         </Box>
-        
 
         <Button
           variant="contained"
@@ -101,10 +108,11 @@ const ProfilePage = () => {
           sx={{
             margin: 2,
             ml: "auto",
+            bgcolor: "rgb(43, 200, 190)",
           }}
           onClick={() => redirect("/profile/edit")}
         >
-          Modifier le Profil
+          Edit Profile
         </Button>
       </FlexBox>
 
@@ -117,11 +125,6 @@ const ProfilePage = () => {
         <Box
           sx={{ height: "1px", backgroundColor: "black", margin: "20px 0" }}
         />
-        <Typography
-          sx={{ fontSize: "24px", fontWeight: "bold", marginBottom: 2 }}
-        >
-          Détail du profil
-        </Typography>
       </Box>
 
       <Box>
@@ -151,15 +154,13 @@ const ProfilePage = () => {
                 boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <Typography
-                sx={{ fontWeight: "bold", color: "rgb(43, 200, 190) " }}
-              >
-                Coordonnée
+              <Typography sx={{ fontWeight: "bold", color: "black" }}>
+                Contact Informations
               </Typography>
               <Box
                 sx={{
-                  height: "1px",
-                  backgroundColor: "black",
+                  height: "0.2px",
+                  backgroundColor: "gray",
                   margin: "20px 0",
                 }}
               />
@@ -171,17 +172,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "0.1px solid black ",
-                    bgcolor: "rgb(43, 200, 190)",
+                    bgcolor: "rgba(43, 200, 190 , .2)",
                   }}
                 >
-                  <EmailIcon sx={{ fontSize: 30, color: "black " }} />
+                  <EmailIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
                     Email
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>{user.email}</Typography>
                 </Box>
               </FlexBox>
 
@@ -193,16 +195,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PhoneIcone sx={{ fontSize: 30, color: "black" }} />
+                  <PhoneIcone
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Number
+                    Phone Number
                   </Typography>
-                  0345933238
+                  <Typography sx={{ color: "gray" }}>034 59 332 38</Typography>
                 </Box>
               </FlexBox>
             </Box>
@@ -216,11 +220,13 @@ const ProfilePage = () => {
                 boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <Typography sx={{ fontWeight: "bold" }}>Coordonnée</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                Location Details
+              </Typography>
               <Box
                 sx={{
-                  height: "1px",
-                  backgroundColor: "black",
+                  height: "0.1px",
+                  backgroundColor: "gray",
                   margin: "20px 0",
                 }}
               />
@@ -232,16 +238,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PlaceIcone sx={{ fontSize: 30, color: "black" }} />
+                  <PlaceIcone
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Adress
+                    address
                   </Typography>
-                  Andakana 232
+                  Lot 227 FKTA Ankadivory
                 </Box>
               </FlexBox>
 
@@ -253,16 +261,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <PublicIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Country
                   </Typography>
-                  {user.email}
+                  {user.country.name}
                 </Box>
               </FlexBox>
             </Box>
@@ -278,9 +288,15 @@ const ProfilePage = () => {
               boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
             }}
           >
-            <Typography sx={{ fontWeight: "bold" }}>Coordonnée</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+              Personal informations
+            </Typography>
             <Box
-              sx={{ height: "1px", backgroundColor: "black", margin: "20px 0" }}
+              sx={{
+                height: "0.2px",
+                backgroundColor: "gray",
+                margin: "20px 0",
+              }}
             />
 
             <FlexBox sx={{ justifyContent: "start", gap: 10 }}>
@@ -292,16 +308,20 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "blackwhite" }} />
+                  <DateRangeIcon
+                    sx={{ fontSize: 30, color: " rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Created
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    {new Date(user.createdAt).toLocaleString()}
+                  </Typography>
                 </Box>
               </FlexBox>
               <FlexBox sx={{ justifyContent: "start" }}>
@@ -312,21 +332,25 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <UpdateIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Updated
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    {new Date(user.updatedAt).toLocaleString()}
+                  </Typography>
                 </Box>
               </FlexBox>
             </FlexBox>
 
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
+            <FlexBox sx={{ justifyContent: "start", gap: 13.5, marginTop: 8 }}>
               <FlexBox>
                 <FlexBox
                   sx={{
@@ -335,16 +359,20 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <ManageAccountsIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190) " }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Role
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    {user.role.title}
+                  </Typography>
                 </Box>
               </FlexBox>
               <FlexBox sx={{ justifyContent: "start" }}>
@@ -355,21 +383,25 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <ApartmentIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Company Name
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    Tech Innovators Inc.
+                  </Typography>
                 </Box>
               </FlexBox>
             </FlexBox>
 
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
+            <FlexBox sx={{ justifyContent: "start", gap: 8.5, marginTop: 8 }}>
               <FlexBox>
                 <FlexBox
                   sx={{
@@ -378,16 +410,21 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <LoginIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190) " }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Last Login
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    {" "}
+                    03 April 2025{" "}
+                  </Typography>
                 </Box>
               </FlexBox>
               <FlexBox sx={{ justifyContent: "start" }}>
@@ -398,21 +435,23 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <TransgenderIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Gender
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>Male</Typography>
                 </Box>
               </FlexBox>
             </FlexBox>
 
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
+            <FlexBox sx={{ justifyContent: "start", gap: 8, marginTop: 8 }}>
               <FlexBox>
                 <FlexBox
                   sx={{
@@ -421,16 +460,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <LanguageIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190) " }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Nationality
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>Malagasy</Typography>
                 </Box>
               </FlexBox>
               <FlexBox sx={{ justifyContent: "start" }}>
@@ -441,21 +482,23 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <Diversity1Icon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Marital Status
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>Married</Typography>
                 </Box>
               </FlexBox>
             </FlexBox>
 
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
+            <FlexBox sx={{ justifyContent: "start", gap: 8, marginTop: 8 }}>
               <FlexBox>
                 <FlexBox
                   sx={{
@@ -464,16 +507,18 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <WorkIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190) " }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    Occupation
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>Web Developer</Typography>
                 </Box>
               </FlexBox>
               <FlexBox sx={{ justifyContent: "start" }}>
@@ -484,16 +529,20 @@ const ProfilePage = () => {
                     height: 50,
                     justifyContent: "center",
                     alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
+                    bgcolor: " rgba(43, 200, 190, .2) ",
                   }}
                 >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
+                  <LinkedInIcon
+                    sx={{ fontSize: 30, color: "rgb(43, 200, 190)" }}
+                  />
                 </FlexBox>
                 <Box>
                   <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
+                    LinkedIn
                   </Typography>
-                  {user.email}
+                  <Typography sx={{ color: "gray" }}>
+                    linkedin.com/in/tsong
+                  </Typography>
                 </Box>
               </FlexBox>
             </FlexBox>
@@ -501,31 +550,6 @@ const ProfilePage = () => {
         </FlexBox>
       </Box>
     </>
-    // <Card sx={{ maxWidth: 500, margin: "auto", mt: 5, p: 3 }}>
-    //   <CardContent sx"={{ textAlign: "center" }}>
-    //     <Avatar
-    //       src={user.imageUrl}
-    //       sx={{ width: 85, height: 85, margin: "auto" }}
-    //     />
-    //     <Typography variant="h5" sx={{ mt: 2, fontWeight: "bold" }}>
-    //       {user.name}
-    //     </Typography>
-    //     <Typography variant="subtitle1" color="textSecondary">
-    //       {user.roleId?.title}
-    //     </Typography>
-    //     <Typography variant="body1" sx={{ mt: 1 }}>
-    //       {user.email}
-    //     </Typography>
-    //     <Button
-    //       variant="contained"
-    //       color="primary"
-    //       sx={{ mt: 2 }}
-    //       onClick={() => redirect("/profile/edit")}
-    //     >
-    //       Modifier
-    //     </Button>
-    //   </CardContent>
-    // </Card>
   );
 };
 

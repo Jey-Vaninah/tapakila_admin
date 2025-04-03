@@ -27,7 +27,7 @@ export const TicketTypeCreate = () => {
         <TextInput source="title" validate={[required()]} />
         <TextInput source="slug" validate={[required()]} />
         <TextInput source="description" validate={[required()]} />
-        <NumberInput source="availableTicket" validate={[required()]} />
+        <NumberInput source="totalTicket" validate={[required()]} />
         <NumberInput source="price" validate={[required()]} />
         <SelectInput
           label="Currency"

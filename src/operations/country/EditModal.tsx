@@ -10,15 +10,8 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { countryProvider } from "../../providers/counrty-provider";
+import { Country } from "../../providers/types";
 
-interface Country {
-  id: string;
-  name: string;
-  countryCode: string;
-  phoneCode: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 interface EditModalProps {
   isOpen: boolean;
@@ -34,9 +27,7 @@ export default function EditModal({
   onSuccess,
 }: EditModalProps) {
   const [formData, setFormData] = useState({
-    name: "",
-    countryCode: "",
-    phoneCode: ""
+    name: ""
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,9 +40,7 @@ export default function EditModal({
   useEffect(() => {
     if (countryData) {
       setFormData({
-        name: countryData.name,
-        countryCode: countryData.countryCode,
-        phoneCode: countryData.phoneCode
+        name: countryData.name
       });
       setInitialDates({
         createdAt: toDate(countryData.createdAt),
@@ -92,8 +81,6 @@ export default function EditModal({
     try {
       const updateData: Partial<Country> = {
         name: formData.name,
-        countryCode: formData.countryCode,
-        phoneCode: formData.phoneCode,
         updatedAt: new Date(),
       };
 
@@ -172,28 +159,6 @@ export default function EditModal({
               name="name"
               variant="outlined"
               value={formData.name}
-              onChange={handleChange}
-              required
-              fullWidth
-            />
-            <TextField
-              label="Country Code (e.g., FR)"
-              name="countryCode"
-              variant="outlined"
-              value={formData.countryCode}
-              onChange={handleChange}
-              required
-              fullWidth
-              inputProps={{ 
-                maxLength: 3,
-                style: { textTransform: 'uppercase' }
-              }}
-            />
-            <TextField
-              label="Phone Code (e.g., +33)"
-              name="phoneCode"
-              variant="outlined"
-              value={formData.phoneCode}
               onChange={handleChange}
               required
               fullWidth

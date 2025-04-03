@@ -8,6 +8,7 @@ import {
   DateField,
   Button,
   EditButton,
+  useRefresh,
 } from "react-admin";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
@@ -17,20 +18,14 @@ import useStore from "../../common/utils/useStore.ts";
 import CreateModal from "./CreateModal.tsx";
 import EditModal from "./EditModal.tsx";
 import { useState } from "react";
+import { Tag } from "../../providers/types.ts";
 
-interface Tag {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt?: string;
-}
 
 export const TagList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
+  const refresh = useRefresh();
 
   const handleEditClick = (tag: Tag) => {
     setSelectedTag(tag);
@@ -38,7 +33,8 @@ export const TagList = () => {
   };
 
   const handleEditSuccess = () => {
-    setEditModalOpen(false);
+	  setEditModalOpen(false);
+	  refresh();
   };
 
   return (
@@ -58,7 +54,7 @@ export const TagList = () => {
           onClick={openButton}
         />
 
-        <CreateModal isOpen={isOpen} onClose={closeButton} />
+        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}
@@ -69,7 +65,7 @@ export const TagList = () => {
       <List resource="tag" pagination={<Pagination />} actions={false}>
         <TagListContent onEditClick={handleEditClick} />
       </List>
-    </>
+    </>	
   );
 };
 

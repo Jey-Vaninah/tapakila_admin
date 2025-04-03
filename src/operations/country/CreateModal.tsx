@@ -18,15 +18,11 @@ interface ModalProps {
 
 interface CountryFormData {
   name: string;
-  countryCode: string; // Note: Changé de 'code' à 'countryCode' pour correspondre au type
-  phoneCode: string;
 }
 
 export default function CreateModal({ isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState<CountryFormData>({
-    name: '',
-    countryCode: '',
-    phoneCode: ''
+    name: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,17 +50,13 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
     try {
       await countryProvider.saveOrUpdate({
         meta: { mutationType: 'CREATE' },
-        data: { 
-          name: formData.name,
-          countryCode: formData.countryCode, // Utilisation de countryCode
-          phoneCode: formData.phoneCode
+        data: {
+          name: formData.name
         },
       });
       onClose();
       setFormData({
-        name: '',
-        countryCode: '',
-        phoneCode: ''
+        name: ''
       });
     } catch (err) {
       setError('Failed to create country');
@@ -106,32 +98,10 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
               required
               fullWidth
             />
-            <TextField
-              label="Country Code (e.g., FR)"
-              name="countryCode"
-              variant="outlined"
-              value={formData.countryCode}
-              onChange={handleChange}
-              required
-              fullWidth
-              inputProps={{ 
-                maxLength: 3,
-                style: { textTransform: 'uppercase' }
-              }}
-            />
-            <TextField
-              label="Phone Code (e.g., +33)"
-              name="phoneCode"
-              variant="outlined"
-              value={formData.phoneCode}
-              onChange={handleChange}
-              required
-              fullWidth
-            />
-            <Button 
-              type="submit" 
-              variant="contained" 
-              disabled={loading} 
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={loading}
               sx={{ bgcolor: "rgb(43, 200, 190)", color: "white" }}
             >
               {loading ? 'Saving...' : 'Submit'}

@@ -17,15 +17,8 @@ import useStore from "../../common/utils/useStore.ts";
 import CreateModal from "./CreateModal.tsx";
 import EditModal from "./EditModal.tsx";
 import { useState } from "react";
+import { Country } from "../../providers/types.ts";
 
-interface Country {
-  id: string;
-  name: string;
-  countryCode: string;
-  phoneCode: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
 
 export const CountryList = () => {
   const { isOpen, openButton, closeButton } = useStore();

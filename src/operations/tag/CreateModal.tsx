@@ -14,9 +14,10 @@ import { tagProvider } from '../../providers/tag-provider';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess: () => void;
 }
 
-export default function CreateModal({ isOpen, onClose }: ModalProps) {
+export default function CreateModal({ isOpen, onClose, onSuccess }: ModalProps) {
   const [formData, setFormData] = useState({
     title: '',
     description: ''
@@ -47,7 +48,7 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
     try {
       await tagProvider.saveOrUpdate({
         meta: { mutationType: 'CREATE' },
-        data: { 
+        data: {
           title: formData.title,
           description: formData.description
         },
@@ -57,6 +58,7 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
         title: '',
         description: ''
       });
+	  onSuccess();
     } catch (err) {
       setError('Failed to create tag');
     } finally {
@@ -108,10 +110,10 @@ export default function CreateModal({ isOpen, onClose }: ModalProps) {
               multiline
               rows={4}
             />
-            <Button 
-              type="submit" 
-              variant="contained" 
-              disabled={loading} 
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={loading}
               sx={{bgcolor: "rgb(43, 200, 190)", color: "white"}}
             >
               {loading ? 'Saving...' : 'Submit'}

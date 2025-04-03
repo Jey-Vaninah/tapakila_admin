@@ -17,13 +17,8 @@ import useStore from "../../common/utils/useStore.ts";
 import BasicModal from "./CreateModal.tsx";
 import EditModal from "./EditModal.tsx";
 import { useState } from "react";
+import { Role } from "../../providers/types.ts";
 
-interface Role {
-  id: string;
-  title: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
 
 export const RoleList = () => {
   const { isOpen, openButton, closeButton } = useStore();

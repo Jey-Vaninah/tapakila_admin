@@ -10,13 +10,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { roleProvider } from "../../providers/role-provider";
-
-interface Role {
-  id: string;
-  title: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { Role } from "../../providers/types";
 
 interface EditModalProps {
   isOpen: boolean;

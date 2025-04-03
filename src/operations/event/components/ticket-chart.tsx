@@ -26,7 +26,7 @@ const TicketsPieChart: React.FC<TicketsPieChartProps> = ({
   };
 
   // Correct typage des options de chart.js
-  const options: ChartOptions = {
+  const options: ChartOptions<"pie"> = {
     responsive: true,
     plugins: {
       legend: {

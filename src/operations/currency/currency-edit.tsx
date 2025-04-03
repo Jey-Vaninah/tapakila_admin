@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   Edit,
   SaveButton,
@@ -8,6 +9,7 @@ import {
   Toolbar,
   TopToolbar,
 } from "react-admin";
+import { Currency } from "../../providers";
 
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -21,8 +23,8 @@ const CurrencyEditActions = () => (
   </TopToolbar>
 );
 
-export const CurrencyEdit = () => (
-  <Edit actions={<CurrencyEditActions />}>
+export const CurrencyEdit: FC<{ data: Currency }> = ({ data }) => (
+  <Edit resource="currency" id={data.id} actions={<CurrencyEditActions />}>
     <SimpleForm toolbar={<CustomToolbar />}>
       <TextInput readOnly label="Id" source="id" />
       <TextInput label="Title" source="title" />

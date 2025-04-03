@@ -3,18 +3,38 @@ import {
   Datagrid,
   TextField,
   DeleteButton,
-  EditButton,
   FunctionField,
   useListContext,
   DateField,
-  CreateButton,
+  Button,
 } from "react-admin";
+import { Add as CreateIcon, Edit as EditIcon } from "@mui/icons-material";
 import { FlexBox } from "../../common/components/flex-box";
 import Loading from "../../common/components/loading";
 import { Box, Paper, Typography } from "@mui/material";
 import { Pagination } from "../../common/components/pagination";
+import { FC, useState } from "react";
+import { CrupdateDialog } from "../../common/components/crupdate-dialog";
+import { CurrencyEdit } from "./currency-edit";
+import { Currency } from "../../providers";
+import { CurrencyCreate } from "./currency-create";
 
 export const CurrencyList = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(
+    null
+  );
+
+  const handleEdit = (currency: Currency) => {
+    setSelectedCurrency(currency);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedCurrency(null);
+  };
+
   return (
     <>
       <FlexBox sx={{ justifyContent: "space-between", mb: 5 }}>
@@ -24,20 +44,37 @@ export const CurrencyList = () => {
         >
           Currencies
         </Typography>
-        <CreateButton
-          resource="country"
+        <Button
+          onClick={() => setIsOpen(true)}
           label=" Add Currency"
+          startIcon={<CreateIcon />}
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
         />
       </FlexBox>
       <List resource="currency" pagination={<Pagination />} actions={false}>
-        <CurrencyListContent />
+        <CurrencyListContent handleEdit={handleEdit} />
       </List>
+      <CrupdateDialog
+        title={selectedCurrency ? "Edit Currency" : "Create Currency"}
+        description={
+          selectedCurrency
+            ? "Edit the currency details"
+            : "Create a new currency"
+        }
+        open={isOpen}
+        onClose={handleClose}
+        Component={({ data }) =>
+          data ? <CurrencyEdit data={data} /> : <CurrencyCreate />
+        }
+        data={selectedCurrency}
+      />
     </>
   );
 };
 
-const CurrencyListContent = () => {
+const CurrencyListContent: FC<{ handleEdit: (data: Currency) => void }> = ({
+  handleEdit,
+}) => {
   const { isLoading } = useListContext();
 
   if (isLoading) {
@@ -66,6 +103,7 @@ const CurrencyListContent = () => {
         <Datagrid
           bulkActionButtons={false}
           sx={{ border: "2px solid rgba(0,0,0,.1)", mt: 5 }}
+          rowClick={false}
         >
           <TextField source="title" label="Title" />
           <TextField source="description" label="Description" />
@@ -73,11 +111,18 @@ const CurrencyListContent = () => {
           <DateField source="updatedAt" label="Update Date" />
           <FunctionField
             label="Actions"
-            render={() => {
+            render={(data) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton />
+                  <Button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleEdit(data);
+                    }}
+                    startIcon={<EditIcon />}
+                    label="Edit"
+                  />
                 </FlexBox>
               );
             }}

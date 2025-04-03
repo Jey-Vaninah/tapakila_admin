@@ -35,14 +35,14 @@ export default function EditModal({
 }: EditModalProps) {
   const [formData, setFormData] = useState({
     title: "",
-    description: ""
+    description: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [initialDates, setInitialDates] = useState({
     createdAt: new Date(),
     updatedAt: new Date(),
-    deletedAt: null as Date | null
+    deletedAt: null as Date | null,
   });
 
   // Initialize form with tag data when modal opens or tagData changes
@@ -50,12 +50,12 @@ export default function EditModal({
     if (tagData) {
       setFormData({
         title: tagData.title,
-        description: tagData.description
+        description: tagData.description,
       });
       setInitialDates({
         createdAt: toDate(tagData.createdAt),
         updatedAt: toDate(tagData.updatedAt),
-        deletedAt: tagData.deletedAt ? toDate(tagData.deletedAt) : null
+        deletedAt: tagData.deletedAt ? toDate(tagData.deletedAt) : null,
       });
     }
   }, [tagData]);
@@ -71,9 +71,9 @@ export default function EditModal({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 

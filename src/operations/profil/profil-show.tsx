@@ -89,11 +89,8 @@ const ProfilePage = () => {
           <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             {user.name}
           </Typography>
-          <Typography variant="h5">
-            {user.email}
-          </Typography>
+          <Typography variant="h5">{user.email}</Typography>
         </Box>
-        
 
         <Button
           variant="contained"

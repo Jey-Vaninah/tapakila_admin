@@ -36,7 +36,7 @@ export default function EditModal({
   const [formData, setFormData] = useState({
     name: "",
     countryCode: "",
-    phoneCode: ""
+    phoneCode: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +51,7 @@ export default function EditModal({
       setFormData({
         name: countryData.name,
         countryCode: countryData.countryCode,
-        phoneCode: countryData.phoneCode
+        phoneCode: countryData.phoneCode,
       });
       setInitialDates({
         createdAt: toDate(countryData.createdAt),
@@ -71,9 +71,9 @@ export default function EditModal({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -184,9 +184,9 @@ export default function EditModal({
               onChange={handleChange}
               required
               fullWidth
-              inputProps={{ 
+              inputProps={{
                 maxLength: 3,
-                style: { textTransform: 'uppercase' }
+                style: { textTransform: "uppercase" },
               }}
             />
             <TextField

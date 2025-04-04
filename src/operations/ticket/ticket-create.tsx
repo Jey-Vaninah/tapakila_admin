@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   Create,
   SimpleForm,
-  TextInput,
   NumberInput,
   required,
   useGetList,
@@ -26,7 +25,7 @@ export const TicketCreate = () => {
   useEffect(() => {
     if (selectedEvent) {
       console.log(selectedEvent);
-      
+
       const filtered = ticketTypes.filter(
         (ticketType) => ticketType.event.id === selectedEvent
       );
@@ -39,7 +38,7 @@ export const TicketCreate = () => {
   return (
     <Create>
       <SimpleForm sx={{ width: "50%", padding: "32px" }}>
-        <TextInput
+        <NumberInput
           label="Ticket Number"
           source="ticketNumber"
           fullWidth
@@ -138,7 +137,7 @@ export const TicketCreate = () => {
             },
           }}
         />
-        
+
         <NumberInput
           source="amountPaid"
           validate={[required()]}

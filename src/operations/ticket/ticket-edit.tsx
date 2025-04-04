@@ -54,6 +54,7 @@ export const TicketEdit = () => {
               source="ticketNumber"
               fullWidth
               variant="outlined"
+			  readOnly
               sx={{
                 marginBottom: 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
@@ -141,9 +142,9 @@ export const TicketEdit = () => {
           </Box>
 
           <Box sx={{ width: "50%" }}>
-          
-            
-          
+
+
+
           </Box>
         </div>
       </SimpleForm>

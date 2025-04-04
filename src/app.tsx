@@ -8,7 +8,6 @@ import {
   Public as PublicIcon,
   Sell as SellIcon,
   ManageAccounts as ManageAccountsIcon,
-  Category as CategoryIcon,
   Home as HomeIcon,
   Apartment as ApartmentIcon,
 } from "@mui/icons-material";
@@ -107,12 +106,12 @@ export const App = () => {
         icon={PublicIcon}
         list={CountryList}
         show={CountryShow}
-        
+
       />
       <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
       <Resource
         name="typeTicket"
-        icon={CategoryIcon}
+		icon={LocalActivityIcon}
         list={TicketTypeList}
         show={TicketTypeShow}
         edit={TicketTypeEdit}

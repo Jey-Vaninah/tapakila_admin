@@ -31,7 +31,7 @@ export const TicketList = () => {
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
         />
       </FlexBox>
-      <Typography sx={{ color: "grey", mb: 5 }}>
+      <Typography sx={{ color: "grey", mb: 3 }}>
         Manage all ticket sales
       </Typography>
       <List resource="ticket" pagination={<Pagination />} actions={false}>

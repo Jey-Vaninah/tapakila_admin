@@ -12,6 +12,7 @@ import { Logout, useSidebarState } from "react-admin";
 import { useRedirect, useResourceDefinition } from "react-admin";
 import { useLocation } from "react-router-dom";
 import { FlexBox } from "../common/components/flex-box";
+import { useProfile } from "../config/useProfile";
 
 const CustomMenuItem = ({
   name,
@@ -65,6 +66,7 @@ const CustomMenuItem = ({
 
 export const Menu: FC = () => {
   const [isSiderBarOpen, setIsSiderBarOpen] = useSidebarState();
+	const profile = useProfile();
 
   return (
     <Box
@@ -127,7 +129,11 @@ export const Menu: FC = () => {
               <CustomMenuItem customRedirect="/" name="home" />
               <CustomMenuItem name="event" />
               <CustomMenuItem name="ticket" />
-              <CustomMenuItem name="user" />
+			  {
+				(profile?.role?.title == "Admin") && (
+					<CustomMenuItem name="user" />
+				)
+			  }
             </Box>
             {isSiderBarOpen && (
               <Typography
@@ -143,13 +149,19 @@ export const Menu: FC = () => {
               </Typography>
             )}
             <Box sx={{ pl: isSiderBarOpen ? "3px" : 0 }}>
-              <CustomMenuItem name="role" />
               <CustomMenuItem name="typeTicket" />
-              <CustomMenuItem name="country" />
-              <CustomMenuItem name="tag" />
-              <CustomMenuItem name="currency" />
-              <CustomMenuItem name="host" />
               <CustomMenuItem name="venue" />
+              <CustomMenuItem name="host" />
+              <CustomMenuItem name="tag" />
+			  {
+				(profile?.role?.title == "Admin") && (
+					<>
+					<CustomMenuItem name="currency" />
+					<CustomMenuItem name="country" />
+					<CustomMenuItem name="role" />
+				</>
+				)
+			  }
             </Box>
           </Box>
         </Box>

@@ -1,6 +1,5 @@
 import {
   Box,
-  Chip,
   Paper,
   Table,
   TableBody,
@@ -21,6 +20,16 @@ import { useGetList, useRedirect } from "react-admin";
 
 export const HomePage = () => {
   const { data: currentEvents = [] } = useGetList("current-event");
+  const { data: currentTickets = [] } = useGetList("current-ticket");
+  const { data: dataEvents = [] } = useGetList("event");
+  const { data: dataUsers = [] } = useGetList("user");
+  const { data: dataTickets = [] } = useGetList("ticket");
+  const { data: dataHosts = [] } = useGetList("host");
+
+
+  console.log(currentTickets);
+  
+  
   const redirect = useRedirect();
 
   return (
@@ -46,7 +55,7 @@ export const HomePage = () => {
           <Box>
             <Typography sx={{ color: "grey" }}>Total Events</Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-              3
+              {dataEvents.length}
             </Typography>
             <Typography sx={{ color: "grey", fontSize: "0.8rem" }}>
               <span style={{ color: "rgb(43, 200, 190)" }}>+12%</span> vs last
@@ -78,7 +87,7 @@ export const HomePage = () => {
           <Box>
             <Typography sx={{ color: "grey" }}>Total Users</Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-              35
+              {dataUsers.length}
             </Typography>
             <Typography sx={{ color: "grey", fontSize: "0.8rem" }}>
               <span style={{ color: "rgb(43, 200, 190)" }}>+12%</span> vs last
@@ -110,7 +119,7 @@ export const HomePage = () => {
           <Box>
             <Typography sx={{ color: "grey" }}>Tickets Sold</Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-              37
+              {dataTickets.length}
             </Typography>
             <Typography sx={{ color: "grey", fontSize: "0.8rem" }}>
               <span style={{ color: "rgb(43, 200, 190)" }}>+12%</span> vs last
@@ -140,9 +149,9 @@ export const HomePage = () => {
           }}
         >
           <Box>
-            <Typography sx={{ color: "grey" }}>Total Revenue</Typography>
+            <Typography sx={{ color: "grey" }}>Total Host</Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-              3
+              {dataHosts.length}
             </Typography>
             <Typography sx={{ color: "grey", fontSize: "0.8rem" }}>
               <span style={{ color: "rgb(43, 200, 190)" }}>+12%</span> vs last
@@ -161,17 +170,17 @@ export const HomePage = () => {
           </Box>
         </Paper>
       </FlexBox>
-      <FlexBox sx={{ gap: 2, mt: 5 }}>
+      <FlexBox sx={{ gap: 2, mt: 5, alignItems:"start" }}>
         <Paper
           elevation={3}
           sx={{ padding: 2, backgroundColor: "white", flex: 1 }}
         >
           <Box>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
-              Recent Tickets sales
+              Recent Events
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Latest ticket purchases
+            Latest events on the platform
             </Typography>
           </Box>
 
@@ -181,9 +190,6 @@ export const HomePage = () => {
                 <TableRow>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
                     Event
-                  </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                    Slug
                   </TableCell>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
                     Venue
@@ -225,15 +231,6 @@ export const HomePage = () => {
                           {record.title}
                         </Typography>
                       </Box>
-                    </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                      <Chip
-                        label={record.slug}
-                        color={
-                          record.slug === "published" ? "success" : "default"
-                        }
-                        size="small"
-                      />
                     </TableCell>
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
                       {record.eventHall?.name}
@@ -268,26 +265,26 @@ export const HomePage = () => {
               <TableHead sx={{ backgroundColor: "#f9fafb" }}>
                 <TableRow>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    Ticket Number
+                  </TableCell>
+                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
                     Event
                   </TableCell>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                    Slug
+                    Ticket Type
                   </TableCell>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                    Venue
+                    Amount Paid
                   </TableCell>
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                    Host
-                  </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                    Date
+                    Currency
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {currentEvents.map((record) => (
+                {currentTickets.map((record) => (
                   <TableRow
-                    onClick={() => redirect("show", "event", record.id)}
+                    onClick={() => redirect("show", "ticket", record.id)}
                     key={record.id}
                   >
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
@@ -299,38 +296,22 @@ export const HomePage = () => {
                           alignItems: "center",
                         }}
                       >
-                        <img
-                          src={record.eventImage}
-                          alt={record.title}
-                          style={{
-                            width: 75,
-                            height: 50,
-                            marginRight: 10,
-                            objectFit: "cover",
-                          }}
-                        />
                         <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                          {record.title}
+                          {record.ticketNumber}
                         </Typography>
                       </Box>
                     </TableCell>
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                      <Chip
-                        label={record.slug}
-                        color={
-                          record.slug === "published" ? "success" : "default"
-                        }
-                        size="small"
-                      />
+                      {record.event?.title}
                     </TableCell>
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                      {record.eventHall?.name}
+                      {record.ticketType?.title}
                     </TableCell>
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                      {record.host?.name}
+                        {record.amountPaid}
                     </TableCell>
                     <TableCell sx={{ border: "1px solid #e0e0e0" }}>
-                      {new Date(record.startDate).toLocaleString()}
+                        {record.currency.title}
                     </TableCell>
                   </TableRow>
                 ))}

@@ -3,7 +3,6 @@ import { authProvider } from "../providers/auth-provider";
 import { User } from "../providers/types";
 import { useLogout } from "react-admin";
 
-
 export const useProfile = () => {
   const [user, setUser] = useState<User | null>(null);
   const logout = useLogout();
@@ -18,7 +17,7 @@ export const useProfile = () => {
         logout();
       }
     };
-    
+
     fetchProfile();
   }, [logout, user]);
   return user;

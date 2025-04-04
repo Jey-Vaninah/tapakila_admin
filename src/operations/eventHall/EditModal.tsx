@@ -12,7 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { eventHallProvider } from "../../providers/venue-provider";
 import { EventHall } from "../../providers/types";
 
-
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -28,12 +27,12 @@ export default function EditModal({
 }: EditModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-	const eventHall: EventHall = {
+  const eventHall: EventHall = {
     id: "",
-		name: "",
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
+    name: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
   const [formData, setFormData] = useState<EventHall>(eventHall);
   // Initialize form with eventHall data when modal opens or eventHallData changes
   useEffect(() => {
@@ -42,16 +41,16 @@ export default function EditModal({
         id: eventHallData.id,
         name: eventHallData.name,
         createdAt: eventHallData.createdAt,
-        updatedAt: eventHallData.updatedAt
+        updatedAt: eventHallData.updatedAt,
       });
     }
   }, [eventHallData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -131,7 +130,6 @@ export default function EditModal({
         {error && <Typography color="error">{error}</Typography>}
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-
             <TextField
               label="EventHall Name"
               name="name"

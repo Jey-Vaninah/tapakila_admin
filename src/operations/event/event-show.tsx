@@ -174,18 +174,19 @@ export const EventShow = (
   const idEvent = useGetRecordId();
   const [tabValue, setTabValue] = useState(0);
 
-  const { data : dataFetch1, isLoading: isLoadingTypes } = useGetList("typeTicket");
+  const { data: dataFetch1, isLoading: isLoadingTypes } =
+    useGetList("typeTicket");
 
   const ticketTypeData = dataFetch1
     ? dataFetch1.filter((ticketTipe: any) => ticketTipe.event.id === idEvent)
     : [];
 
-  const { data : dataFetch2, isLoading: isLoadingTickets } = useGetList("ticket");
+  const { data: dataFetch2, isLoading: isLoadingTickets } =
+    useGetList("ticket");
 
   const ticketData = dataFetch2
     ? dataFetch2.filter((ticket: any) => ticket.event.id === idEvent)
     : [];
-
 
   const ticketTypes: TicketType[] = ticketTypeData as TicketType[];
   const tickets: Ticket[] = ticketData as Ticket[];

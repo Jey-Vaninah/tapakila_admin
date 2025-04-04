@@ -66,7 +66,7 @@ const CustomMenuItem = ({
 
 export const Menu: FC = () => {
   const [isSiderBarOpen, setIsSiderBarOpen] = useSidebarState();
-	const profile = useProfile();
+  const profile = useProfile();
 
   return (
     <Box
@@ -129,11 +129,9 @@ export const Menu: FC = () => {
               <CustomMenuItem customRedirect="/" name="home" />
               <CustomMenuItem name="event" />
               <CustomMenuItem name="ticket" />
-			  {
-				(profile?.role?.title == "Admin") && (
-					<CustomMenuItem name="user" />
-				)
-			  }
+              {profile?.role?.title == "Admin" && (
+                <CustomMenuItem name="user" />
+              )}
             </Box>
             {isSiderBarOpen && (
               <Typography
@@ -153,15 +151,13 @@ export const Menu: FC = () => {
               <CustomMenuItem name="venue" />
               <CustomMenuItem name="host" />
               <CustomMenuItem name="tag" />
-			  {
-				(profile?.role?.title == "Admin") && (
-					<>
-					<CustomMenuItem name="currency" />
-					<CustomMenuItem name="country" />
-					<CustomMenuItem name="role" />
-				</>
-				)
-			  }
+              {profile?.role?.title == "Admin" && (
+                <>
+                  <CustomMenuItem name="currency" />
+                  <CustomMenuItem name="country" />
+                  <CustomMenuItem name="role" />
+                </>
+              )}
             </Box>
           </Box>
         </Box>

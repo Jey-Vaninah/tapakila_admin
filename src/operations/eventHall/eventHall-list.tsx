@@ -23,7 +23,9 @@ import EditModal from "./EditModal";
 export const EventHallList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [selectedEventHall, setSelectedEventHall] = useState<EventHall | null>(null);
+  const [selectedEventHall, setSelectedEventHall] = useState<EventHall | null>(
+    null
+  );
   const refresh = useRefresh();
 
   const handleEditClick = (eventHall: EventHall) => {
@@ -50,7 +52,11 @@ export const EventHallList = () => {
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
           onClick={openButton}
         />
-        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <CreateModal
+          isOpen={isOpen}
+          onClose={closeButton}
+          onSuccess={handleEditSuccess}
+        />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}
@@ -59,7 +65,7 @@ export const EventHallList = () => {
         />
       </FlexBox>
       <List resource="venue" pagination={<Pagination />} actions={false}>
-        <EventHallListContent onEditClick={handleEditClick}/>
+        <EventHallListContent onEditClick={handleEditClick} />
       </List>
     </>
   );
@@ -108,12 +114,13 @@ const EventHallListContent = ({ onEditClick }: EventHallListContentProps) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    onEditClick(record);
-                  }}/>
+                  <EditButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onEditClick(record);
+                    }}
+                  />
                 </FlexBox>
               );
             }}

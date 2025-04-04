@@ -13,7 +13,6 @@ import {
 } from "react-admin";
 import { Box } from "@mui/material";
 
-
 // Barre d'outils personnalisée
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -27,7 +26,6 @@ const TicketEditActions = () => (
     <ShowButton />
   </TopToolbar>
 );
-
 
 export const TicketEdit = () => {
   const { data: currencies = [] } = useGetList("currency");
@@ -54,13 +52,13 @@ export const TicketEdit = () => {
               source="ticketNumber"
               fullWidth
               variant="outlined"
-			  readOnly
+              readOnly
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -80,11 +78,11 @@ export const TicketEdit = () => {
               }))}
               validate={[required()]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -100,11 +98,11 @@ export const TicketEdit = () => {
               source="amountPaid"
               variant="outlined"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -115,7 +113,7 @@ export const TicketEdit = () => {
                 },
               }}
             />
-             <SelectInput
+            <SelectInput
               label="Currency"
               source="currency.id"
               choices={currencies.map((currency) => ({
@@ -124,11 +122,11 @@ export const TicketEdit = () => {
               }))}
               validate={[required()]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -141,11 +139,7 @@ export const TicketEdit = () => {
             />
           </Box>
 
-          <Box sx={{ width: "50%" }}>
-
-
-
-          </Box>
+          <Box sx={{ width: "50%" }}></Box>
         </div>
       </SimpleForm>
     </Edit>

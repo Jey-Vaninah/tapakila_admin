@@ -12,7 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { countryProvider } from "../../providers/country-provider";
 import { Country } from "../../providers/types";
 
-
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -28,12 +27,12 @@ export default function EditModal({
 }: EditModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-	const country: Country = {
+  const country: Country = {
     id: "",
-		name: "",
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
+    name: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
   const [formData, setFormData] = useState<Country>(country);
   // Initialize form with country data when modal opens or countryData changes
   useEffect(() => {
@@ -42,16 +41,16 @@ export default function EditModal({
         id: countryData.id,
         name: countryData.name,
         createdAt: countryData.createdAt,
-        updatedAt: countryData.updatedAt
+        updatedAt: countryData.updatedAt,
       });
     }
   }, [countryData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -131,7 +130,6 @@ export default function EditModal({
         {error && <Typography color="error">{error}</Typography>}
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-
             <TextField
               label="Country Name"
               name="name"

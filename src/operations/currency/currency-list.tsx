@@ -23,7 +23,9 @@ import EditModal from "./EditModal";
 export const CurrencyList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(null);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(
+    null
+  );
   const refresh = useRefresh();
 
   const handleEditClick = (country: Currency) => {
@@ -50,7 +52,11 @@ export const CurrencyList = () => {
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
           onClick={openButton}
         />
-        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <CreateModal
+          isOpen={isOpen}
+          onClose={closeButton}
+          onSuccess={handleEditSuccess}
+        />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}
@@ -109,12 +115,13 @@ const CurrencyListContent = ({ onEditClick }: CountryListContentProps) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    onEditClick(record);
-                  }}/>
+                  <EditButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onEditClick(record);
+                    }}
+                  />
                 </FlexBox>
               );
             }}

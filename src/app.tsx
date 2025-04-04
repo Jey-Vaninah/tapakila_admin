@@ -80,42 +80,22 @@ export const App = () => {
         create={TicketCreate}
       />
 
-      <Resource
-        name="currency"
-        icon={MonetizationOn}
-        list={CurrencyList}
-      />
+      <Resource name="currency" icon={MonetizationOn} list={CurrencyList} />
 
-      <Resource
-        name="host"
-        icon={GiteIcon}
-        list={HostList}
-      />
+      <Resource name="host" icon={GiteIcon} list={HostList} />
 
-      <Resource
-        name="country"
-        icon={PublicIcon}
-        list={CountryList}
-      />
+      <Resource name="country" icon={PublicIcon} list={CountryList} />
       <Resource name="tag" icon={SellIcon} list={TagList} />
       <Resource
         name="typeTicket"
-		icon={LocalActivityIcon}
+        icon={LocalActivityIcon}
         list={TicketTypeList}
         edit={TicketTypeEdit}
         create={TicketTypeCreate}
       />
       <Resource name="home" icon={HomeIcon} />
-      <Resource
-        name="role"
-        icon={ManageAccountsIcon}
-        list={RoleList}
-      />
-      <Resource
-        name="venue"
-        icon={ApartmentIcon}
-        list={EventHallList}
-      />
+      <Resource name="role" icon={ManageAccountsIcon} list={RoleList} />
+      <Resource name="venue" icon={ApartmentIcon} list={EventHallList} />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />

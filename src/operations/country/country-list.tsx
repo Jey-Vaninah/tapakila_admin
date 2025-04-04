@@ -20,7 +20,6 @@ import EditModal from "./EditModal.tsx";
 import { useState } from "react";
 import { Country } from "../../providers/types.ts";
 
-
 export const CountryList = () => {
   const { isOpen, openButton, closeButton } = useStore();
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -54,7 +53,11 @@ export const CountryList = () => {
           onClick={openButton}
         />
 
-        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <CreateModal
+          isOpen={isOpen}
+          onClose={closeButton}
+          onSuccess={handleEditSuccess}
+        />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}

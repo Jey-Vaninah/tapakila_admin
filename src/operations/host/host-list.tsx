@@ -48,9 +48,13 @@ export const HostList = () => {
           resource="host"
           label=" Add Host"
           sx={{ bgcolor: "rgb(43, 200, 190)", color: "white", py: 1, mt: 1 }}
-          onClick={openButton}        
+          onClick={openButton}
         />
-        <CreateModal isOpen={isOpen} onClose={closeButton} onSuccess={handleEditSuccess} />
+        <CreateModal
+          isOpen={isOpen}
+          onClose={closeButton}
+          onSuccess={handleEditSuccess}
+        />
         <EditModal
           isOpen={editModalOpen}
           onClose={() => setEditModalOpen(false)}
@@ -59,7 +63,7 @@ export const HostList = () => {
         />
       </FlexBox>
       <List resource="host" pagination={<Pagination />} actions={false}>
-        <HostListContent onEditClick={handleEditClick}/>
+        <HostListContent onEditClick={handleEditClick} />
       </List>
     </>
   );
@@ -68,7 +72,6 @@ export const HostList = () => {
 interface CountryListContentProps {
   onEditClick: (host: Host) => void;
 }
-
 
 const HostListContent = ({ onEditClick }: CountryListContentProps) => {
   const { isLoading } = useListContext();
@@ -109,12 +112,13 @@ const HostListContent = ({ onEditClick }: CountryListContentProps) => {
               return (
                 <FlexBox sx={{ justifyContent: "start", gap: 2 }}>
                   <DeleteButton />
-                  <EditButton 
+                  <EditButton
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
                       onEditClick(record);
-                    }}/>
+                    }}
+                  />
                 </FlexBox>
               );
             }}

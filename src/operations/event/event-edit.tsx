@@ -53,7 +53,10 @@ const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
   const record = useRecordContext();
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 3, textAlign: "center", borderRadius: 2 }}>
+    <Paper
+      elevation={3}
+      sx={{ p: 3, mb: 3, textAlign: "center", borderRadius: 2 }}
+    >
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
         Event Image
       </Typography>
@@ -75,10 +78,10 @@ const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
         component="label"
         startIcon={<CloudUploadIcon />}
         sx={{
-          textTransform: "none",
-          paddingX: 4,
-          marginTop: 2,
-          backgroundColor: "primary.main",
+          "textTransform": "none",
+          "paddingX": 4,
+          "marginTop": 2,
+          "backgroundColor": "primary.main",
           ":hover": {
             backgroundColor: "primary.dark",
           },
@@ -111,10 +114,10 @@ export const EventEdit = () => {
       actions={<EventEditActions />}
       transform={(data) => ({
         ...data,
-        eventImage: imageUrl || data.eventImage, 
+        eventImage: imageUrl || data.eventImage,
       })}
     >
-      <SimpleForm toolbar={<CustomToolbar />} sx={{width:"100%"}}>
+      <SimpleForm toolbar={<CustomToolbar />} sx={{ width: "100%" }}>
         <div
           style={{
             display: "flex",
@@ -123,15 +126,15 @@ export const EventEdit = () => {
             justifyContent: "space-between",
             width: "100%",
             marginBottom: 4,
-            gap:"50px",
-            padding:"32px"
+            gap: "50px",
+            padding: "32px",
           }}
         >
-          <Box sx={{width:"50%"}}>
-          <ImageUploadField
-            imageUrl={imageUrl}
-            handleImageUpload={handleImageUpload}
-          />
+          <Box sx={{ width: "50%" }}>
+            <ImageUploadField
+              imageUrl={imageUrl}
+              handleImageUpload={handleImageUpload}
+            />
             <SelectInput
               label="Event Hall"
               source="eventHall.id"
@@ -141,11 +144,11 @@ export const EventEdit = () => {
               }))}
               validate={[required()]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -156,17 +159,17 @@ export const EventEdit = () => {
                 },
               }}
             />
-                <TextInput
+            <TextInput
               label="Event Title"
               source="title"
               fullWidth
               variant="outlined"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -177,21 +180,19 @@ export const EventEdit = () => {
                 },
               }}
             />
-
           </Box>
-          <Box sx={{width:"50%"}}>
-      
+          <Box sx={{ width: "50%" }}>
             <TextInput
               label="Slug"
               source="slug"
               fullWidth
               variant="outlined"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -210,11 +211,11 @@ export const EventEdit = () => {
               rows={4}
               variant="outlined"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -225,16 +226,16 @@ export const EventEdit = () => {
                 },
               }}
             />
-          <DateInput
+            <DateInput
               label="Start Date"
               source="startDate"
               validate={[required()]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -245,18 +246,18 @@ export const EventEdit = () => {
                 },
               }}
             />
-           <TextInput
+            <TextInput
               label="Start Time"
-              source="startTime" 
+              source="startTime"
               fullWidth
               variant="outlined"
-              validate={[required(), validateTimeFormat]} 
+              validate={[required(), validateTimeFormat]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -271,11 +272,11 @@ export const EventEdit = () => {
               label="End Date"
               source="endDate"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -293,11 +294,11 @@ export const EventEdit = () => {
               variant="outlined"
               validate={[validateTimeFormat]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -314,11 +315,11 @@ export const EventEdit = () => {
               fullWidth
               variant="outlined"
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },
@@ -338,11 +339,11 @@ export const EventEdit = () => {
               }))}
               validate={[required()]}
               sx={{
-                marginBottom: 2,
+                "marginBottom": 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
+                  "borderRadius": 2,
+                  "borderColor": "rgb(43, 200, 190)",
                   "&:hover fieldset": {
                     borderColor: "rgb(43, 200, 190)",
                   },

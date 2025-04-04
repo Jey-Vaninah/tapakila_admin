@@ -94,7 +94,7 @@ export const UserEdit = () => {
             alignItems: "start",
             justifyContent: "space-between",
             width: "100%",
-            gap:16,
+            gap: 16,
             marginBottom: 4,
           }}
         >

@@ -2,16 +2,25 @@ import {
   Notifications as NotificationsIcon,
   Search as SearchIcon,
 } from "@mui/icons-material";
-import { Badge, Box, Avatar, Typography, Button, Menu, MenuItem, CircularProgress } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Avatar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  CircularProgress,
+} from "@mui/material";
 import { FC, useState } from "react";
 import { IconButtonWithTooltip, useLogout, useSidebarState } from "react-admin";
 import { useTheme } from "@mui/material/styles";
 import { FlexBox } from "../common/components/flex-box";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useProfile } from "../config/useProfile";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SettingsIcon from "@mui/icons-material/Settings";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 export const AppBar: FC = () => {
   const theme = useTheme();
@@ -26,13 +35,13 @@ export const AppBar: FC = () => {
   };
 
   const handleClickToProfile = () => {
-    navigate('/profile');
+    navigate("/profile");
     handleClose();
   };
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event : any) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -90,49 +99,73 @@ export const AppBar: FC = () => {
             <NotificationsIcon />
           </Badge>
         </IconButtonWithTooltip>
-        <Box >
-			{user ? (
-				<Button onClick={handleClick} sx={{ textAlign: "left", minWidth: 0 }}>
-					<FlexBox sx={{ gap: 2, alignItems: "center" }}>
-					<Avatar sx={{ width: "40px", height: "40px" }} src={user?.imageUrl} />
-					<Box>
-						<Typography sx={{ fontWeight: "bold", textTransform: "none" }}>{user?.name}</Typography>
-						<Typography variant="body2" sx={{ opacity: 0.7, textTransform: "none" }}>
-						{user?.email}
-						</Typography>
-					</Box>
-					</FlexBox>
-				</Button>
-			) : <CircularProgress size={24} />}
+        <Box>
+          {user ? (
+            <Button
+              onClick={handleClick}
+              sx={{ textAlign: "left", minWidth: 0 }}
+            >
+              <FlexBox sx={{ gap: 2, alignItems: "center" }}>
+                <Avatar
+                  sx={{ width: "40px", height: "40px" }}
+                  src={user?.imageUrl}
+                />
+                <Box>
+                  <Typography
+                    sx={{ fontWeight: "bold", textTransform: "none" }}
+                  >
+                    {user?.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ opacity: 0.7, textTransform: "none" }}
+                  >
+                    {user?.email}
+                  </Typography>
+                </Box>
+              </FlexBox>
+            </Button>
+          ) : (
+            <CircularProgress size={24} />
+          )}
 
-
-          <Menu anchorEl={anchorEl} open={open} onClose={handleClose}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              PaperProps={{
-                sx: {
-                  width: 200,
-                },
-              }} >
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            PaperProps={{
+              sx: {
+                width: 200,
+              },
+            }}
+          >
             <MenuItem onClick={handleClickToProfile}>
-              <AccountCircleIcon sx={{ marginRight: 1, color:"rgba(64, 224,208, .8)" }} />
+              <AccountCircleIcon
+                sx={{ marginRight: 1, color: "rgba(64, 224,208, .8)" }}
+              />
               Profil
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <SettingsIcon sx={{ marginRight: 1, color:"rgba(64, 224,208, .8)" }} />
+              <SettingsIcon
+                sx={{ marginRight: 1, color: "rgba(64, 224,208, .8)" }}
+              />
               Paramètres
             </MenuItem>
             <MenuItem onClick={handleLogout}>
-              <ExitToAppIcon sx={{ marginRight: 1, color:"rgba(64, 224,208, .8)" }} />
-            Déconnexion
-          </MenuItem>
-            </Menu>
+              <ExitToAppIcon
+                sx={{ marginRight: 1, color: "rgba(64, 224,208, .8)" }}
+              />
+              Déconnexion
+            </MenuItem>
+          </Menu>
         </Box>
       </Box>
     </Box>

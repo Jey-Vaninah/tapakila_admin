@@ -29,10 +29,10 @@ export default function EditModal({
   const [error, setError] = useState<string | null>(null);
   const role: Role = {
     id: "",
-		title: "",
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
+    title: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
   const [formData, setFormData] = useState<Role>(role);
   // Initialize form with role data when modal opens or roleData changes
   useEffect(() => {
@@ -41,17 +41,16 @@ export default function EditModal({
         id: roleData.id,
         title: roleData.title,
         createdAt: roleData.createdAt,
-        updatedAt: roleData.updatedAt
+        updatedAt: roleData.updatedAt,
       });
     }
   }, [roleData]);
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 

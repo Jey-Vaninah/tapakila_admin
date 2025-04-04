@@ -13,7 +13,6 @@ import { roleProvider } from "./role-provider";
 import { currentEventProvider } from "./current-event-provider";
 import { currentTicketProvider } from "./current-ticket-provider";
 
-
 export const dataProvider = createRaProvider(
   [
     userProvider,
@@ -28,7 +27,7 @@ export const dataProvider = createRaProvider(
     ticketTypeProvider,
     roleProvider,
     currentEventProvider,
-    currentTicketProvider
+    currentTicketProvider,
   ],
   {
     getListOptions: {

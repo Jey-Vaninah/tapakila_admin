@@ -12,7 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { hostProvider } from "../../providers/host-provider";
 import { Host } from "../../providers/types";
 
-
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -28,12 +27,12 @@ export default function EditModal({
 }: EditModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-	const host: Host = {
+  const host: Host = {
     id: "",
-		name: "",
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
+    name: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
   const [formData, setFormData] = useState<Host>(host);
   // Initialize form with host data when modal opens or hostData changes
   useEffect(() => {
@@ -42,16 +41,16 @@ export default function EditModal({
         id: hostData.id,
         name: hostData.name,
         createdAt: hostData.createdAt,
-        updatedAt: hostData.updatedAt
+        updatedAt: hostData.updatedAt,
       });
     }
   }, [hostData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -131,7 +130,6 @@ export default function EditModal({
         {error && <Typography color="error">{error}</Typography>}
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-
             <TextField
               label="Host Name"
               name="name"

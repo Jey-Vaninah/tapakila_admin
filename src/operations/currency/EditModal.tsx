@@ -12,7 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { currencyProvider } from "../../providers/currency-provider";
 import { Currency } from "../../providers/types";
 
-
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -28,13 +27,13 @@ export default function EditModal({
 }: EditModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-	const currency: Currency = {
+  const currency: Currency = {
     id: "",
-		title: "",
+    title: "",
     description: "",
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
   const [formData, setFormData] = useState<Currency>(currency);
   // Initialize form with currency data when modal opens or currencyData changes
   useEffect(() => {
@@ -44,16 +43,16 @@ export default function EditModal({
         title: currencyData.title,
         description: currencyData.title,
         createdAt: currencyData.createdAt,
-        updatedAt: currencyData.updatedAt
+        updatedAt: currencyData.updatedAt,
       });
     }
   }, [currencyData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -134,7 +133,6 @@ export default function EditModal({
         {error && <Typography color="error">{error}</Typography>}
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-
             <TextField
               label="Currency Name"
               name="title"
@@ -154,7 +152,7 @@ export default function EditModal({
               fullWidth
               multiline
               rows={4}
-					  />
+            />
             <Button
               type="submit"
               variant="contained"

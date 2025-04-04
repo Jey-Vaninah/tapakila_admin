@@ -19,7 +19,9 @@ export const TicketCreate = () => {
   const [selectedEvent, setSelectedEvent] = useState("");
 
   // State to store filtered ticket types
-  const [filteredTicketTypes, setFilteredTicketTypes] = useState<TicketType[]>([]);
+  const [filteredTicketTypes, setFilteredTicketTypes] = useState<TicketType[]>(
+    []
+  );
 
   // Filter ticket types when the selected event changes
   useEffect(() => {
@@ -44,11 +46,11 @@ export const TicketCreate = () => {
           fullWidth
           variant="outlined"
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },
@@ -67,14 +69,14 @@ export const TicketCreate = () => {
             id: event.id,
             name: event.title,
           }))}
-          onChange={(event) => setSelectedEvent(event.target.value)}  // Update selected event
+          onChange={(event) => setSelectedEvent(event.target.value)} // Update selected event
           validate={[required()]}
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },
@@ -96,11 +98,11 @@ export const TicketCreate = () => {
           }))}
           validate={[required()]}
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },
@@ -122,11 +124,11 @@ export const TicketCreate = () => {
           }))}
           validate={[required()]}
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },
@@ -142,11 +144,11 @@ export const TicketCreate = () => {
           source="amountPaid"
           validate={[required()]}
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },
@@ -167,11 +169,11 @@ export const TicketCreate = () => {
           }))}
           validate={[required()]}
           sx={{
-            marginBottom: 2,
+            "marginBottom": 2,
             "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
             "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              borderColor: "rgb(43, 200, 190)",
+              "borderRadius": 2,
+              "borderColor": "rgb(43, 200, 190)",
               "&:hover fieldset": {
                 borderColor: "rgb(43, 200, 190)",
               },

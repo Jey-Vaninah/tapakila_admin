@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { FlexBox } from "../../common/components/flex-box";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import {
   BooleanInput,
   Button,

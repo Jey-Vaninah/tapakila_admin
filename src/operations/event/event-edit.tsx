@@ -16,28 +16,31 @@ import { Box, Button, Typography, Paper } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useImageUpload } from "../../config/useImageUpload";
 
+// Validation de l'heure
 const validateTimeFormat = (value: string) => {
   if (value == null || value == "") return undefined;
   const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$/;
   if (!timeRegex.test(value)) {
     return "L'heure doit être au format HH:mm.";
   }
-
   return undefined;
 };
 
+// Barre d'outils personnalisée
 const CustomToolbar = () => (
   <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
     <SaveButton />
   </Toolbar>
 );
 
+// Actions du formulaire d'édition d'événement
 const EventEditActions = () => (
   <TopToolbar>
     <ShowButton />
   </TopToolbar>
 );
 
+// Champ d'upload de l'image
 interface ImageUploadFieldProps {
   imageUrl: string | undefined;
   handleImageUpload: (file: File) => void;
@@ -47,24 +50,39 @@ const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
   imageUrl,
   handleImageUpload,
 }) => {
-  const record = useRecordContext(); // Récupère les données du formulaire
+  const record = useRecordContext();
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 2, textAlign: "center" }}>
-      <Typography variant="h6" gutterBottom>
+    <Paper elevation={3} sx={{ p: 3, mb: 3, textAlign: "center", borderRadius: 2 }}>
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
         Event Image
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
         <img
           src={imageUrl || record?.eventImage || ""}
-          style={{ height: 150, backgroundColor: "grey.300" }}
+          style={{
+            height: 400,
+            width: "100%",
+            maxWidth: 700,
+            backgroundColor: "grey.300",
+            objectFit: "cover",
+            borderRadius: 8,
+          }}
         />
       </Box>
       <Button
         variant="contained"
         component="label"
         startIcon={<CloudUploadIcon />}
-        sx={{ textTransform: "none" }}
+        sx={{
+          textTransform: "none",
+          paddingX: 4,
+          marginTop: 2,
+          backgroundColor: "primary.main",
+          ":hover": {
+            backgroundColor: "primary.dark",
+          },
+        }}
       >
         Upload Image
         <input
@@ -93,25 +111,27 @@ export const EventEdit = () => {
       actions={<EventEditActions />}
       transform={(data) => ({
         ...data,
-        eventImage: imageUrl || data.eventImage, // Garde l'ancienne image si pas modifiée
+        eventImage: imageUrl || data.eventImage, 
       })}
     >
-      <SimpleForm toolbar={<CustomToolbar />}>
+      <SimpleForm toolbar={<CustomToolbar />} sx={{width:"100%"}}>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             alignItems: "start",
             justifyContent: "space-between",
             width: "100%",
             marginBottom: 4,
+            gap:"50px",
+            padding:"32px"
           }}
         >
+          <Box sx={{width:"50%"}}>
           <ImageUploadField
             imageUrl={imageUrl}
             handleImageUpload={handleImageUpload}
           />
-          <div>
             <SelectInput
               label="Event Hall"
               source="eventHall.id"
@@ -120,27 +140,195 @@ export const EventEdit = () => {
                 name: event.name,
               }))}
               validate={[required()]}
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
             />
-            <TextInput readOnly label="Id" source="id" />
-            <TextInput source="title" />
-            <TextInput source="slug" />
-            <TextInput source="name" />
-            <TextInput source="description" />
-            <DateInput source="startDate" validate={[required()]} />
+                <TextInput
+              label="Event Title"
+              source="title"
+              fullWidth
+              variant="outlined"
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
 
+          </Box>
+          <Box sx={{width:"50%"}}>
+      
             <TextInput
-              source="startTime"
+              label="Slug"
+              source="slug"
+              fullWidth
+              variant="outlined"
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
+            <TextInput
+              label="Description"
+              source="description"
+              fullWidth
+              multiline
+              rows={4}
+              variant="outlined"
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
+          <DateInput
+              label="Start Date"
+              source="startDate"
+              validate={[required()]}
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
+           <TextInput
               label="Start Time"
-              validate={[required(), validateTimeFormat]}
+              source="startTime" 
+              fullWidth
+              variant="outlined"
+              validate={[required(), validateTimeFormat]} 
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
             />
-            <DateInput source="endDate" />
-
+            <DateInput
+              label="End Date"
+              source="endDate"
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
             <TextInput
-              source="endTime"
               label="End Time"
+              source="endTime"
+              fullWidth
+              variant="outlined"
               validate={[validateTimeFormat]}
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
             />
-            <TextInput source="ageLimit" />
+            <TextInput
+              label="Age Limit"
+              source="ageLimit"
+              fullWidth
+              variant="outlined"
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
+            />
             <SelectInput
               label="Tags"
               source="tag.id"
@@ -149,8 +337,23 @@ export const EventEdit = () => {
                 name: tag.title,
               }))}
               validate={[required()]}
+              sx={{
+                marginBottom: 2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
             />
-          </div>
+          </Box>
         </div>
       </SimpleForm>
     </Edit>

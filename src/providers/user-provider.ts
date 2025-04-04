@@ -1,8 +1,8 @@
 import { ResourceProvider } from "@rck.princy/ra-data-provider-wrapper";
-import { User } from "./types";
+import { User, UserUpdate } from "./types";
 import { getAxiosInstance } from "../config/axios";
 
-export const userProvider: ResourceProvider<User> = {
+export const userProvider: ResourceProvider<User | UserUpdate> = {
   resource: "user",
   getOne: async ({ id }) =>
     getAxiosInstance()
@@ -21,7 +21,7 @@ export const userProvider: ResourceProvider<User> = {
     } else {
       console.log(data);
       return getAxiosInstance()
-        .put<User>("/users/", data)
+        .post<UserUpdate>("/users/", data)
         .then((response) => response.data);
     }
   },

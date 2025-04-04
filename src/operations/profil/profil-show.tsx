@@ -1,13 +1,14 @@
 import { Typography, Avatar, Button, Box } from "@mui/material";
 import { useRedirect } from "react-admin";
-
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
 import {
   Email as EmailIcon,
-  Person as PersonIcon,
-  Phone as PhoneIcone,
-  Place as PlaceIcone,
+  Phone as PhoneIcon,
+  Place as PlaceIcon,
+  DateRange as DateRangeIcon,
+  Update as UpdateIcon,
+  Public as PublicIcon,
 } from "@mui/icons-material";
 
 import { useProfile } from "../../config/useProfile";
@@ -32,7 +33,8 @@ const ProfilePage = () => {
     );
 
   return (
-    <>
+    <Box sx={{ width: "100%", bgcolor: "#f4f6f8", pb: 5 }}>
+      {/* Header */}
       <Box
         sx={{
           width: "100%",
@@ -40,492 +42,159 @@ const ProfilePage = () => {
           position: "relative",
           borderRadius: "20px 20px 0 0",
           backgroundImage: "url('/couverture.jpg')",
-          backgroundSize: "100% 280%",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          textAlign: "center",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Typography
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontWeight: "bold",
-            fontSize: "3rem",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
+        <Typography variant="h3" fontWeight="bold">
           Welcome to Tapak'ila
-          <Typography sx={{ fontWeight: "bold", color: "white" }}>
-            "Réservez votre place, sans aucune menace."
+          <Typography variant="subtitle1" fontWeight="bold">
+            "Reserve your spot, without any threat."
           </Typography>
         </Typography>
+      </Box>
 
+      {/* Profile Info */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          paddingX: 5,
+          mt: -10,
+        }}
+      >
         <Avatar
           src={user.imageUrl}
           sx={{
-            position: "absolute",
-            top: "110%",
-            left: "20px",
-            transform: "translateY(-50%)",
-            width: 200,
-            height: 200,
-            border: "3px solid white",
+            width: 150,
+            height: 150,
+            border: "5px solid white",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           }}
         />
-      </Box>
-
-      <FlexBox
-        sx={{
-          justifyContent: "space-between",
-          width: "100%",
-          paddingLeft: "240px",
-          paddingTop: 3,
-        }}
-      >
-        <Box>
-          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-            {user.name}
-          </Typography>
-          <Typography variant="h5">
-            {user.email}
-          </Typography>
+        <Box sx={{ ml: 3, mt:10 }}>
+          <Box sx={{display:"flex", alignItems:"center"}}>
+            <Typography variant="h5" fontWeight="bold">
+              {user.name}
+            </Typography>
+            <Typography color="textPrimary" sx={{px:2}}>({user.role.title})</Typography>
+          </Box>
+          <Typography color="textSecondary">@{user.username}</Typography>
         </Box>
-        
-
         <Button
           variant="contained"
-          color="primary"
-          sx={{
-            margin: 2,
-            ml: "auto",
-          }}
+          sx={{ ml: "auto", backgroundColor:"rgb(43, 200, 190)", mt:10 }}
           onClick={() => redirect("/profile/edit")}
         >
-          Modifier le Profil
+          Edit Profile
         </Button>
-      </FlexBox>
-
-      <Box
-        sx={{
-          justifyContent: "start",
-          mt: 5,
-        }}
-      >
-        <Box
-          sx={{ height: "1px", backgroundColor: "black", margin: "20px 0" }}
-        />
-        <Typography
-          sx={{ fontSize: "24px", fontWeight: "bold", marginBottom: 2 }}
-        >
-          Détail du profil
-        </Typography>
       </Box>
 
-      <Box>
-        <FlexBox
-          sx={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            alignItems: "start",
-          }}
-        >
-          <Box
-            sx={{
-              width: "40%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Box
-              sx={{
-                bgcolor: "white",
-                width: "100%",
-                height: "40vh",
-                padding: 5,
-                boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
-              }}
-            >
-              <Typography
-                sx={{ fontWeight: "bold", color: "rgb(43, 200, 190) " }}
-              >
-                Coordonnée
-              </Typography>
-              <Box
-                sx={{
-                  height: "1px",
-                  backgroundColor: "black",
-                  margin: "20px 0",
-                }}
-              />
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "0.1px solid black ",
-                    bgcolor: "rgb(43, 200, 190)",
-                  }}
-                >
-                  <EmailIcon sx={{ fontSize: 30, color: "black " }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-
-              <FlexBox sx={{ justifyContent: "start", marginTop: 7 }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PhoneIcone sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Number
-                  </Typography>
-                  0345933238
-                </Box>
-              </FlexBox>
-            </Box>
-
-            <Box
-              sx={{
-                bgcolor: "white",
-                width: "100%",
-                height: "40vh",
-                padding: 5,
-                boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
-              }}
-            >
-              <Typography sx={{ fontWeight: "bold" }}>Coordonnée</Typography>
-              <Box
-                sx={{
-                  height: "1px",
-                  backgroundColor: "black",
-                  margin: "20px 0",
-                }}
-              />
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PlaceIcone sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Adress
-                  </Typography>
-                  Andakana 232
-                </Box>
-              </FlexBox>
-
-              <FlexBox sx={{ justifyContent: "start", marginTop: 7 }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
+      {/* Details Section */}
+      <Box sx={{ display: "flex", gap: 4, mt: 5, px: 5 }}>
+        {/* Contact Info */}
+        <Box sx={{ flex: 1, bgcolor: "white", p: 3, borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+          <Typography variant="h6" fontWeight="bold">Contact Information</Typography>
+          <Box sx={{ mt: 2, display: "flex", gap: 2, alignItems: "center" }}>
+            <EmailIcon sx={{
+               color: "rgb(43, 200, 190)", 
+               border: "2px solid rgb(43, 200, 190)", 
+               borderRadius: "50%", 
+               padding: "8px",
+               fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Email</Typography>
+              <Typography color="textSecondary">{user.email}</Typography>
             </Box>
           </Box>
-
-          <Box
-            sx={{
-              bgcolor: "white",
-              width: "60%",
-              height: "82vh",
-              marginLeft: 5,
-              padding: 5,
-              boxShadow: "0 0 10px 1px rgba(0, 0, 0, 0.3)",
-            }}
-          >
-            <Typography sx={{ fontWeight: "bold" }}>Coordonnée</Typography>
-            <Box
-              sx={{ height: "1px", backgroundColor: "black", margin: "20px 0" }}
-            />
-
-            <FlexBox sx={{ justifyContent: "start", gap: 10 }}>
-              <FlexBox>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "blackwhite" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-            </FlexBox>
-
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
-              <FlexBox>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-            </FlexBox>
-
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
-              <FlexBox>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-            </FlexBox>
-
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
-              <FlexBox>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-            </FlexBox>
-
-            <FlexBox sx={{ justifyContent: "start", gap: 10, marginTop: 8 }}>
-              <FlexBox>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-              <FlexBox sx={{ justifyContent: "start" }}>
-                <FlexBox
-                  sx={{
-                    borderRadius: "50%",
-                    width: 50,
-                    height: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "2px solid rgb(43, 200, 190) ",
-                  }}
-                >
-                  <PersonIcon sx={{ fontSize: 30, color: "black" }} />
-                </FlexBox>
-                <Box>
-                  <Typography sx={{ fontWeight: "bold", marginRight: 20 }}>
-                    Email
-                  </Typography>
-                  {user.email}
-                </Box>
-              </FlexBox>
-            </FlexBox>
+          <Box sx={{ mt: 2, display: "flex", gap: 2, alignItems: "center" }}>
+            <PhoneIcon sx={{
+              color: "rgb(43, 200, 190)", 
+              border: "2px solid rgb(43, 200, 190)", 
+              borderRadius: "50%", 
+              padding: "8px",
+              fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Phone Number</Typography>
+              <Typography color="textSecondary">034 59 332 38</Typography>
+            </Box>
           </Box>
-        </FlexBox>
+        </Box>
+
+        {/* Location Info */}
+        <Box sx={{ flex: 1, bgcolor: "white", p: 3, borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+          <Typography variant="h6" fontWeight="bold">Location Details</Typography>
+          <Box sx={{ mt: 2, display: "flex", gap: 2, alignItems: "center" }}>
+            <PlaceIcon sx={{
+              color: "rgb(43, 200, 190)", 
+              border: "2px solid rgb(43, 200, 190)", 
+              borderRadius: "50%", 
+              padding: "8px",
+              fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Address</Typography>
+              <Typography color="textSecondary">Lot 227 FKTA Ankadivory</Typography>
+            </Box>
+          </Box>
+          <Box sx={{ mt: 2, display: "flex", gap: 2, alignItems: "center" }}>
+            <PublicIcon sx={{
+              color: "rgb(43, 200, 190)", 
+              border: "2px solid rgb(43, 200, 190)", 
+              borderRadius: "50%", 
+              padding: "8px",
+              fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Country</Typography>
+              <Typography color="textSecondary">{user.country.name}</Typography>
+            </Box>
+          </Box>
+        </Box>
       </Box>
-    </>
-    // <Card sx={{ maxWidth: 500, margin: "auto", mt: 5, p: 3 }}>
-    //   <CardContent sx"={{ textAlign: "center" }}>
-    //     <Avatar
-    //       src={user.imageUrl}
-    //       sx={{ width: 85, height: 85, margin: "auto" }}
-    //     />
-    //     <Typography variant="h5" sx={{ mt: 2, fontWeight: "bold" }}>
-    //       {user.name}
-    //     </Typography>
-    //     <Typography variant="subtitle1" color="textSecondary">
-    //       {user.roleId?.title}
-    //     </Typography>
-    //     <Typography variant="body1" sx={{ mt: 1 }}>
-    //       {user.email}
-    //     </Typography>
-    //     <Button
-    //       variant="contained"
-    //       color="primary"
-    //       sx={{ mt: 2 }}
-    //       onClick={() => redirect("/profile/edit")}
-    //     >
-    //       Modifier
-    //     </Button>
-    //   </CardContent>
-    // </Card>
+
+      {/* Personal Information */}
+      <Box sx={{ mt: 4, px: 5, py: 3, marginInline:5, bgcolor: "white", borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+        <Typography variant="h6" fontWeight="bold">Account Information</Typography>
+        <Box sx={{ mt: 2, display: "flex", gap: 5 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <DateRangeIcon sx={{
+              color: "rgb(43, 200, 190)", 
+              border: "2px solid rgb(43, 200, 190)", 
+              borderRadius: "50%", 
+              padding: "8px",
+              fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Created</Typography>
+              <Typography color="textSecondary">{new Date(user.createdAt).toLocaleString()}</Typography>
+            </Box>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <UpdateIcon sx={{
+              color: "rgb(43, 200, 190)", 
+              border: "2px solid rgb(43, 200, 190)", 
+              borderRadius: "50%", 
+              padding: "8px",
+              fontSize: "50px"
+            }} />
+            <Box>
+              <Typography fontWeight="bold">Updated</Typography>
+              <Typography color="textSecondary">{new Date(user.updatedAt).toLocaleString()}</Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

@@ -22,8 +22,22 @@ export type User = {
   imageUrl: string;
   country: Country;
   createdAt: Date;
-  updatedAat: Date;
+  updatedAt: Date;
   deletedAt: Date | null;
+  role: Role;
+};
+
+export type UserUpdate = {
+  id: string;
+  username: string;
+  name: string;
+  email: string;
+  emailVerifiedAt: Date | null;
+  password: string | null;
+  newPassword: string | null;
+  confirmPassword: string | null;
+  imageUrl: string;
+  country: Country;
   role: Role;
 };
 

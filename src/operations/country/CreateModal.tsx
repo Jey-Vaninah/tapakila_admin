@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { countryProvider } from '../../providers/counrty-provider';
+import { countryProvider } from '../../providers/country-provider';
 
 interface ModalProps {
   isOpen: boolean;

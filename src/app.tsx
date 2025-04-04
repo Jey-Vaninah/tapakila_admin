@@ -32,23 +32,17 @@ import { LoginPage } from "./security/components/login-page";
 import ProfilePage from "./operations/profil/profil-show";
 import ProfileEdit from "./operations/profil/profil-edit";
 import { CurrencyList } from "./operations/currency/currency-list";
-import { CurrencyShow } from "./operations/currency/currency-show";
 import { HostList } from "./operations/host/host-list";
-import { HostShow } from "./operations/host/host-show";
 import { CountryList } from "./operations/country/country-list";
-import { CountryShow } from "./operations/country/country-show";
 import { TagList } from "./operations/tag/tag-list";
-import { TagShow } from "./operations/tag/tag-show";
 import { TicketTypeList } from "./operations/ticketType/ticketType-list";
 import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
 import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
 import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
 import { RoleList } from "./operations/role/role-list";
-import { RoleShow } from "./operations/role/role-show";
 import "./assets/css/index.css";
 import { HomePage } from "./operations/home/home-page";
 import { EventHallList } from "./operations/eventHall/eventHall-list";
-import { EventHallShow } from "./operations/eventHall/eventHall-show";
 
 export const App = () => {
   return (
@@ -91,24 +85,20 @@ export const App = () => {
         name="currency"
         icon={MonetizationOn}
         list={CurrencyList}
-        show={CurrencyShow}
       />
 
       <Resource
         name="host"
         icon={GiteIcon}
         list={HostList}
-        show={HostShow}
       />
 
       <Resource
         name="country"
         icon={PublicIcon}
         list={CountryList}
-        show={CountryShow}
-
       />
-      <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
+      <Resource name="tag" icon={SellIcon} list={TagList} />
       <Resource
         name="typeTicket"
 		icon={LocalActivityIcon}
@@ -122,13 +112,11 @@ export const App = () => {
         name="role"
         icon={ManageAccountsIcon}
         list={RoleList}
-        show={RoleShow}
       />
       <Resource
         name="venue"
         icon={ApartmentIcon}
         list={EventHallList}
-        show={EventHallShow}
       />
       <CustomRoutes>
         <Route path="/profile" element={<ProfilePage />} />

@@ -6,7 +6,6 @@ import {
   MonetizationOn as MonetizationOn,
   Gite as GiteIcon,
   Public as PublicIcon,
-  Subscriptions as SubscriptionsIcon,
   Sell as SellIcon,
   ManageAccounts as ManageAccountsIcon,
   Category as CategoryIcon,
@@ -41,10 +40,6 @@ import { CountryList } from "./operations/country/country-list";
 import { CountryShow } from "./operations/country/country-show";
 import { TagList } from "./operations/tag/tag-list";
 import { TagShow } from "./operations/tag/tag-show";
-import { NewsletterCreate } from "./operations/newsletter/newsletter-create";
-import { NewsletterEdit } from "./operations/newsletter/newsletter-edit";
-import { NewsletterList } from "./operations/newsletter/newsletter-list";
-import { NewsletterShow } from "./operations/newsletter/newsletter-show";
 import { TicketTypeList } from "./operations/ticketType/ticketType-list";
 import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
 import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
@@ -115,14 +110,6 @@ export const App = () => {
         
       />
       <Resource name="tag" icon={SellIcon} list={TagList} show={TagShow} />
-      <Resource
-        name="newsletter"
-        icon={SubscriptionsIcon}
-        list={NewsletterList}
-        show={NewsletterShow}
-        edit={NewsletterEdit}
-        create={NewsletterCreate}
-      />
       <Resource
         name="typeTicket"
         icon={CategoryIcon}

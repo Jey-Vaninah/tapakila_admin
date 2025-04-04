@@ -28,8 +28,8 @@ export const HomePage = () => {
 
 
   console.log(currentTickets);
-  
-  
+
+
   const redirect = useRedirect();
 
   return (
@@ -119,7 +119,7 @@ export const HomePage = () => {
           <Box>
             <Typography sx={{ color: "grey" }}>Tickets Sold</Typography>
             <Typography sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-              {dataTickets.length}
+              {dataTickets.reduce((sum, ticket) => sum + parseInt(ticket.ticketNumber), 0)}
             </Typography>
             <Typography sx={{ color: "grey", fontSize: "0.8rem" }}>
               <span style={{ color: "rgb(43, 200, 190)" }}>+12%</span> vs last

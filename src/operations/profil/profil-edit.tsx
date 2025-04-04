@@ -9,7 +9,7 @@ import {
   FormControl,
   Paper,
   Stack,
-  Avatar,
+  Avatar
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useGetList, useNotify } from "react-admin";
@@ -18,12 +18,18 @@ import { useProfile } from "../../config/useProfile";
 import { userProvider } from "../../providers";
 import Loading from "../../common/components/loading";
 import { FlexBox } from "../../common/components/flex-box";
+import { useImageUpload } from "../../config/useImageUpload";  // Import the custom hook
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
 
 const ProfileEdit = () => {
   const notify = useNotify();
   const userToUpdate = useProfile();
   const [isUpdatingInfo, setIsUpdatingInfo] = useState(false);
   const [isUpdatingSecurity, setIsUpdatingSecurity] = useState(false);
+
+  const { imageUrl, handleImageUpload } = useImageUpload(userToUpdate?.imageUrl); // Use the hook for image upload
+
   const user = useMemo(() => ({
     id: userToUpdate?.id ?? " ",
     name: userToUpdate?.name ?? " ",
@@ -33,7 +39,7 @@ const ProfileEdit = () => {
     password: null,
     newPassword: null,
     confirmPassword: null,
-    imageUrl: userToUpdate?.imageUrl ?? " ",
+    imageUrl:( imageUrl || userToUpdate?.imageUrl )?? " ", // Set the image URL from the hook
     country: {
       id: userToUpdate?.country.id ?? " ",
       name: userToUpdate?.country.name ?? " ",
@@ -46,7 +52,7 @@ const ProfileEdit = () => {
       createdAt: new Date(),
       updatedAt: new Date()
     }
-  }), [userToUpdate]);
+  }), [userToUpdate, imageUrl]);
 
   const { data: roles, isLoading: rolesLoading } = useGetList<Role>("role");
   const { data: countries, isLoading: countriesLoading } = useGetList<Country>("country");
@@ -88,7 +94,9 @@ const ProfileEdit = () => {
     }
     try {
       await userProvider.saveOrUpdate({
-        data: formData,
+        data: {...formData, 
+          imageUrl: imageUrl
+        },
         meta: { mutationType: "UPDATE" },
         id: formData.id,
         previousData: user,
@@ -151,106 +159,89 @@ const ProfileEdit = () => {
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#f4f6f8", pb: 5 }}>
-       {/* Header */}
-  <Box
-  sx={{
-    width: "100%",
-    height: "35vh",
-    position: "relative",
-    borderRadius: "20px 20px 0 0",
-    backgroundImage: "url('/couverture.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    textAlign: "center",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-  }}
->
-  <Typography variant="h3" fontWeight="bold">
-    Welcome to Tapak'ila
-    <Typography variant="subtitle1" fontWeight="bold">
-      "Reserve your spot, without any threat."
-    </Typography>
-  </Typography>
-</Box>
+      {/* Header */}
+      <Box sx={{ width: "100%", height: "35vh", position: "relative", borderRadius: "20px 20px 0 0", backgroundImage: "url('/couverture.jpg')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", display: "flex", alignItems: "center", justifyContent: "center", color: "white", textAlign: "center", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+        <Typography variant="h3" fontWeight="bold">
+          Welcome to Tapak'ila
+          <Typography variant="subtitle1" fontWeight="bold">"Reserve your spot, without any threat."</Typography>
+        </Typography>
+      </Box>
 
-{/* Profile Info */}
-<Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    paddingX: 5,
-    mt: -10,
-  }}
->
-  <Avatar
-    src={user.imageUrl}
-    sx={{
-      width: 150,
-      height: 150,
-      border: "5px solid white",
-      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-    }}
-  />
-  <Box sx={{ ml: 3, mt:10 }}>
-    <Box sx={{display:"flex", alignItems:"center"}}>
-      <Typography variant="h5" fontWeight="bold">
-        {user.name}
-      </Typography>
-      <Typography color="textPrimary" sx={{px:2}}>({user.role.title})</Typography>
-    </Box>
-    <Typography color="textSecondary">@{user.username}</Typography>
-  </Box>
+      {/* Profile Info */}
+      <Box sx={{ display: "flex", alignItems: "center", paddingX: 5, mt: -10 }}>
+        <Box>
+          <Avatar src={imageUrl} sx={{ width: 150, height: 150, border: "5px solid white", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }} />
+          <Button
+                  variant="contained"
+                  component="label"
+                  startIcon={<CloudUploadIcon />}
+                  sx={{ textTransform: "none", mt:1 }}
+                >
+                  Update Image
+                  <input
+                    type="file"
+                    hidden
+                    accept="image/*"
+                    onChange={(event) => {
+                      const file = event.target.files?.[0];
+                      if (file) handleImageUpload(file);
+                    }}
+                  />
+            </Button>
+        </Box>
+        <Box sx={{ ml: 3, mt: 10 }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="h5" fontWeight="bold">{user.name}</Typography>
+            <Typography color="textPrimary" sx={{ px: 2 }}>({user.role.title})</Typography>
+          </Box>
+          <Typography color="textSecondary">@{user.username}</Typography>
+        </Box>
+      </Box>
 
-</Box>
-    <Box sx={{  mx: "auto", mt: 4, display:"flex", gap:4, justifyContent:"center", padding: 2 }}>
-
-      {/* Personal Info Form */}
-      <form onSubmit={handleSubmitInfo(onSubmitInfo)} style={{ flex: 1 }}>
-        <Paper variant="outlined" sx={{ width: "100%", borderRadius: 2, p: 3, boxShadow: 3, position: "relative" }}>
-          <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>Informations Personnelles</Typography>
-          <Stack spacing={2}>
-            <TextField fullWidth label="Nom d'utilisateur" {...registerInfo("username", { required: true })} margin="normal" error={!!errorsInfo.username} helperText={errorsInfo.username && "Nom requis"} />
-            <TextField fullWidth label="Nom" {...registerInfo("name", { required: true })} margin="normal" error={!!errorsInfo.name} helperText={errorsInfo.name && "Nom requis"} />
-            <TextField fullWidth label="Email" {...registerInfo("email", { required: true })} margin="normal" error={!!errorsInfo.email} helperText={errorsInfo.email && "Email requis"} />
-            <FormControl fullWidth margin="normal">
-              <Select
-                {...registerInfo("country.id", { required: true })}
-                value={user.country?.id || ""}
-                onChange={(e) => setValueInfo("country.id", e.target.value)}
-              >
-                {countries?.map((c) => (
-                  <MenuItem key={c.id} value={c.id}>
-                    {c.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl fullWidth margin="normal">
-              <Select
-                {...registerInfo("role.id", { required: true })}
-                value={user.role?.id || ""}
-                onChange={(e) => setValueInfo("role.id", e.target.value)}
-              >
-                {roles?.map((r) => (
-                  <MenuItem key={r.id} value={r.id}>
-                    {r.title}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Stack>
-          <Button type="submit" variant="contained" fullWidth disabled={isUpdatingInfo} sx={{ mt: 2, bgcolor: "rgb(43, 200, 190)", color: "white" }}>
-            {isUpdatingInfo ? "Mise à jour..." : "Sauvegarder"}
-          </Button>
-        </Paper>
-      </form>
-
-      {/* Security Form */}
+      <Box sx={{ mx: "auto", mt: 2, display: "flex", gap: 4, justifyContent: "center", padding: 2 }}>
+        {/* Personal Info Form */}
+        <form onSubmit={handleSubmitInfo(onSubmitInfo)} style={{ flex: 1 }}>
+          <Paper variant="outlined" sx={{ width: "100%", borderRadius: 2, p: 3, boxShadow: 3, position: "relative" }}>
+            <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>Informations Personnelles</Typography>
+            <Stack spacing={2}>
+              {/* Add File Input for Image Upload */}
+              
+              <TextField fullWidth label="Nom d'utilisateur" {...registerInfo("username", { required: true })} margin="normal" error={!!errorsInfo.username} helperText={errorsInfo.username && "Nom requis"} />
+              <TextField fullWidth label="Nom" {...registerInfo("name", { required: true })} margin="normal" error={!!errorsInfo.name} helperText={errorsInfo.name && "Nom requis"} />
+              <TextField fullWidth label="Email" {...registerInfo("email", { required: true })} margin="normal" error={!!errorsInfo.email} helperText={errorsInfo.email && "Email requis"} />
+              <FormControl fullWidth margin="normal">
+                <Select
+                  {...registerInfo("country.id", { required: true })}
+                  value={user.country?.id || ""}
+                  onChange={(e) => setValueInfo("country.id", e.target.value)}
+                >
+                  {countries?.map((c) => (
+                    <MenuItem key={c.id} value={c.id}>
+                      {c.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl fullWidth margin="normal">
+                <Select
+                  {...registerInfo("role.id", { required: true })}
+                  value={user.role?.id || ""}
+                  onChange={(e) => setValueInfo("role.id", e.target.value)}
+                >
+                  {roles?.map((r) => (
+                    <MenuItem key={r.id} value={r.id}>
+                      {r.title}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Button type="submit" variant="contained" fullWidth disabled={isUpdatingInfo} sx={{ mt: 2, bgcolor: "rgb(43, 200, 190)", color: "white" }}>
+              {isUpdatingInfo ? "Mise à jour..." : "Sauvegarder"}
+            </Button>
+          </Paper>
+        </form>
+        {/* Security Form */}
       <form onSubmit={handleSubmitSecurity(onSubmitSecurity)} style={{ flex: 1 }}>
         <Paper variant="outlined" sx={{ width: "100%", borderRadius: 2, p: 3, boxShadow: 3, position: "relative" }}>
           <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>Sécurité</Typography>
@@ -264,9 +255,8 @@ const ProfileEdit = () => {
           </Button>
         </Paper>
       </form>
+      </Box>
     </Box>
-    </Box>
- 
   );
 };
 

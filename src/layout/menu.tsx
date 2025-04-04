@@ -147,7 +147,6 @@ export const Menu: FC = () => {
               <CustomMenuItem name="typeTicket" />
               <CustomMenuItem name="country" />
               <CustomMenuItem name="tag" />
-              <CustomMenuItem name="newsletter" />
               <CustomMenuItem name="currency" />
               <CustomMenuItem name="host" />
               <CustomMenuItem name="venue" />

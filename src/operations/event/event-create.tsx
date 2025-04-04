@@ -10,6 +10,7 @@ import {
   useGetList,
 } from "react-admin";
 import { useImageUpload } from "../../config/useImageUpload";
+import { useProfile } from "../../config/useProfile";
 
 // Validation de l'heure
 const validateTimeFormat = (value: string) => {
@@ -24,7 +25,9 @@ const validateTimeFormat = (value: string) => {
 export const EventCreate = () => {
   const { data: eventHalls = [] } = useGetList("venue");
   const { data: tags = [] } = useGetList("tag");
+  const { data: hosts = [] } = useGetList("host");
   const { imageUrl, handleImageUpload } = useImageUpload();
+  const profile = useProfile();
 
   return (
     <Create
@@ -32,6 +35,7 @@ export const EventCreate = () => {
       transform={(data) => ({
         ...data,
         eventImage: imageUrl,
+		user: profile
       })}
     >
       <SimpleForm>
@@ -55,7 +59,7 @@ export const EventCreate = () => {
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
                 {imageUrl ? (
-                  <img src={imageUrl} style={{ width: 700, height: 300, borderRadius: "30px" }} />
+                  <img src={imageUrl} style={{ width: 700, height: 300, borderRadius: "30px", objectFit: "cover", }} />
                 ) : (
                   <Box
                     sx={{
@@ -92,31 +96,12 @@ export const EventCreate = () => {
                 />
               </Button>
             </Paper>
-            <SelectInput
-              label="Event Hall"
-              source="eventHall.id"
-              choices={eventHalls.map((event) => ({
-                id: event.id,
-                name: event.name,
-              }))}
-              validate={[required()]}
-              sx={{
-                marginBottom: 3,
-                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
-                "& .MuiSelect-root": {
-                  backgroundColor: "#fff",
-                  borderRadius: 2,
-                  borderColor: "rgb(43, 200, 190)",
-                },
-              }}
-            />
-            <TextInput
+			<TextInput
               label="Event Title"
               source="title"
               fullWidth
               variant="outlined"
               sx={{
-                marginBottom: 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,
@@ -131,13 +116,47 @@ export const EventCreate = () => {
                 },
               }}
             />
+            <SelectInput
+              label="Event Hall"
+              source="eventHall.id"
+              choices={eventHalls.map((event) => ({
+                id: event.id,
+                name: event.name,
+              }))}
+              validate={[required()]}
+              sx={{
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiSelect-root": {
+                  backgroundColor: "#fff",
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                },
+              }}
+            />
+            <SelectInput
+              label="Host"
+              source="host.id"
+              choices={hosts.map((host) => ({
+                id: host.id,
+                name: host.name,
+              }))}
+              validate={[required()]}
+              sx={{
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiSelect-root": {
+                  backgroundColor: "#fff",
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                },
+              }}
+            />
+
             <TextInput
               label="Slug"
               source="slug"
               fullWidth
               variant="outlined"
               sx={{
-                marginBottom: 2,
                 "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,

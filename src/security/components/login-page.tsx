@@ -39,7 +39,7 @@ export const LoginPage: FC = () => {
         width: "100%",
         height: "100vh",
         background: `
-          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
           url('/couverture.jpg')
         `,
         backgroundSize: "cover",
@@ -47,20 +47,25 @@ export const LoginPage: FC = () => {
         alignItems: "center",
         justifyContent: "center",
         p: 2,
+		overflow:"hidden"
       }}
     >
       <FlexBox
         sx={{
           bgcolor: "white",
+		  opacity: 0.8,
           borderRadius: "16px",
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
-          maxWidth: "900px",
+          maxWidth: "1000px",
           width: "100%",
           minHeight: "500px",
+
         }}
       >
+
         {/* Left Panel - Branding */}
+
         <FlexBox
           sx={{
             flexDirection: "column",
@@ -70,8 +75,10 @@ export const LoginPage: FC = () => {
             flex: 1,
             color: "white",
             display: { xs: "none", md: "flex" },
+			textAlign:"center"
           }}
         >
+			<img src="/logo-png.png" alt="logo" width="180px" />
           <Lock sx={{
             fontSize: 60,
             mb: 3,
@@ -109,6 +116,19 @@ export const LoginPage: FC = () => {
             userSelect: "none"
           }}>
             <Lock sx={{ fontSize: "inherit" }} />
+
+          </Box>
+          <Box sx={{
+            position: "absolute",
+            bottom: 28,
+            right: 0,
+            opacity: 0.1,
+            fontSize: "8rem",
+            lineHeight: 1,
+            zIndex: 0,
+            userSelect: "none"
+          }}>
+            <img src="/logo-png.png" alt="logo" width="340px" />
           </Box>
         </FlexBox>
 
@@ -148,7 +168,8 @@ export const LoginPage: FC = () => {
                 flexDirection: "column",
                 gap: 2,
                 px: 0,
-                mt: 2
+                mt: 2,
+				backgroundColor:"transparent"
               }}>
                 <Button
                   fullWidth
@@ -214,7 +235,21 @@ export const LoginPage: FC = () => {
               source="username"
               label="Email ou identifiant"
               fullWidth
-              sx={{ mb: 2 }}
+			  sx={{
+				mb:2,
+                "& .MuiInputLabel-root": { color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+              }}
             />
 
             <PasswordInput
@@ -222,7 +257,22 @@ export const LoginPage: FC = () => {
               source="password"
               label="Mot de passe"
               fullWidth
-              sx={{ mb: 1 }}
+			  sx={{
+				mb:1,
+                "& .MuiInputLabel-root": {color: "rgb(43, 200, 190)" },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 2,
+                  borderColor: "rgb(43, 200, 190)",
+                  "&:hover fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(43, 200, 190)",
+                    color: "rgb(43, 200, 190)",
+                  },
+                },
+
+              }}
             />
 
             <FlexBox sx={{

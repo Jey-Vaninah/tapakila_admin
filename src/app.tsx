@@ -36,7 +36,6 @@ import { HostList } from "./operations/host/host-list";
 import { CountryList } from "./operations/country/country-list";
 import { TagList } from "./operations/tag/tag-list";
 import { TicketTypeList } from "./operations/ticketType/ticketType-list";
-import { TicketTypeShow } from "./operations/ticketType/ticketType-show";
 import { TicketTypeEdit } from "./operations/ticketType/ticketType-edit";
 import { TicketTypeCreate } from "./operations/ticketType/ticketType-create";
 import { RoleList } from "./operations/role/role-list";
@@ -103,7 +102,6 @@ export const App = () => {
         name="typeTicket"
 		icon={LocalActivityIcon}
         list={TicketTypeList}
-        show={TicketTypeShow}
         edit={TicketTypeEdit}
         create={TicketTypeCreate}
       />

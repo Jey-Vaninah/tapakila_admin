@@ -320,7 +320,7 @@ export const LoginPage: FC = () => {
                 "&:hover": { textDecoration: "underline" }
               }}
             >
-              S'inscrire
+             Devenir Organisateur
             </Box>
           </Typography>
         </FlexBox>

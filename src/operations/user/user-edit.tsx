@@ -47,7 +47,7 @@ const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
       <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
         <Avatar
           src={imageUrl || record?.imageUrl || ""}
-          sx={{ width: 150, height: 150, bgcolor: "grey.300" }}
+          sx={{ width: 300, height: 300, bgcolor: "grey.300" }}
         />
       </Box>
       <Button
@@ -94,6 +94,7 @@ export const UserEdit = () => {
             alignItems: "start",
             justifyContent: "space-between",
             width: "100%",
+            gap:16,
             marginBottom: 4,
           }}
         >

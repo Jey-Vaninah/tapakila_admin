@@ -34,7 +34,7 @@ export const UserShow = () => (
               render={(user: User) => (
                 <Avatar
                   src={user.imageUrl || "/default-avatar.png"}
-                  sx={{ width: 150, height: 150, bgcolor: "grey.300" }}
+                  sx={{ width: 300, height: 300, bgcolor: "grey.300" }}
                 />
               )}
             />
